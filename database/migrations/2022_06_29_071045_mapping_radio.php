@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('mappingRadio', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->bigInteger('polsek_id')->unsigned()->index()->nullable();
+            $table->foreign('polsek_id')->references('id')->on('polsek')->onDelete('casade');
+            $table->string('frekuensi_radio_UHF', 60);
+            $table->string('keterangan', 255);
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('mappingRadio');
     }
 };
