@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('jadwalPengecekanAlkom', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('polres_id')->unsigned()->index()->nullable();
-            $table->foreign('polres_id')->references('id')->on('polres')->onDelete('casade');
+            $table->foreign('polres_id')->references('id')->on('polres')->onDelete('cascade');
             $table->bigInteger('personil_id')->unsigned()->index()->nullable();
-            $table->foreign('personil_id')->references('id')->on('personil')->onDelete('casade');
+            $table->foreign('personil_id')->references('id')->on('personil')->onDelete('cascade');
             $table->timestamp('tgl_pengecekan');
             $table->string('sasaran_pengecekan', 60);
             $table->timestamps();

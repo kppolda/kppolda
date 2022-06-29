@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('dataBarang', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('polsek_id')->unsigned()->index()->nullable();
-            $table->foreign('polsek_id')->references('id')->on('polsek')->onDelete('casade');
+            $table->foreign('polsek_id')->references('id')->on('polsek')->onDelete('cascade');
             $table->bigInteger('barang_id')->unsigned()->index()->nullable();
-            $table->foreign('barang_id')->references('id')->on('barang')->onDelete('casade');
+            $table->foreign('barang_id')->references('id')->on('barang')->onDelete('cascade');
             $table->timestamps();
         });
     }
