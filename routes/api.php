@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('polres', [PolresCon::class, 'register']);
-Route::delete('polres/{id}', 'PolresCon@destroy')->name('polres.delete');
+Route::delete('polres/{id}', [PolresCon::class, 'destroy'])->name('polres.delete');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
