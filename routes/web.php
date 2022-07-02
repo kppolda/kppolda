@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::delete('polres/{id}', [PolresCon::class, 'destroy']);
+Route::delete('polres/{id}', 'PolresCon@destroy')->name('polres.delete');
 Route::get('/', [PolresCon::class, 'index']);
 
 // Route::get('/', function () {
