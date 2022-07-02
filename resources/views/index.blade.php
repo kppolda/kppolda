@@ -124,7 +124,7 @@
                                                 <td>{{$item->username}} </td>
                                                 <td>{{$item->email}}</td>
                                                 <td><a href="{{route('polres.delete', [$item->id])}}" onclick="return confirm('yang bener?')">
-                                                        <i class="btn btn-outline-light float-right"></i>
+                                                        <i class="btn btn-outline-light float-right">Delete</i>
                                                     </a></td>
                                                 <!-- <td>$80.00</td>
                                                 <td>27-08-2018 01:22:12</td>
