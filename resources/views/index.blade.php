@@ -110,7 +110,7 @@
                                                 <th class="border-0">Price</th>
                                                 <th class="border-0">Order Time</th> 
                                                 <th class="border-0">Customer</th> -->
-                                                <th class="border-0">Action</th>
+                                                <th class="border-0">action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -124,11 +124,14 @@
                                                 <td>{{$item->username}} </td>
                                                 <td>{{$item->email}}</td>
                                                 <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
-                                                        <!-- {{ csrf_field() }} -->
+                                                    <!-- <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
+                                                        {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit">Delete</button>
-                                                    </form>
+                                                    </form> -->
+                                                    <a href="{{route('polres.destroy', [$blog->id])}}" onclick="return confirm('yang benul bang?')">
+                                                        <i class="btn btn-outline-light">Delete</i>
+                                                    </a>
                                                 </td>
                                                 <!-- <td>$80.00</td>
                                                 <td>27-08-2018 01:22:12</td>
