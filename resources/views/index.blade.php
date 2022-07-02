@@ -108,9 +108,9 @@
                                                 <th class="border-0">email</th>
                                                 <!-- <th class="border-0">Quantity</th>
                                                 <th class="border-0">Price</th>
-                                                <th class="border-0">Order Time</th>
-                                                <th class="border-0">Customer</th>
-                                                <th class="border-0">Status</th> -->
+                                                <th class="border-0">Order Time</th> 
+                                                <th class="border-0">Customer</th> -->
+                                                <th class="border-0">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -123,6 +123,9 @@
                                                 <td>{{$item->nama_polres}}</td>
                                                 <td>{{$item->username}} </td>
                                                 <td>{{$item->email}}</td>
+                                                <td><a href="{{route('polres.destroy', [$item->id])}}" onclick="return confirm('yang bener?')">
+                                                        <i class="btn btn-outline-light float-right"></i>
+                                                    </a></td>
                                                 <!-- <td>$80.00</td>
                                                 <td>27-08-2018 01:22:12</td>
                                                 <td>Patricia J. King </td>
