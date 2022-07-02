@@ -6,88 +6,102 @@ use App\Models\Polres;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
 // use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Arr;
 // use Illuminate\Support\Facades\Validator;
 
 class PolresCon extends Controller
 {
+
     public function register(Request $request)
     {
-        // $repone = [];
-        // return view('test', compact('repone'));
-
-        // return response()->json(['test' => 'isinya'], 201);
-
-        $fields = $request->validate([
-            'nama_polres' => 'required|string',
-            'username' => 'required|string',
-            'email' => 'required|string|unique:users,email',
-            'password' => 'required|string|confirmed',
-            // '_token' => 'string'
+        // insert data ke table pegawai
+        DB::table('polres')->insert([
+            'nama_polres' => $request->nama_polres,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password
         ]);
-
-        // $fields = ([
-        //     'name' => 'fafafafa',
-        //     'email' => 'afafafafa@gmail.com',
-        //     'password' => 'fafafafa'
-        // ]);
-
-        $polres = Polres::create([
-            'nama_polres' => $fields['nama_polres'],
-            'username' => $fields['username'],
-            'email' => $fields['email'],
-            'password' => bcrypt($fields['password']),
-            // '_token' => $fields['_token']
-        ]);
-
-        // $token = $user->createToken('remember_token')->plainTextToken;
-
-        $respone = [
-            'polres' => $polres,
-            // 'token' => $token
-        ];
-
-        // var_dump($respone);
-        // var_dump($fields);
-        // var_dump($user);
-        // return view('test', compact('respone'));
-        return response()->json($respone, 201);
+        // alihkan halaman ke halaman pegawai
+        return redirect('/');
     }
+    // public function register(Request $request)
+    // {
+    //     // $repone = [];
+    //     // return view('test', compact('repone'));
 
-    public function login(Request $request)
-    {
-        $fields = $request->validate([
-            'email' => 'required|string',
-            'password' => 'required|string'
-        ]);
+    //     // return response()->json(['test' => 'isinya'], 201);
 
-        //check email
-        $polres = Polres::where('email', $fields['email'])->first();
+    //     $fields = $request->validate([
+    //         'nama_polres' => 'required|string',
+    //         'username' => 'required|string',
+    //         'email' => 'required|string|unique:users,email',
+    //         'password' => 'required|string|confirmed',
+    //         // '_token' => 'string'
+    //     ]);
 
-        //check password
-        if (!$polres || !Hash::check($fields['password'], $polres->password)) {
-            return response([
-                'message' => 'email atau password salah'
-            ], 401);
-        }
+    //     // $fields = ([
+    //     //     'name' => 'fafafafa',
+    //     //     'email' => 'afafafafa@gmail.com',
+    //     //     'password' => 'fafafafa'
+    //     // ]);
 
-        // $token = $user->createToken('myapptoken')->plainTextToken;
+    //     $polres = Polres::create([
+    //         'nama_polres' => $fields['nama_polres'],
+    //         'username' => $fields['username'],
+    //         'email' => $fields['email'],
+    //         'password' => bcrypt($fields['password']),
+    //         // '_token' => $fields['_token']
+    //     ]);
 
-        $respone = [
-            'polres' => $polres,
-            // 'token' => $token
-        ];
+    //     // $token = $user->createToken('remember_token')->plainTextToken;
 
-        return response()->json($respone, 201);
-    }
+    //     $respone = [
+    //         'polres' => $polres,
+    //         // 'token' => $token
+    //     ];
 
-    public function logout(Request $request)
-    {
-        // auth()->user()->tokens()->delete();
+    //     // var_dump($respone);
+    //     // var_dump($fields);
+    //     // var_dump($user);
+    //     // return view('test', compact('respone'));
+    //     return response()->json($respone, 201);
+    // }
 
-        return response()->json([
-            'message' => 'Logged out'
-        ], 200);
-    }
+    // public function login(Request $request)
+    // {
+    //     $fields = $request->validate([
+    //         'email' => 'required|string',
+    //         'password' => 'required|string'
+    //     ]);
+
+    //     //check email
+    //     $polres = Polres::where('email', $fields['email'])->first();
+
+    //     //check password
+    //     if (!$polres || !Hash::check($fields['password'], $polres->password)) {
+    //         return response([
+    //             'message' => 'email atau password salah'
+    //         ], 401);
+    //     }
+
+    //     // $token = $user->createToken('myapptoken')->plainTextToken;
+
+    //     $respone = [
+    //         'polres' => $polres,
+    //         // 'token' => $token
+    //     ];
+
+    //     return response()->json($respone, 201);
+    // }
+
+    // public function logout(Request $request)
+    // {
+    //     // auth()->user()->tokens()->delete();
+
+    //     return response()->json([
+    //         'message' => 'Logged out'
+    //     ], 200);
+    // }
 }
