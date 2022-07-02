@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\DB;
 class PolresCon extends Controller
 {
 
+    public function index()
+    {
+        $users = DB::table('polres')->get();
+
+        return view('/', ['users' => $users]);
+    }
+
     public function register(Request $request)
     {
         // insert data ke table pegawai
