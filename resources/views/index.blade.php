@@ -123,9 +123,13 @@
                                                 <td>{{$item->nama_polres}}</td>
                                                 <td>{{$item->username}} </td>
                                                 <td>{{$item->email}}</td>
-                                                <td><a href="{{route('polres.delete', [$item->id])}}" onclick="return confirm('yang bener?')">
-                                                        <i class="btn btn-outline-light">Delete</i>
-                                                    </a></td>
+                                                <td>
+                                                    <form method="POST" action="{{ route('polres.destroy', [$item->id]) }}">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <button type="submit">Delete</button>
+                                                    </form>
+                                                </td>
                                                 <!-- <td>$80.00</td>
                                                 <td>27-08-2018 01:22:12</td>
                                                 <td>Patricia J. King </td>
