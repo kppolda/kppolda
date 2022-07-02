@@ -31,7 +31,9 @@ class PolresCon extends Controller
             'password' => $request->password
         ]);
         // alihkan halaman ke halaman pegawai
-        return redirect('/');
+        $users = DB::table('polres')->get();
+        return $users;
+        // return redirect('/');
     }
     public function destroy($id)
     {

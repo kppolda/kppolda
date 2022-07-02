@@ -102,7 +102,7 @@
                                     <table class="table">
                                         <thead class="bg-light">
                                             <tr class="border-0">
-                                                <th class="border-0">#</th>
+                                                <th class="border-0">id</th>
                                                 <th class="border-0">nama polres</th>
                                                 <th class="border-0">username</th>
                                                 <th class="border-0">email</th>
