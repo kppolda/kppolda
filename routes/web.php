@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PolresCon;
+// use App\Http\Controllers\PolresCon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "PolresCon@index");
+Route::get('/', [PolresCon::class, 'index']);
 
 // Route::get('/', function () {
 //     return view('index');
