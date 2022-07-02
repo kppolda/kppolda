@@ -124,15 +124,14 @@
                                                 <td>{{$item->username}} </td>
                                                 <td>{{$item->email}}</td>
                                                 <td>
-                                                    <!-- <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
+                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
-                                                        <button type="submit">Delete</button>
-                                                    </form> -->
-                                                    <a href="{{route('polres.delete', [$item->id])}}" onclick="return confirm('yang benul bang?')">
-                                                        {{ method_field('DELETE') }}
                                                         <i class="btn btn-outline-light">Delete</i>
-                                                    </a>
+                                                    </form>
+                                                    <!-- <a href="{{route('polres.delete', [$item->id])}}" onclick="return confirm('yang benul bang?')">
+                                                        {{ method_field('DELETE') }}
+                                                    </a> -->
                                                 </td>
                                                 <!-- <td>$80.00</td>
                                                 <td>27-08-2018 01:22:12</td>
