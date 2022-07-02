@@ -123,7 +123,7 @@
                                                 <td>{{$item->nama_polres}}</td>
                                                 <td>{{$item->username}} </td>
                                                 <td>{{$item->email}}</td>
-                                                <td><a href="{{route('polres/{[$item->id]}.destroy')}}" onclick="return confirm('yang bener?')">
+                                                <td><a href="{{route('polres/{$item->id}.destroy')}}" onclick="return confirm('yang bener?')">
                                                         <i class="btn btn-outline-light float-right"></i>
                                                     </a></td>
                                                 <!-- <td>$80.00</td>
