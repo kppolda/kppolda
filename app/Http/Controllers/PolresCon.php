@@ -20,7 +20,8 @@ class PolresCon extends Controller
         // return response()->json(['test' => 'isinya'], 201);
 
         $fields = $request->validate([
-            'name' => 'required|string',
+            'nama_polres' => 'required|string',
+            'username' => 'required|string',
             'email' => 'required|string|unique:users,email',
             'password' => 'required|string|confirmed',
             // '_token' => 'string'
@@ -32,18 +33,19 @@ class PolresCon extends Controller
         //     'password' => 'fafafafa'
         // ]);
 
-        $user = Polres::create([
-            'name' => $fields['name'],
+        $polres = Polres::create([
+            'nama_polres' => $fields['nama_polres'],
+            'username' => $fields['username'],
             'email' => $fields['email'],
             'password' => bcrypt($fields['password']),
             // '_token' => $fields['_token']
         ]);
 
-        $token = $user->createToken('remember_token')->plainTextToken;
+        // $token = $user->createToken('remember_token')->plainTextToken;
 
         $respone = [
-            'user' => $user,
-            'token' => $token
+            'polres' => $polres,
+            // 'token' => $token
         ];
 
         // var_dump($respone);
@@ -61,20 +63,20 @@ class PolresCon extends Controller
         ]);
 
         //check email
-        $user = Polres::where('email', $fields['email'])->first();
+        $polres = Polres::where('email', $fields['email'])->first();
 
         //check password
-        if (!$user || !Hash::check($fields['password'], $user->password)) {
+        if (!$polres || !Hash::check($fields['password'], $polres->password)) {
             return response([
                 'message' => 'email atau password salah'
             ], 401);
         }
 
-        $token = $user->createToken('myapptoken')->plainTextToken;
+        // $token = $user->createToken('myapptoken')->plainTextToken;
 
         $respone = [
-            'user' => $user,
-            'token' => $token
+            'polres' => $polres,
+            // 'token' => $token
         ];
 
         return response()->json($respone, 201);
@@ -82,7 +84,7 @@ class PolresCon extends Controller
 
     public function logout(Request $request)
     {
-        auth()->user()->tokens()->delete();
+        // auth()->user()->tokens()->delete();
 
         return response()->json([
             'message' => 'Logged out'
