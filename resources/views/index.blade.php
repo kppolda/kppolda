@@ -128,6 +128,7 @@
                                                 <td>Patricia J. King </td>
                                                 <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
                                             </tr>
+                                            @endforeach
                                             <tr>
                                                 <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
                                             </tr>
