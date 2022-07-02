@@ -1,6 +1,6 @@
 <?php
 
-// use App\Http\Controllers\PolresCon;
+use App\Http\Controllers\PolresCon;
 use Illuminate\Support\Facades\Route;
 
 /*
