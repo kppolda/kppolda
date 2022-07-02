@@ -33,6 +33,10 @@ class PolresCon extends Controller
         // alihkan halaman ke halaman pegawai
         return redirect('/');
     }
+    public function destroy($id)
+    {
+        DB::table('polres')->where('id', $id)->delete();
+    }
     // public function register(Request $request)
     // {
     //     // $repone = [];
