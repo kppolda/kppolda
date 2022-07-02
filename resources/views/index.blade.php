@@ -124,7 +124,7 @@
                                                 <td>{{$item->username}} </td>
                                                 <td>{{$item->email}}</td>
                                                 <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
+                                                    <form method="POST" action="{{ route('api/polres.delete', [$item->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit">Delete</button>
