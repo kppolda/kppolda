@@ -114,7 +114,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!-- @foreach ($users as $item) -->
+                                            @foreach ($users as $item)
                                             <tr>
                                                 <td>1</td>
                                                 <td>
@@ -128,7 +128,7 @@
                                                 <td>Patricia J. King </td>
                                                 <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
                                             </tr>
-                                            <!-- @endforeach -->
+                                            @endforeach
                                             <tr>
                                                 <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
                                             </tr>
