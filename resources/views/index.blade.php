@@ -130,6 +130,7 @@
                                                         <button type="submit">Delete</button>
                                                     </form> -->
                                                     <a href="{{route('polres.delete', [$item->id])}}" onclick="return confirm('yang benul bang?')">
+                                                        {{ method_field('DELETE') }}
                                                         <i class="btn btn-outline-light">Delete</i>
                                                     </a>
                                                 </td>
