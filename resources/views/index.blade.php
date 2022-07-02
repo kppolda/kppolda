@@ -127,7 +127,8 @@
                                                     <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
-                                                        <i class="btn btn-outline-light">Delete</i>
+                                                        <i class="btn btn-outline-light">
+                                                            <button type="submit">Delete</button></i>
                                                     </form>
                                                     <!-- <a href="{{route('polres.delete', [$item->id])}}" onclick="return confirm('yang benul bang?')">
                                                         {{ method_field('DELETE') }}
