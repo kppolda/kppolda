@@ -103,30 +103,30 @@
                                         <thead class="bg-light">
                                             <tr class="border-0">
                                                 <th class="border-0">#</th>
-                                                <th class="border-0">Image</th>
-                                                <th class="border-0">Product Name</th>
-                                                <th class="border-0">Product Id</th>
-                                                <th class="border-0">Quantity</th>
+                                                <th class="border-0">nama polres</th>
+                                                <th class="border-0">username</th>
+                                                <th class="border-0">email</th>
+                                                <!-- <th class="border-0">Quantity</th>
                                                 <th class="border-0">Price</th>
                                                 <th class="border-0">Order Time</th>
                                                 <th class="border-0">Customer</th>
-                                                <th class="border-0">Status</th>
+                                                <th class="border-0">Status</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($users as $item)
                                             <tr>
-                                                <td>1</td>
-                                                <td>
+                                                <td>{{$item->id}}</td>
+                                                <!-- <td>
                                                     <div class="m-r-10"><img src="/concept/assets/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
-                                                </td>
+                                                </td> -->
                                                 <td>{{$item->nama_polres}}</td>
-                                                <td>id000001 </td>
-                                                <td>20</td>
-                                                <td>$80.00</td>
+                                                <td>{{$item->username}} </td>
+                                                <td>{{$item->email}}</td>
+                                                <!-- <td>$80.00</td>
                                                 <td>27-08-2018 01:22:12</td>
                                                 <td>Patricia J. King </td>
-                                                <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
+                                                <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td> -->
                                             </tr>
                                             @endforeach
                                             <tr>
