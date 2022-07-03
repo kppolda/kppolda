@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\RegisterRequest;
+// use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Arr;
+// use Illuminate\Support\Facades\Validator;
 
 class PolresCon extends Controller
 {
@@ -19,19 +21,36 @@ class PolresCon extends Controller
         return view('index', ['users' => $users]);
     }
 
-    public function register(RegisterRequest $request)
+    public function register(Request $request)
     {
-        $user = Polres::create($request->validated());
-
-        auth()->login($user);
-
-        return redirect('/')->with('success', "Account successfully registered.");
+        // insert data ke table pegawai
+        DB::table('polres')->insert([
+            'nama_polres' => $request->nama_polres,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
+        // alihkan halaman ke halaman pegawai
+        $users = DB::table('polres')->get();
+        return $users;
+        // return redirect('/');
     }
     public function destroy($id)
     {
         DB::table('polres')->where('id', $id)->delete();
         $users = DB::table('polres')->get();
         return view('index', ['users' => $users]);
+    }
+    public function login(Request $request)
+    {
+        $user = DB::table('users')
+            ->where('email', $request->input('email'))
+            ->first();
+        if (Hash::check($user->password, Hash::make($request->input('password')))) {
+            echo "Password current";
+        } else {
+            echo "Password Wrong";
+        }
     }
     // public function register(Request $request)
     // {
