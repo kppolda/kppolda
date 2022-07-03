@@ -6,15 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/concept/assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="/concept/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="/concept/assets/libs/css/style.css">
-    <link rel="stylesheet" href="/concept/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="/concept/assets/vendor/charts/chartist-bundle/chartist.css">
-    <link rel="stylesheet" href="/concept/assets/vendor/charts/morris-bundle/morris.css">
-    <link rel="stylesheet" href="/concept/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="/concept/assets/vendor/charts/c3charts/c3.css">
-    <link rel="stylesheet" href="/concept/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link rel="stylesheet" href="//concept/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="//concept/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="//concept/assets/libs/css/style.css">
+    <link rel="stylesheet" href="//concept/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="//concept/assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="//concept/assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="//concept/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="//concept/assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="//concept/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
     <title>@yield('title')</title>
 </head>
 
@@ -28,7 +28,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html">Concept</a>
+                <a class="navbar-brand" href="/concept/index.html">/concept</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -48,7 +48,7 @@
                                         <div class="list-group">
                                             <a href="#" class="list-group-item list-group-item-action active">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="/concept/assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-img"><img src="//concept/assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
                                                         <div class="notification-date">2 min ago</div>
                                                     </div>
@@ -56,7 +56,7 @@
                                             </a>
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="/concept/assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-img"><img src="//concept/assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">John Abraham </span>is now following you
                                                         <div class="notification-date">2 days ago</div>
                                                     </div>
@@ -64,7 +64,7 @@
                                             </a>
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="/concept/assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-img"><img src="//concept/assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
                                                         <div class="notification-date">2 min ago</div>
                                                     </div>
@@ -72,7 +72,7 @@
                                             </a>
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="/concept/assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-img"><img src="//concept/assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
                                                         <div class="notification-date">2 min ago</div>
                                                     </div>
@@ -92,24 +92,24 @@
                                 <li class="connection-list">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/concept/assets/images/github.png" alt=""> <span>Github</span></a>
+                                            <a href="#" class="connection-item"><img src="//concept/assets/images/github.png" alt=""> <span>Github</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/concept/assets/images/dribbble.png" alt=""> <span>Dribbble</span></a>
+                                            <a href="#" class="connection-item"><img src="//concept/assets/images/dribbble.png" alt=""> <span>Dribbble</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/concept/assets/images/dropbox.png" alt=""> <span>Dropbox</span></a>
+                                            <a href="#" class="connection-item"><img src="//concept/assets/images/dropbox.png" alt=""> <span>Dropbox</span></a>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/concept/assets/images/bitbucket.png" alt=""> <span>Bitbucket</span></a>
+                                            <a href="#" class="connection-item"><img src="//concept/assets/images/bitbucket.png" alt=""> <span>Bitbucket</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/concept/assets/images/mail_chimp.png" alt=""><span>Mail chimp</span></a>
+                                            <a href="#" class="connection-item"><img src="//concept/assets/images/mail_chimp.png" alt=""><span>Mail chimp</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="/concept/assets/images/slack.png" alt=""> <span>Slack</span></a>
+                                            <a href="#" class="connection-item"><img src="//concept/assets/images/slack.png" alt=""> <span>Slack</span></a>
                                         </div>
                                     </div>
                                 </li>
@@ -119,7 +119,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/concept/assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="//concept/assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
@@ -161,38 +161,38 @@
                                             <div id="submenu-1-2" class="collapse submenu" style="">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="index.html">E Commerce Dashboard</a>
+                                                        <a class="nav-link" href="/concept/index.html">E Commerce Dashboard</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product.html">Product List</a>
+                                                        <a class="nav-link" href="/concept/ecommerce-product.html">Product List</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-single.html">Product Single</a>
+                                                        <a class="nav-link" href="/concept/ecommerce-product-single.html">Product Single</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-checkout.html">Product Checkout</a>
+                                                        <a class="nav-link" href="/concept/ecommerce-product-checkout.html">Product Checkout</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">Finance</a>
+                                            <a class="nav-link" href="/concept/dashboard-finance.html">Finance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.html">Sales</a>
+                                            <a class="nav-link" href="/concept/dashboard-sales.html">Sales</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1">Infulencer</a>
                                             <div id="submenu-1-1" class="collapse submenu" style="">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="dashboard-influencer.html">Influencer</a>
+                                                        <a class="nav-link" href="/concept/dashboard-influencer.html">Influencer</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-finder.html">Influencer Finder</a>
+                                                        <a class="nav-link" href="/concept/influencer-finder.html">Influencer Finder</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-profile.html">Influencer Profile</a>
+                                                        <a class="nav-link" href="/concept/influencer-profile.html">Influencer Profile</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -205,25 +205,25 @@
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/cards.html">Cards <span class="badge badge-secondary">New</span></a>
+                                            <a class="nav-link" href="/concept/pages/cards.html">Cards <span class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/general.html">General</a>
+                                            <a class="nav-link" href="/concept/pages/general.html">General</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/carousel.html">Carousel</a>
+                                            <a class="nav-link" href="/concept/pages/carousel.html">Carousel</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/listgroup.html">List Group</a>
+                                            <a class="nav-link" href="/concept/pages/listgroup.html">List Group</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/typography.html">Typography</a>
+                                            <a class="nav-link" href="/concept/pages/typography.html">Typography</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/accordions.html">Accordions</a>
+                                            <a class="nav-link" href="/concept/pages/accordions.html">Accordions</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/tabs.html">Tabs</a>
+                                            <a class="nav-link" href="/concept/pages/tabs.html">Tabs</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -233,22 +233,22 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-c3.html">C3 Charts</a>
+                                            <a class="nav-link" href="/concept/pages/chart-c3.html">C3 Charts</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-chartist.html">Chartist Charts</a>
+                                            <a class="nav-link" href="/concept/pages/chart-chartist.html">Chartist Charts</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-charts.html">Chart</a>
+                                            <a class="nav-link" href="/concept/pages/chart-charts.html">Chart</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-morris.html">Morris</a>
+                                            <a class="nav-link" href="/concept/pages/chart-morris.html">Morris</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-sparkline.html">Sparkline</a>
+                                            <a class="nav-link" href="/concept/pages/chart-sparkline.html">Sparkline</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-gauge.html">Guage</a>
+                                            <a class="nav-link" href="/concept/pages/chart-gauge.html">Guage</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -258,19 +258,19 @@
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/form-elements.html">Form Elements</a>
+                                            <a class="nav-link" href="/concept/pages/form-elements.html">Form Elements</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/form-validation.html">Parsely Validations</a>
+                                            <a class="nav-link" href="/concept/pages/form-validation.html">Parsely Validations</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/multiselect.html">Multiselect</a>
+                                            <a class="nav-link" href="/concept/pages/multiselect.html">Multiselect</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/datepicker.html">Date Picker</a>
+                                            <a class="nav-link" href="/concept/pages/datepicker.html">Date Picker</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/bootstrap-select.html">Bootstrap Select</a>
+                                            <a class="nav-link" href="/concept/pages/bootstrap-select.html">Bootstrap Select</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -280,10 +280,10 @@
                                 <div id="submenu-5" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/general-table.html">General Tables</a>
+                                            <a class="nav-link" href="/concept/pages/general-table.html">General Tables</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/data-tables.html">Data Tables</a>
+                                            <a class="nav-link" href="/concept/pages/data-tables.html">Data Tables</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -296,46 +296,46 @@
                                 <div id="submenu-6" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/blank-page.html">Blank Page</a>
+                                            <a class="nav-link" href="/concept/pages/blank-page.html">Blank Page</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/blank-page-header.html">Blank Page Header</a>
+                                            <a class="nav-link" href="/concept/pages/blank-page-header.html">Blank Page Header</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/login.html">Login</a>
+                                            <a class="nav-link" href="/concept/pages/login.html">Login</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/404-page.html">404 page</a>
+                                            <a class="nav-link" href="/concept/pages/404-page.html">404 page</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/sign-up.html">Sign up Page</a>
+                                            <a class="nav-link" href="/concept/pages/sign-up.html">Sign up Page</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/forgot-password.html">Forgot Password</a>
+                                            <a class="nav-link" href="/concept/pages/forgot-password.html">Forgot Password</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/pricing.html">Pricing Tables</a>
+                                            <a class="nav-link" href="/concept/pages/pricing.html">Pricing Tables</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/timeline.html">Timeline</a>
+                                            <a class="nav-link" href="/concept/pages/timeline.html">Timeline</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/calendar.html">Calendar</a>
+                                            <a class="nav-link" href="/concept/pages/calendar.html">Calendar</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/sortable-nestable-lists.html">Sortable/Nestable List</a>
+                                            <a class="nav-link" href="/concept/pages/sortable-nestable-lists.html">Sortable/Nestable List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/widgets.html">Widgets</a>
+                                            <a class="nav-link" href="/concept/pages/widgets.html">Widgets</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/media-object.html">Media Objects</a>
+                                            <a class="nav-link" href="/concept/pages/media-object.html">Media Objects</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/cropper-image.html">Cropper</a>
+                                            <a class="nav-link" href="/concept/pages/cropper-image.html">Cropper</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/color-picker.html">Color Picker</a>
+                                            <a class="nav-link" href="/concept/pages/color-picker.html">Color Picker</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -345,16 +345,16 @@
                                 <div id="submenu-7" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/inbox.html">Inbox</a>
+                                            <a class="nav-link" href="/concept/pages/inbox.html">Inbox</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/email-details.html">Email Detail</a>
+                                            <a class="nav-link" href="/concept/pages/email-details.html">Email Detail</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/email-compose.html">Email Compose</a>
+                                            <a class="nav-link" href="/concept/pages/email-compose.html">Email Compose</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/message-chat.html">Message Chat</a>
+                                            <a class="nav-link" href="/concept/pages/message-chat.html">Message Chat</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -364,22 +364,22 @@
                                 <div id="submenu-8" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/icon-fontawesome.html">FontAwesome Icons</a>
+                                            <a class="nav-link" href="/concept/pages/icon-fontawesome.html">FontAwesome Icons</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/icon-material.html">Material Icons</a>
+                                            <a class="nav-link" href="/concept/pages/icon-material.html">Material Icons</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/icon-simple-lineicon.html">Simpleline Icon</a>
+                                            <a class="nav-link" href="/concept/pages/icon-simple-lineicon.html">Simpleline Icon</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/icon-themify.html">Themify Icon</a>
+                                            <a class="nav-link" href="/concept/pages/icon-themify.html">Themify Icon</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/icon-flag.html">Flag Icons</a>
+                                            <a class="nav-link" href="/concept/pages/icon-flag.html">Flag Icons</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/icon-weather.html">Weather Icon</a>
+                                            <a class="nav-link" href="/concept/pages/icon-weather.html">Weather Icon</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -389,10 +389,10 @@
                                 <div id="submenu-9" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/map-google.html">Google Maps</a>
+                                            <a class="nav-link" href="/concept/pages/map-google.html">Google Maps</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/map-vector.html">Vector Maps</a>
+                                            <a class="nav-link" href="/concept/pages/map-vector.html">Vector Maps</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -443,7 +443,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                            Copyright © 2018 /concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="text-md-right footer-links d-none d-sm-block">
@@ -468,25 +468,25 @@
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->
-    <script src="/concept/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="//concept/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
-    <script src="/concept/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="//concept/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
-    <script src="/concept/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="//concept/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <!-- main js -->
-    <script src="/concept/assets/libs/js/main-js.js"></script>
+    <script src="//concept/assets/libs/js/main-js.js"></script>
     <!-- chart chartist js -->
-    <script src="/concept/assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <script src="//concept/assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
     <!-- sparkline js -->
-    <script src="/concept/assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="//concept/assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
     <!-- morris js -->
-    <script src="/concept/assets/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="/concept/assets/vendor/charts/morris-bundle/morris.js"></script>
+    <script src="//concept/assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="//concept/assets/vendor/charts/morris-bundle/morris.js"></script>
     <!-- chart c3 js -->
-    <script src="/concept/assets/vendor/charts/c3charts/c3.min.js"></script>
-    <script src="/concept/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="/concept/assets/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="/concept/assets/libs/js/dashboard-ecommerce.js"></script>
+    <script src="//concept/assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="//concept/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="//concept/assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="//concept/assets/libs/js/dashboard-ecommerce.js"></script>
 </body>
 
 </html>
