@@ -96,10 +96,12 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Recent Orders</h5>
+                            <h5 class="card-header">Polres</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <h2>DOWNLOAD DATA CBT JAWA TIMUR</h2>
+                                    <h4>Pilih Format yang diinginkan!</h4>
+                                    <table class="table" id="mauexport">
                                         <thead class="bg-light">
                                             <tr class="border-0">
                                                 <th class="border-0">id</th>

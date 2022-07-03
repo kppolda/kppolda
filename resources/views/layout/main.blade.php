@@ -28,7 +28,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="/concept/index.html">/concept</a>
+                <a class="navbar-brand" href="/">Dashboard</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -487,6 +487,28 @@
     <script src="/concept/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="/concept/assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="/concept/assets/libs/js/dashboard-ecommerce.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#mauexport').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+
 </body>
 
 </html>
