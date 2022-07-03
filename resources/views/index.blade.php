@@ -99,8 +99,6 @@
                             <h5 class="card-header">Polres</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
-                                    <h2>DOWNLOAD DATA CBT JAWA TIMUR</h2>
-                                    <h4>Pilih Format yang diinginkan!</h4>
                                     <table class="table" id="mauexport">
                                         <thead class="bg-light">
                                             <tr class="border-0">
