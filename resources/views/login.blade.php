@@ -21,7 +21,7 @@
         <div class="form login">
             <div class="form-content">
                 <header>Login</header>
-                <form method="POST" action="{{ route('polres.login', [$item->id]) }}">
+                <form method="POST" action="{{ route('polres.login') }}">
                     <div class="field input-field">
                         <input type="username" placeholder="Username" class="input">
                     </div>
