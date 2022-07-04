@@ -21,7 +21,7 @@
         <div class="form login">
             <div class="form-content">
                 <header>Login</header>
-                <form method="POST" action="{{ route('login.perform'}}">
+                <form method="POST" action="{{ route('login.perform')}}">
                     <div class="field input-field">
                         <input type="username" placeholder="Username" class="input">
                     </div>
@@ -52,7 +52,7 @@
         <div class="form signup">
             <div class="form-content">
                 <header>Signup</header>
-                <form method="POST" action="{{ route('register.perform'}}">
+                <form method="POST" action="{{ route('register.perform')}}">
                     <div class="field input-field">
                         <input type="name" placeholder="Nama Polres" class="input">
                     </div>
