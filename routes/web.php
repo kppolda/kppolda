@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PolresCon;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,17 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });
+
+Route::get('/home', [Controller::class, 'home']);
+Route::get('/homedup', [Controller::class, 'homedup']);
+
+
+Route::get('/data-polsek', [Controller::class, 'data_polsek']);
+Route::get('/data-personil', [Controller::class, 'data_personil']);
+Route::get('/data-barang', [Controller::class, 'data_barang']);
+Route::get('/data-internet', [Controller::class, 'data_internet']);
+Route::get('/data-giat', [Controller::class, 'data_giat']);
+
 // Route::get('/', function () {
 //     return view('index');
 // });
