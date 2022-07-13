@@ -21,7 +21,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
-    Route::get('/', [PolresCon::class, 'index']);
+    Route::get('/', [PolresCon::class, 'home']);
 
 
     Route::group(['middleware' => ['guest']], function () {
@@ -46,7 +46,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     });
 });
 
-Route::get('/home', [Controller::class, 'home']);
+Route::get('/home', [PolresCon::class, 'home']);
 Route::get('/homedup', [Controller::class, 'homedup']);
 
 
