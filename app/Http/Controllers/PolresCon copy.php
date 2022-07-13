@@ -18,7 +18,7 @@ class PolresCon extends Controller
     {
         $users = DB::table('polres')->get();
 
-        return view('index', ['users' => $users]);
+        return view('home', ['users' => $users]);
     }
 
     public function register(Request $request)
@@ -39,7 +39,7 @@ class PolresCon extends Controller
     {
         DB::table('polres')->where('id', $id)->delete();
         $users = DB::table('polres')->get();
-        return view('index', ['users' => $users]);
+        return view('home', ['users' => $users]);
     }
     public function login(Request $request)
     {
