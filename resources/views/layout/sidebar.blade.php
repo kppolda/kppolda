@@ -174,18 +174,13 @@
                             <li class="nav-divider">
                                 Menu
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link {{ Request::is('*home*') ? 'active' : '' }}" href="home">
-									<i class="fa fa-fw fa-home"></i>Home <span class="badge badge-success">6</span>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('*data-polsek*') ? 'active' : '' }}" href="/data-polsek/id">
+									<i class="fa fa-fw fa-building"></i>Data Polsek
 								</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('*data-polres*') ? 'active' : '' }}" href="/data-polres">
-									<i class="fa fa-fw fa-building "></i>Data Polres
-								</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ Request::is('*data-personil*') ? 'active' : '' }}" href="/data-personil">
+                                <a class="nav-link {{ Request::is('*data-personil*') ? 'active' : '' }}" href="/data-personil/id">
 									<i class="fa fa-fw fa-users"></i>Data Personil
 								</a>
                             </li>
@@ -196,19 +191,19 @@
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/data-jarkomrad">Data JarKomRad</a>
+                                            <a class="nav-link" href="/data-jarkomrad/id">Data JarKomRad</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/data-jarkomdat">Data JarKomDat</a>
+                                            <a class="nav-link" href="/data-jarkomdat/id">Data JarKomDat</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/data-barang">Data Barang</a>
+                                            <a class="nav-link" href="/data-barang/id">Data Barang</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('*data-giat*') ? 'active' : '' }}" href="/data-giat">
+                                <a class="nav-link {{ Request::is('*data-giat*') ? 'active' : '' }}" href="/data-giat/id">
 									<i class="fa fa-fw fa-cogs"></i>Data Daftar Giat
 								</a>
                             </li>
