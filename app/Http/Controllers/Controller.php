@@ -19,23 +19,51 @@ class Controller extends BaseController
       return view('home_dup');
     }
 
-    public function data_polsek() {
-      return view('data-polsek');
+    public function data_polres() {
+      return view('admin/data-polres');
     }
 
     public function data_personil() {
-      return view('data-personil');
+      return view('admin/data-personil');
     }
-
+      
+    public function data_jarkomrad() {
+      return view('admin/data-jarkomrad');
+    }
+      
+    public function data_jarkomdat() {
+      return view('admin/data-jarkomdat');
+    }
+      
     public function data_barang() {
-      return view('data-barang');
+      return view('admin/data-barang');
     }
-
-    public function data_internet() {
-      return view('data-internet');
-    }
-
+  
     public function data_giat() {
-      return view('data-giat');
+      return view('admin/data-giat');
+    }
+
+    public function data_polsek_id() {
+      return view('auth/data-polsek');
+    }
+
+    public function data_personil_id() {
+      return view('auth/data-personil');
+    }
+      
+    public function data_jarkomrad_id() {
+      return view('auth/data-jarkomrad');
+    }
+      
+    public function data_jarkomdat_id() {
+      return view('auth/data-jarkomdat');
+    }
+      
+    public function data_barang_id() {
+      return view('auth/data-barang');
+    }
+  
+    public function data_giat_id() {
+      return view('auth/data-giat');
     }
 }

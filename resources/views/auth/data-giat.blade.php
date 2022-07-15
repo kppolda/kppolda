@@ -1,4 +1,4 @@
-@extends('layout/sidebar-admin')
+@extends('layout/sidebar')
 
 @section('title', 'Data Daftar Giat')
 
@@ -26,6 +26,44 @@
             <!-- end pageheader  -->
             <!-- ============================================================== -->
             <div class="ecommerce-widget">
+                <!-- Modal -->
+                <div class="modal fade" id="dataGiat" tabindex="-1" role="dialog" aria-labelledby="titleGiat" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleGiat">Tambah Data Giat</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" id="basicform" data-parsley-validate="">
+                            <div class="form-group ">
+                                <label for="namaGiat">Nama Giat</label>
+                                <input id="namaGiat" type="text" name="namaGiat" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
+                            </div>
+                            <div class="form-group ">
+                                <label for="tanggalGiat">Tanggal Giat</label>
+                                <input id="tanggalGiat" type="date" name="tanggalGiat" data-parsley-trigger="change" required autocomplete="off" class="form-control form-control-lg">
+                            </div>
+                            <div class="form-group ">
+                                <label for="keterangan">Keterangan</label>
+                                <input id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="dokumentasi">
+                                <label class="custom-file-label" for="dokumentasi">Dokumentasi</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
                 <div class="row">
                     <!-- ============================================================== -->
 
@@ -35,7 +73,13 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Data Daftar Giat</h5>
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="m-0">Data Giat</h5>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataGiat">
+                                    Tambah Data
+                                </button>
+                            </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="giat" class="table table-striped table-bordered" style="width:100%">
@@ -58,6 +102,7 @@
                                                 <td>-</td>
                                                 <td>
                                                     <form method="POST" action="" style="margin:0;">
+                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                 </td>

@@ -50,11 +50,19 @@ Route::get('/home', [PolresCon::class, 'index']);
 Route::get('/homedup', [Controller::class, 'homedup']);
 
 
-Route::get('/data-polsek', [Controller::class, 'data_polsek']);
+Route::get('/data-polres', [Controller::class, 'data_polres']);
 Route::get('/data-personil', [Controller::class, 'data_personil']);
+Route::get('/data-jarkomrad', [Controller::class, 'data_jarkomrad']);
+Route::get('/data-jarkomdat', [Controller::class, 'data_jarkomdat']);
 Route::get('/data-barang', [Controller::class, 'data_barang']);
-Route::get('/data-internet', [Controller::class, 'data_internet']);
 Route::get('/data-giat', [Controller::class, 'data_giat']);
+
+Route::get('/data-polsek/id', [Controller::class, 'data_polsek_id']);
+Route::get('/data-personil/id', [Controller::class, 'data_personil_id']);
+Route::get('/data-jarkomrad/id', [Controller::class, 'data_jarkomrad_id']);
+Route::get('/data-jarkomdat/id', [Controller::class, 'data_jarkomdat_id']);
+Route::get('/data-barang/id', [Controller::class, 'data_barang_id']);
+Route::get('/data-giat/id', [Controller::class, 'data_giat_id']);
 
 // Route::get('/', function () {
 //     return view('index');
