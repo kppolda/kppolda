@@ -12,7 +12,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function home() {
-      return view('home');
+      return view('admin/home');
     }
 
     public function homedup() {
@@ -38,11 +38,15 @@ class Controller extends BaseController
     public function data_barang() {
       return view('admin/data-barang');
     }
-  
+    
     public function data_giat() {
       return view('admin/data-giat');
     }
-
+    
+    public function laporan() {
+      return view('admin/full-table');
+    }
+    
     public function data_polsek_id() {
       return view('auth/data-polsek');
     }

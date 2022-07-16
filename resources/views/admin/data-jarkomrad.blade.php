@@ -14,7 +14,7 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/home" class="breadcrumb-link">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Data JarKomRad</li>
                                 </ol>
                             </nav>
@@ -179,7 +179,6 @@
                                                 <th class="border-0 align-middle" rowspan="2">Jumlah Barang</th>
                                                 <th class="border-0 text-center" colspan="3">Kondisi</th>
                                                 <th class="border-0 align-middle" rowspan="2">Keterangan</th>
-                                                <th class="border-0 align-middle" rowspan="2">action</th>
                                             </tr>
                                             <tr class="border-0">
                                                 <th class="border-0">BB</th>
@@ -197,12 +196,6 @@
                                                 <td>2</td>
                                                 <td>3</td>
                                                 <td>-</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
-                                                        <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -228,7 +221,6 @@
                                                 <th class="border-0 align-middle" rowspan="2">Jumlah Barang</th>
                                                 <th class="border-0 text-center" colspan="3">Kondisi</th>
                                                 <th class="border-0 align-middle" rowspan="2">Keterangan</th>
-                                                <th class="border-0 align-middle" rowspan="2">action</th>
                                             </tr>
                                             <tr class="border-0">
                                                 <th class="border-0">BB</th>
@@ -246,12 +238,6 @@
                                                 <td>2</td>
                                                 <td>3</td>
                                                 <td>-</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
-                                                        <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

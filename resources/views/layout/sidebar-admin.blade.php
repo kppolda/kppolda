@@ -175,7 +175,7 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link {{ Request::is('*home*') ? 'active' : '' }}" href="home">
+                                <a class="nav-link {{ Request::is('*home*') ? 'active' : '' }}" href="/home">
 									<i class="fa fa-fw fa-home"></i>Home <span class="badge badge-success">6</span>
 								</a>
                             </li>
@@ -190,19 +190,19 @@
 								</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link {{ Request::is('*data-jarkomrad*') ? 'active' : '' }}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
+                                <a class="nav-link {{ Request::is('*data-inventaris*') ? 'active' : '' }}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
                                     <i class="fa fa-fw fa-tags"></i>Data Inventaris <span class="badge badge-success">6</span>
                                 </a>
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/data-jarkomrad">Data JarKomRad</a>
+                                            <a class="nav-link" href="/data-inventaris/data-jarkomrad">Data JarKomRad</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/data-jarkomdat">Data JarKomDat</a>
+                                            <a class="nav-link" href="/data-inventaris/data-jarkomdat">Data JarKomDat</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/data-barang">Data Barang</a>
+                                            <a class="nav-link" href="/data-inventaris/data-barang">Data Barang</a>
                                         </li>
                                     </ul>
                                 </div>

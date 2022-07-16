@@ -14,7 +14,7 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/home" class="breadcrumb-link">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Data Daftar Giat</li>
                                 </ol>
                             </nav>
@@ -90,7 +90,6 @@
                                                 <th class="border-0">Tanggal Giat</th>
                                                 <th class="border-0">Keterangan</th>
                                                 <th class="border-0">Dokumentasi</th>
-                                                <th class="border-0">action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -100,12 +99,6 @@
                                                 <td>12/7/2022</td>
                                                 <td>-</td>
                                                 <td>-</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
-                                                        <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

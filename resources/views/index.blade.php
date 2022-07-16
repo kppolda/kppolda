@@ -1,4 +1,4 @@
-@extends('layout/main')
+@extends('layout/sidebar-admin')
 
 @section('title', 'Dashboard')
 
@@ -10,14 +10,12 @@
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="page-header">
-                        <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
-                        <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                    <div class="page-header" style="margin-top: 38px;">
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">E-Commerce Dashboard Template</li>
+                            <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                                 </ol>
                             </nav>
                         </div>
@@ -127,7 +125,7 @@
                                                     <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
-                                                        <button type="submit">Delete</button>
+                                                        <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                     <!-- <a href="{{route('polres.delete', [$item->id])}}" onclick="return confirm('yang benul bang?')">
                                                         {{ method_field('DELETE') }}

@@ -14,7 +14,7 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/home" class="breadcrumb-link">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Data Polres</li>
                                 </ol>
                             </nav>
@@ -101,8 +101,7 @@
                                                 <td>Kediri_Kota</td>
                                                 <td>kedirikota@gmail.com</td>
                                                 <td>k3D1r1_k0t4</td>
-                                                <td class="d-flex">
-                                                    <a href="data-polsek/id" class="btn btn-rounded btn-info mr-2">Info</a>
+                                                <td>
                                                     <form method="POST" action="" style="margin:0;">
                                                         <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>

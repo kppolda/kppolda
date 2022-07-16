@@ -46,22 +46,24 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     });
 });
 
-Route::get('/home', [PolresCon::class, 'index']);
+// Route::get('/home', [PolresCon::class, 'index']);
+Route::get('/home', [Controller::class, 'home']);
 Route::get('/homedup', [Controller::class, 'homedup']);
+Route::get('/home/id', [Controller::class, 'laporan']);
 
 
 Route::get('/data-polres', [Controller::class, 'data_polres']);
 Route::get('/data-personil', [Controller::class, 'data_personil']);
-Route::get('/data-jarkomrad', [Controller::class, 'data_jarkomrad']);
-Route::get('/data-jarkomdat', [Controller::class, 'data_jarkomdat']);
-Route::get('/data-barang', [Controller::class, 'data_barang']);
+Route::get('/data-inventaris/data-jarkomrad', [Controller::class, 'data_jarkomrad']);
+Route::get('/data-inventaris/data-jarkomdat', [Controller::class, 'data_jarkomdat']);
+Route::get('/data-inventaris/data-barang', [Controller::class, 'data_barang']);
 Route::get('/data-giat', [Controller::class, 'data_giat']);
 
 Route::get('/data-polsek/id', [Controller::class, 'data_polsek_id']);
 Route::get('/data-personil/id', [Controller::class, 'data_personil_id']);
-Route::get('/data-jarkomrad/id', [Controller::class, 'data_jarkomrad_id']);
-Route::get('/data-jarkomdat/id', [Controller::class, 'data_jarkomdat_id']);
-Route::get('/data-barang/id', [Controller::class, 'data_barang_id']);
+Route::get('/data-inventaris/data-jarkomrad/id', [Controller::class, 'data_jarkomrad_id']);
+Route::get('/data-inventaris/data-jarkomdat/id', [Controller::class, 'data_jarkomdat_id']);
+Route::get('/data-inventaris/data-barang/id', [Controller::class, 'data_barang_id']);
 Route::get('/data-giat/id', [Controller::class, 'data_giat_id']);
 
 // Route::get('/', function () {

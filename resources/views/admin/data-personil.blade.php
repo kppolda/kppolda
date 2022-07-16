@@ -14,7 +14,7 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/home" class="breadcrumb-link">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Data Personil</li>
                                 </ol>
                             </nav>
@@ -105,7 +105,6 @@
                                                 <th class="border-0">Jabatan</th>
                                                 <th class="border-0">Pendidikan Dikum</th>
                                                 <th class="border-0">Pendidikan Dikbang</th>
-                                                <th class="border-0">action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -118,12 +117,6 @@
                                                 <td>Kanit Provos</td>
                                                 <td>Noinfo</td>
                                                 <td>Noinfo</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
-                                                        <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

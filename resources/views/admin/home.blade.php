@@ -14,8 +14,7 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Home</li>
                                 </ol>
                             </nav>
                         </div>
@@ -97,48 +96,31 @@
                             <h5 class="card-header">Polres</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
-                                    <table class="table" id="mauexport">
+                                <table class="table" id="mauexport">
                                         <thead class="bg-light">
                                             <tr class="border-0">
                                                 <th class="border-0">id</th>
                                                 <th class="border-0">nama polres</th>
                                                 <th class="border-0">username</th>
                                                 <th class="border-0">email</th>
-                                                <!-- <th class="border-0">Quantity</th>
-                                                <th class="border-0">Price</th>
-                                                <th class="border-0">Order Time</th> 
-                                                <th class="border-0">Customer</th> -->
+                                                <th class="border-0">password</th>
                                                 <th class="border-0">action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($users as $item)
                                             <tr>
-                                                <td>{{$item->id}}</td>
-                                                <!-- <td>
-                                                    <div class="m-r-10"><img src="/concept/assets/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
-                                                </td> -->
-                                                <td>{{$item->nama_polres}}</td>
-                                                <td>{{$item->username}} </td>
-                                                <td>{{$item->email}}</td>
-                                                <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
+                                                <td>1</td>
+                                                <td>Polres Kediri Kota</td>
+                                                <td>Kediri_Kota</td>
+                                                <td>kedirikota@gmail.com</td>
+                                                <td>k3D1r1_k0T4</td>
+                                                <td class="d-flex">
+                                                    <a href="/home/id" class="btn btn-rounded btn-info mr-2">Info</a>
+                                                    <form method="POST" action="" style="margin:0;">
+                                                        <button type="submit" class="btn btn-rounded btn-warning">Edit</button>
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
-                                                    <!-- <a href="{{route('polres.delete', [$item->id])}}" onclick="return confirm('yang benul bang?')">
-                                                        {{ method_field('DELETE') }}
-                                                    </a> -->
                                                 </td>
-                                                <!-- <td>$80.00</td>
-                                                <td>27-08-2018 01:22:12</td>
-                                                <td>Patricia J. King </td>
-                                                <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td> -->
-                                            </tr>
-                                            @endforeach
-                                            <tr>
-                                                <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
                                             </tr>
                                         </tbody>
                                     </table>
