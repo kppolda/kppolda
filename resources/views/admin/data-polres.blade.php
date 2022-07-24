@@ -38,10 +38,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="#" id="basicform" data-parsley-validate="">
+                        <form action="{{ route('polres.regis') }}" method="POST" id="basicform" data-parsley-validate="">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
                             <div class="form-group ">
                                 <label for="namaPolres">Nama Polres</label>
-                                <input id="namaPolres" type="text" name="namaPolres" data-parsley-trigger="change" required placeholder="Nama Polres" autocomplete="off" class="form-control form-control-lg">
+                                <input id="namaPolres" type="text" name="nama_polres" data-parsley-trigger="change" required placeholder="Nama Polres" autocomplete="off" class="form-control form-control-lg">
                             </div>
                             <div class="form-group ">
                                 <label for="username">Username</label>
