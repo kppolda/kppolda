@@ -95,6 +95,31 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach ($users as $item)
+                                            <tr>
+                                                <td>{{$item->id}}</td>
+                                                <!-- <td>
+                                                    <div class="m-r-10"><img src="/concept/assets/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
+                                                </td> -->
+                                                <td>{{$item->nama_polres}}</td>
+                                                <td>{{$item->username}} </td>
+                                                <td>{{$item->email}}</td>
+                                                <td>
+                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
+                                                    </form>
+                                                    <!-- <a href="{{route('polres.delete', [$item->id])}}" onclick="return confirm('yang benul bang?')">
+                                                        {{ method_field('DELETE') }}
+                                                    </a> -->
+                                                </td>
+                                                <!-- <td>$80.00</td>
+                                                <td>27-08-2018 01:22:12</td>
+                                                <td>Patricia J. King </td>
+                                                <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td> -->
+                                            </tr>
+                                            @endforeach
                                             <tr>
                                                 <td>1</td>
                                                 <td>Kediri Kota</td>

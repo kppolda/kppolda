@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_barang', 255);
-            $table->string('jenis_barang', 50);
-            $table->string('jml_barang', 5);
+            $table->string('nama_barang', 255)->nullable();
+            $table->string('jenis_barang', 50)->nullable();
+            $table->string('sumber', 50)->nullable();
+            $table->string('jml_barang', 5)->nullable();
             $table->string('kondisi_bb', 5)->nullable();
             $table->string('kondisi_rr', 5)->nullable();
             $table->string('kondisi_rb', 5)->nullable();

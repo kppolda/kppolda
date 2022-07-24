@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pelangganInternet', function (Blueprint $table) {
             $table->id();
             $table->string('nomor_langganan', 30);
+            $table->string('serial_number', 30);
             $table->string('nama_pelanggan', 255);
             $table->string('penyedia', 15);
             $table->timestamps();

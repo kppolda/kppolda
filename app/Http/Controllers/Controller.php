@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Polres;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -21,6 +22,28 @@ class Controller extends BaseController
 
     public function data_polres() {
       return view('admin/data-polres');
+    }
+
+    public function indexPolres()
+    {
+        $users = DB::table('polres')->get();
+
+        return view('admin/data-polres', ['users' => $users]);
+    }
+
+    public function registerPolres(RegisterRequest $request)
+    {
+        $user = Polres::create($request->validated());
+
+        auth()->login($user);
+
+        return redirect('admin/data-polres')->with('success', "Account successfully registered.");
+    }
+    public function destroyPolres($id)
+    {
+        DB::table('polres')->where('id', $id)->delete();
+        $users = DB::table('polres')->get();
+        return view('admin/data-polres', ['users' => $users]);
     }
 
     public function data_personil() {
