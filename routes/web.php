@@ -52,7 +52,7 @@ Route::get('/homedup', [Controller::class, 'homedup']);
 Route::get('/home/id', [Controller::class, 'laporan']);
 
 
-Route::get('/data-polres', [Controller::class, 'data_polres']);
+Route::get('/data-polres', [Controller::class, 'indexPolres']);
 Route::get('/data-personil', [Controller::class, 'data_personil']);
 Route::get('/data-inventaris/data-jarkomrad', [Controller::class, 'data_jarkomrad']);
 Route::get('/data-inventaris/data-jarkomdat', [Controller::class, 'data_jarkomdat']);
