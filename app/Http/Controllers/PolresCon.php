@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Polres;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\RegisterRequest;
 
 class PolresCon extends Controller
 {
@@ -17,14 +16,8 @@ class PolresCon extends Controller
         return view('index', ['users' => $users]);
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:posts|max:255',
-            'body' => 'required',
-        ]);
-
-        $validated = $validator->validated();
         $user = Polres::create($request->validated());
 
         auth()->login($user);
