@@ -39,7 +39,7 @@
                             </div>
                             <div class="modal-body">
                                 <!-- <form action="{{ route('polres.regis') }}" method="POST" id="basicform" data-parsley-validate=""> -->
-                                {!! Form::open(['action' => 'polres.regis', 'method' => 'POST']) !!}
+                                {!! Form::open(['route' => 'polres.regis', 'method' => 'POST']) !!}
                                 {{ csrf_field() }}
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
