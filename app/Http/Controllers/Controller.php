@@ -6,96 +6,108 @@ use App\Models\Polres;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+  use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function home() {
-      return view('admin/home');
-    }
+  public function home()
+  {
+    return view('admin/home');
+  }
 
-    public function homedup() {
-      return view('home_dup');
-    }
+  public function homedup()
+  {
+    return view('home_dup');
+  }
 
-    public function data_polres() {
-      return view('admin/data-polres');
-    }
+  public function data_polres()
+  {
+    return view('admin/data-polres');
+  }
 
-    public function indexPolres()
-    {
-        $users = DB::table('polres')->get();
+  public function indexPolres()
+  {
+    $users = DB::table('polres')->get();
 
-        return view('admin/data-polres', ['users' => $users]);
-    }
+    return view('admin/data-polres', ['users' => $users]);
+  }
 
-    public function registerPolres(RegisterRequest $request)
-    {
-        $user = Polres::create($request->validated());
+  public function registerPolres(RegisterRequest $request)
+  {
+    $user = Polres::create($request->validated());
 
-        auth()->login($user);
+    auth()->login($user);
 
-        return redirect('admin/data-polres')->with('success', "Account successfully registered.");
-    }
-    public function destroyPolres($id)
-    {
-        DB::table('polres')->where('id', $id)->delete();
-        $users = DB::table('polres')->get();
-        return view('admin/data-polres', ['users' => $users]);
-    }
+    return redirect('admin/data-polres')->with('success', "Account successfully registered.");
+  }
+  public function destroyPolres($id)
+  {
+    DB::table('polres')->where('id', $id)->delete();
+    $users = DB::table('polres')->get();
+    return view('admin/data-polres', ['users' => $users]);
+  }
 
-    public function data_personil() {
-      return view('admin/data-personil');
-    }
-      
-    public function data_jarkomrad() {
-      return view('admin/data-jarkomrad');
-    }
-      
-    public function data_jarkomdat() {
-      return view('admin/data-jarkomdat');
-    }
-      
-    public function data_barang() {
-      return view('admin/data-barang');
-    }
-    
-    public function data_giat() {
-      return view('admin/data-giat');
-    }
-    
-    public function laporan() {
-      return view('admin/full-table');
-    }
-    
-    public function data_polsek_id() {
-      return view('auth/data-polsek');
-    }
+  public function data_personil()
+  {
+    return view('admin/data-personil');
+  }
 
-    public function data_personil_id() {
-      return view('auth/data-personil');
-    }
-      
-    public function data_jarkomrad_id() {
-      return view('auth/data-jarkomrad');
-    }
-      
-    public function data_jarkomdat_id() {
-      return view('auth/data-jarkomdat');
-    }
-      
-    public function data_barang_id() {
-      return view('auth/data-barang');
-    }
-  
-    public function data_giat_id() {
-      return view('auth/data-giat');
-    }
+  public function data_jarkomrad()
+  {
+    return view('admin/data-jarkomrad');
+  }
+
+  public function data_jarkomdat()
+  {
+    return view('admin/data-jarkomdat');
+  }
+
+  public function data_barang()
+  {
+    return view('admin/data-barang');
+  }
+
+  public function data_giat()
+  {
+    return view('admin/data-giat');
+  }
+
+  public function laporan()
+  {
+    return view('admin/full-table');
+  }
+
+  public function data_polsek_id()
+  {
+    return view('auth/data-polsek');
+  }
+
+  public function data_personil_id()
+  {
+    return view('auth/data-personil');
+  }
+
+  public function data_jarkomrad_id()
+  {
+    return view('auth/data-jarkomrad');
+  }
+
+  public function data_jarkomdat_id()
+  {
+    return view('auth/data-jarkomdat');
+  }
+
+  public function data_barang_id()
+  {
+    return view('auth/data-barang');
+  }
+
+  public function data_giat_id()
+  {
+    return view('auth/data-giat');
+  }
 }

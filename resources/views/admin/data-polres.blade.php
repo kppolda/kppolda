@@ -29,42 +29,63 @@
 
                 <!-- Modal -->
                 <div class="modal fade" id="dataPolres" tabindex="-1" role="dialog" aria-labelledby="titlePolres" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="titlePolres">Tambah Data Polres</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{ route('polres.regis') }}" method="POST" id="basicform" data-parsley-validate="">
-                            {{ csrf_field() }}
-                            {{ method_field('POST') }}
-                            <div class="form-group ">
-                                <label for="nama_polres">Nama Polres</label>
-                                <input id="nama_polres" type="text" name="nama_polres" data-parsley-trigger="change" required placeholder="Nama Polres" autocomplete="off" class="form-control form-control-lg">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titlePolres">Tambah Data Polres</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group ">
-                                <label for="username">Username</label>
-                                <input id="username" type="text" name="username" data-parsley-trigger="change" required placeholder="Username" autocomplete="off" class="form-control form-control-lg">
+                            <div class="modal-body">
+                                <!-- <form action="{{ route('polres.regis') }}" method="POST" id="basicform" data-parsley-validate=""> -->
+                                {!! Form::open(['action' => 'Controller@registerPolres', 'method' => 'POST']) !!}
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class='form-group'>
+                                    {{ Form::label('nama_polres','Nama Polres') }}
+                                    {{ Form::text('nama_polres','',['class'=>'form-control','placeholder'=>'Nama Polres']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('username','Username') }}
+                                    {{ Form::text('username','',['class'=>'form-control','placeholder'=>'Username']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('email','Email') }}
+                                    {{ Form::text('email','',['class'=>'form-control','placeholder'=>'Email']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('password','Password') }}
+                                    {{ Form::text('password','',['class'=>'form-control','placeholder'=>'Password']) }}
+                                </div>
+                                <!-- <div class="form-group ">
+                                    <label for="nama_polres">Nama Polres</label>
+                                    <input id="nama_polres" type="text" name="nama_polres" data-parsley-trigger="change" required placeholder="Nama Polres" autocomplete="off" class="form-control form-control-lg">
+                                </div> -->
+                                <!-- <div class="form-group ">
+                                    <label for="username">Username</label>
+                                    <input id="username" type="text" name="username" data-parsley-trigger="change" required placeholder="Username" autocomplete="off" class="form-control form-control-lg">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="email">Email</label>
+                                    <input id="email" type="text" name="email" data-parsley-trigger="change" required placeholder="Email" autocomplete="off" class="form-control form-control-lg">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="password">Password</label>
+                                    <input id="password" type="text" name="password" data-parsley-trigger="change" required placeholder="Password" autocomplete="off" class="form-control form-control-lg">
+                                </div> -->
+                                <!-- </form> -->
+
+
+                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                {!! Form::close() !!}
                             </div>
-                            <div class="form-group ">
-                                <label for="email">Email</label>
-                                <input id="email" type="text" name="email" data-parsley-trigger="change" required placeholder="Email" autocomplete="off" class="form-control form-control-lg">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
-                            <div class="form-group ">
-                                <label for="password">Password</label>
-                                <input id="password" type="text" name="password" data-parsley-trigger="change" required placeholder="Password" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
 
                 <div class="row">
@@ -86,7 +107,7 @@
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="polres" class="table table-striped table-bordered" style="width:100%">
-                                    <thead class="bg-light">
+                                        <thead class="bg-light">
                                             <tr class="border-0">
                                                 <th class="border-0">id</th>
                                                 <th class="border-0">nama polres</th>
@@ -97,7 +118,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($users as $item)
+                                            @foreach ($users as $item)
                                             <tr>
                                                 <td>{{$item->id}}</td>
                                                 <!-- <td>
@@ -149,7 +170,7 @@
                     <!-- ============================================================== -->
                     <!-- customer acquistion  -->
                     <!-- ============================================================== -->
-                    
+
                 </div>
             </div>
         </div>
