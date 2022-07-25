@@ -98,7 +98,8 @@ class PolresCon extends Controller
             // 'token' => $token
         ];
 
-        return response()->json($respone, 201);
+        // return response()->json($respone, 201);
+        return redirect('/home');
     }
 
     public function logout(Request $request)
