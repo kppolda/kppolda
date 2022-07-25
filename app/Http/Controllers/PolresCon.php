@@ -29,7 +29,7 @@ class PolresCon extends Controller
     {
         DB::table('polres')->where('id', $id)->delete();
         $users = DB::table('polres')->get();
-        return view('admin/data-polres', ['users' => $users]);
+        return redirect('/data-polres');
     }
     // public function register(Request $request)
     // {
