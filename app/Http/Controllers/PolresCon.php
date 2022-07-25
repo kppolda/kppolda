@@ -14,22 +14,22 @@ class PolresCon extends Controller
     {
         $users = DB::table('polres')->get();
 
-        return view('index', ['users' => $users]);
+        return view('admin/data-polres', ['users' => $users]);
     }
 
     public function register(Request $request)
     {
-        $user = Polres::create($request);
+        $user = Polres::create($request->all());
 
         auth()->login($user);
 
-        return redirect('/')->with('success', "Account successfully registered.");
+        return redirect('admin/data-polres')->with('success', "Account successfully registered.");
     }
     public function destroy($id)
     {
         DB::table('polres')->where('id', $id)->delete();
         $users = DB::table('polres')->get();
-        return view('index', ['users' => $users]);
+        return view('admin/data-polres', ['users' => $users]);
     }
     // public function register(Request $request)
     // {
