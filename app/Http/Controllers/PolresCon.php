@@ -74,39 +74,39 @@ class PolresCon extends Controller
     //     return response()->json($respone, 201);
     // }
 
-    // public function login(Request $request)
-    // {
-    //     $fields = $request->validate([
-    //         'email' => 'required|string',
-    //         'password' => 'required|string'
-    //     ]);
+    public function login(Request $request)
+    {
+        $fields = $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
 
-    //     //check email
-    //     $polres = Polres::where('email', $fields['email'])->first();
+        //check email
+        $polres = Polres::where('email', $fields['email'])->first();
 
-    //     //check password
-    //     if (!$polres || !Hash::check($fields['password'], $polres->password)) {
-    //         return response([
-    //             'message' => 'email atau password salah'
-    //         ], 401);
-    //     }
+        //check password
+        if (!$polres || !$password) {
+            return response([
+                'message' => 'email atau password salah'
+            ], 401);
+        }
 
-    //     // $token = $user->createToken('myapptoken')->plainTextToken;
+        // $token = $user->createToken('myapptoken')->plainTextToken;
 
-    //     $respone = [
-    //         'polres' => $polres,
-    //         // 'token' => $token
-    //     ];
+        $respone = [
+            'polres' => $polres,
+            // 'token' => $token
+        ];
 
-    //     return response()->json($respone, 201);
-    // }
+        return response()->json($respone, 201);
+    }
 
-    // public function logout(Request $request)
-    // {
-    //     // auth()->user()->tokens()->delete();
+    public function logout(Request $request)
+    {
+        // auth()->user()->tokens()->delete();
 
-    //     return response()->json([
-    //         'message' => 'Logged out'
-    //     ], 200);
-    // }
+        return response()->json([
+            'message' => 'Logged out'
+        ], 200);
+    }
 }
