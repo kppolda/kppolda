@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Polres;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\RegisterRequest;
 

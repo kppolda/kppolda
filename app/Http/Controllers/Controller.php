@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\RegisterRequest;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -36,7 +36,7 @@ class Controller extends BaseController
     return view('admin/data-polres', ['users' => $users]);
   }
 
-  public function registerPolres(RegisterRequest $request)
+  public function registerPolres(Request $request)
   {
     $user = Polres::create($request->validated());
 
