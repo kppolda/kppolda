@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_polres', 60);
             $table->string('username', 25);
             $table->string('email', 25);
-            $table->string('password', 25);
+            $table->string('password', 100);
             $table->timestamps();
         });
     }
