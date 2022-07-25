@@ -127,6 +127,7 @@
                                                 <td>{{$item->nama_polres}}</td>
                                                 <td>{{$item->username}} </td>
                                                 <td>{{$item->email}}</td>
+                                                <td>{{$item->password}}</td>
                                                 <td>
                                                     <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         {{ csrf_field() }}
