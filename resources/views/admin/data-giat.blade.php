@@ -31,19 +31,13 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="m-0">Data Giat</h5>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataGiat">
-                                Tambah Data
-                            </button>
-                        </div>
+                        <h5 class="modal-title" id="titleGiat">Tambah Data Giat</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        {!! Form::open(['route' => 'giat.tambah', 'method' => 'POST']) !!}
+                        {{-- {!! Form::open(['route' => 'giat.tambah', 'method' => 'POST']) !!}
                                 {{ csrf_field() }}
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
@@ -52,8 +46,8 @@
                                 </div>
 
                                 {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
-                                {!! Form::close() !!}
-                        {{-- <form action="#" id="basicform" data-parsley-validate="">
+                                {!! Form::close() !!} --}}
+                        <form action="#" id="basicform" data-parsley-validate="">
                             <div class="form-group ">
                                 <label for="namaGiat">Nama Giat</label>
                                 <input id="namaGiat" type="text" name="namaGiat" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
@@ -70,7 +64,7 @@
                                 <input type="file" class="custom-file-input" id="dokumentasi">
                                 <label class="custom-file-label" for="dokumentasi">Dokumentasi</label>
                             </div>
-                        </form> --}}
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
