@@ -21,7 +21,7 @@
         <div class="form login">
             <div class="form-content">
                 <header>Login</header>
-                {!! Form::open(['route' => 'login.perform', 'method' => 'POST']) !!}
+                <!-- {!! Form::open(['route' => 'login.perform', 'method' => 'POST']) !!}
                 {{ csrf_field() }}
                 {{ method_field('POST') }}
 
@@ -33,25 +33,47 @@
                     {{ Form::label('password','Password') }}
                     {{ Form::text('password','',['class'=>'input','placeholder'=>'Password']) }}
                     <i class='bx bx-hide eye-icon'></i>
-                </div>
-
-                <!-- <form method="POST" action="{{ route('login.perform')}}"> -->
-                <!-- <div class="field input-field">
-                    <input type="username" placeholder="Username" class="input">
-                </div>
-
-                <div class="field input-field">
-                    <input type="password" placeholder="Password" class="password">
-                    <i class='bx bx-hide eye-icon'></i>
                 </div> -->
 
-                <!-- <div class="field button-field">
-                    <button>Login</button>
-                </div> -->
-                <!-- </form> -->
+                <!-- <form method="POST" action="{{ route('login.perform')}}">
+                    {{ csrf_field() }}
+                    {{ method_field('POST') }}
+                    <div class="field input-field">
+                        <input type="username" placeholder="Username" class="input">
+                    </div>
 
-                {{ Form::submit('Login',['class'=>'field button-field']) }}
-                {!! Form::close() !!}
+                    <div class="field input-field">
+                        <input type="password" placeholder="Password" class="password">
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div>
+
+                    <div class="field button-field">
+                        <button>Login</button>
+                    </div>
+                </form> -->
+                <form method="post" action="{{ route('login.perform') }}">
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+                    <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+                    <div class="form-group form-floating mb-3">
+                        <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username" required="required" autofocus>
+                        <label for="floatingName">Username</label>f
+                    </div>
+
+                    <div class="form-group form-floating mb-3">
+                        <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password" required="required">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+
+                    @include('auth.partials.copy')
+                </form>
+
+                <!-- {{ Form::submit('Login',['class'=>'field button-field']) }}
+                {!! Form::close() !!} -->
             </div>
 
         </div>
