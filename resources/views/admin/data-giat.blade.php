@@ -31,13 +31,29 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="titleGiat">Tambah Data Giat</h5>
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="m-0">Data Giat</h5>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataGiat">
+                                Tambah Data
+                            </button>
+                        </div>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="#" id="basicform" data-parsley-validate="">
+                        {!! Form::open(['route' => 'giat.tambah', 'method' => 'POST']) !!}
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class='form-group'>
+                                    {{ Form::label('nama_polres','Nama Polres') }}
+                                    {{ Form::text('nama_polres','',['class'=>'form-control','placeholder'=>'Nama Polres']) }}
+                                </div>
+
+                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                {!! Form::close() !!}
+                        {{-- <form action="#" id="basicform" data-parsley-validate="">
                             <div class="form-group ">
                                 <label for="namaGiat">Nama Giat</label>
                                 <input id="namaGiat" type="text" name="namaGiat" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
@@ -54,7 +70,7 @@
                                 <input type="file" class="custom-file-input" id="dokumentasi">
                                 <label class="custom-file-label" for="dokumentasi">Dokumentasi</label>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -73,7 +89,13 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Data Giat</h5>
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="m-0">Data Giat</h5>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataGiat">
+                                    Tambah Data
+                                </button>
+                            </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="giat" class="table table-striped table-bordered" style="width:100%">
