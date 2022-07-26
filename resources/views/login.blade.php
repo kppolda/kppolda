@@ -27,11 +27,11 @@
 
                 <div class='form-group'>
                     {{ Form::label('username','Username') }}
-                    {{ Form::text('username','',['class'=>'form-control','placeholder'=>'Username']) }}
+                    {{ Form::text('username','',['class'=>'field input-field','placeholder'=>'Username']) }}
                 </div>
                 <div class='form-group'>
                     {{ Form::label('password','Password') }}
-                    {{ Form::text('password','',['class'=>'form-control','placeholder'=>'Password']) }}
+                    {{ Form::text('password','',['class'=>'field input-field','placeholder'=>'Password']) }}
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
 
@@ -50,7 +50,7 @@
                 </div> -->
                 <!-- </form> -->
 
-                {{ Form::submit('Login',['class'=>'btn btn-primary']) }}
+                {{ Form::submit('Login',['class'=>'field button-field']) }}
                 {!! Form::close() !!}
             </div>
 
