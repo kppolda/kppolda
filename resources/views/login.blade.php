@@ -21,20 +21,37 @@
         <div class="form login">
             <div class="form-content">
                 <header>Login</header>
-                <form method="POST" action="{{ route('login.perform')}}">
-                    <div class="field input-field">
-                        <input type="username" placeholder="Username" class="input">
-                    </div>
+                {!! Form::open(['route' => 'login.perform', 'method' => 'POST']) !!}
+                {{ csrf_field() }}
+                {{ method_field('POST') }}
 
-                    <div class="field input-field">
-                        <input type="password" placeholder="Password" class="password">
-                        <i class='bx bx-hide eye-icon'></i>
-                    </div>
+                <div class='form-group'>
+                    {{ Form::label('username','Username') }}
+                    {{ Form::text('username','',['class'=>'form-control','placeholder'=>'Username']) }}
+                </div>
+                <div class='form-group'>
+                    {{ Form::label('password','Password') }}
+                    {{ Form::text('password','',['class'=>'form-control','placeholder'=>'Password']) }}
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
 
-                    <div class="field button-field">
-                        <button>Login</button>
-                    </div>
-                </form>
+                <!-- <form method="POST" action="{{ route('login.perform')}}"> -->
+                <!-- <div class="field input-field">
+                    <input type="username" placeholder="Username" class="input">
+                </div>
+
+                <div class="field input-field">
+                    <input type="password" placeholder="Password" class="password">
+                    <i class='bx bx-hide eye-icon'></i>
+                </div> -->
+
+                <!-- <div class="field button-field">
+                    <button>Login</button>
+                </div> -->
+                <!-- </form> -->
+
+                {{ Form::submit('Login',['class'=>'btn btn-primary']) }}
+                {!! Form::close() !!}
             </div>
 
         </div>
