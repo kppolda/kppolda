@@ -88,12 +88,12 @@ class Controller extends BaseController
   {
     return view('auth/data-giat');
   }
-  // public function indexPolres()
-  // {
-  //   $users = DB::table('polres')->get();
+  public function indexPolres()
+  {
+    $users = DB::table('polres')->get();
 
-  //   return view('admin/data-polres', ['users' => $users]);
-  // }
+    return view('admin/data-polres', ['users' => $users]);
+  }
 
   // public function registerPolres(Request $request)
   // {
