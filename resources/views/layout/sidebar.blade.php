@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-            <?php echo getcwd() ?>
+<?php echo getcwd() ?>
 
 <head>
     <!-- Required meta tags -->
@@ -128,6 +128,9 @@
 
                         @guest
                         <div class="text-end">
+
+                            {{ csrf_field() }}
+                            {{ method_field('POST') }}
                             <a href="{{ route('login.perform') }}" class="btn btn-outline-light me-2">Login</a>
                             <!-- <a href="{{ route('register.perform') }}" class="btn btn-warning">Sign-up</a> -->
                         </div>
@@ -148,6 +151,8 @@
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
                                 <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout</a>
                             </div>
                         </li>
@@ -176,13 +181,13 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('*data-polsek*') ? 'active' : '' }}" href="/data-polsek/id">
-									<i class="fa fa-fw fa-building"></i>Data Polsek
-								</a>
+                                    <i class="fa fa-fw fa-building"></i>Data Polsek
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('*data-personil*') ? 'active' : '' }}" href="/data-personil/id">
-									<i class="fa fa-fw fa-users"></i>Data Personil
-								</a>
+                                    <i class="fa fa-fw fa-users"></i>Data Personil
+                                </a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link {{ Request::is('*data-inventaris*') ? 'active' : '' }}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
@@ -204,8 +209,8 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('*data-giat*') ? 'active' : '' }}" href="/data-giat/id">
-									<i class="fa fa-fw fa-cogs"></i>Data Daftar Giat
-								</a>
+                                    <i class="fa fa-fw fa-cogs"></i>Data Daftar Giat
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -251,7 +256,7 @@
     <!-- end main wrapper  -->
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
-    
+
     <script src="/concept/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <script src="/concept/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="/concept/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
@@ -271,7 +276,7 @@
     <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
-    
+
     <script src="/concept/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="/concept/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <script src="/concept/assets/libs/js/main-js.js"></script>
@@ -283,7 +288,7 @@
     <script src="/concept/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="/concept/assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="/concept/assets/libs/js/dashboard-ecommerce.js"></script>
-	@yield('script')
+    @yield('script')
 
 </body>
 
