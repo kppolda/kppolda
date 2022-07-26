@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dataBarang', function (Blueprint $table) {
+        Schema::create('dataBarangs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('polsek_id')->unsigned()->index()->nullable();
             $table->foreign('polsek_id')->references('id')->on('polsek')->onDelete('cascade');
