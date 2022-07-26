@@ -142,10 +142,12 @@
                                             @foreach ($datas as $item)
                                             <tr>
                                                 <td>{{$item->id}}</td>
-                                                <td>{{$item->nama_polres}}</td>
-                                                <td>{{$item->username}} </td>
-                                                <td>{{$item->email}}</td>
-                                                <td>{{$item->password}}</td>
+                                                <td>{{$item->nama_personil}}</td>
+                                                <td>{{$item->nrp_personil}} </td>
+                                                <td>{{$item->pangkat_personil}}</td>
+                                                <td>{{$item->jabatan_personil}}</td>
+                                                <td>{{$item->pendidikan_dikum}}</td>
+                                                <td>{{$item->pendidikan_dikbang}}</td>
                                             </tr>
                                             @endforeach
                                             <tr>
