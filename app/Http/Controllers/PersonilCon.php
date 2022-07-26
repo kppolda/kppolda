@@ -12,18 +12,18 @@ class PersonilCon extends Controller
 
     public function index()
     {
-        $datas = DB::table('personils')->get();
+        $datas = DB::table('personil')->get();
 
         return view('admin/data-personil', ['datas' => $datas]);
     }
 
     public function register(Request $request)
     {
-        $data = Personil::create($request->all());
+        return Personil::create($request->all());
 
-        auth()->login($data);
+        // auth()->login($data);
 
-        return redirect('/data-personil')->with('success', "Account successfully registered.");
+        // return redirect('/data-personil')->with('success', "Account successfully registered.");
     }
     public function destroy($id)
     {
