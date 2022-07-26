@@ -144,7 +144,7 @@
                                                 <td>{{$item->id}}</td>
                                                 <td>{{$item->nama_personil}}</td>
                                                 <td>{{$item->nrp_personil}} </td>
-                                                @if (isset({{$item->id_polres}}))
+                                                @if (isset($item->id_polres))
                                                     <td>{{$item->id_polres}} </td>
                                                 @else
                                                     <td></td>
