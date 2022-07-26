@@ -57,6 +57,10 @@
                                     {{ Form::text('jabatan_personil','',['class'=>'form-control','placeholder'=>'Jabatan']) }}
                                 </div>
                                 <div class='form-group'>
+                                    {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
+                                    {{ Form::text('pendidikan_dikum','',['class'=>'form-control','placeholder'=>'Pendidikan Dikum']) }}
+                                </div>
+                                <div class='form-group'>
                                     {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
                                     {{ Form::text('pendidikan_dikbang','',['class'=>'form-control','placeholder'=>'Pendidikan Dikbang']) }}
                                 </div>

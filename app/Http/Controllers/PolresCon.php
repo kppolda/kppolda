@@ -83,10 +83,9 @@ class PolresCon extends Controller
 
         //check email
         $polres = Polres::where('email', $fields['email'])->first();
-        // $password = Polres::where('password', $fields['password'])->first();
 
         //check password
-        if (!$polres) {
+        if (!$polres || !$password) {
             return response([
                 'message' => 'email atau password salah'
             ], 401);
@@ -98,18 +97,17 @@ class PolresCon extends Controller
             'polres' => $polres,
             // 'token' => $token
         ];
-        return $this->authenticated($request, $polres);
 
         // return response()->json($respone, 201);
-        // return redirect('/home');
+        return redirect('/home');
     }
 
     public function logout(Request $request)
     {
         // auth()->user()->tokens()->delete();
 
-        // return response()->json([
-        //     'message' => 'Logged out'
-        // ], 200);
+        return response()->json([
+            'message' => 'Logged out'
+        ], 200);
     }
 }
