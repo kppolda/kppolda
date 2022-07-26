@@ -12,7 +12,7 @@ class PersonilCon extends Controller
 
     public function index()
     {
-        $datas = DB::table('personil')->get();
+        $datas = DB::table('personils')->get();
 
         return view('admin/data-personil', ['datas' => $datas]);
     }
