@@ -25,13 +25,13 @@
                 {{ csrf_field() }}
                 {{ method_field('POST') }}
 
-                <div class='form-group'>
+                <div class='field input-field'>
                     {{ Form::label('username','Username') }}
-                    {{ Form::text('username','',['class'=>'field input-field','placeholder'=>'Username']) }}
+                    {{ Form::text('username','',['class'=>'input','placeholder'=>'Username']) }}
                 </div>
-                <div class='form-group'>
+                <div class='field input-field'>
                     {{ Form::label('password','Password') }}
-                    {{ Form::text('password','',['class'=>'field input-field','placeholder'=>'Password']) }}
+                    {{ Form::text('password','',['class'=>'input','placeholder'=>'Password']) }}
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
 
