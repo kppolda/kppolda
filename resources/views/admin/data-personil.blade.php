@@ -37,7 +37,33 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="#" id="basicform" data-parsley-validate="">
+                                {!! Form::open(['route' => 'personil.regis', 'method' => 'POST']) !!}
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class='form-group'>
+                                    {{ Form::label('nama_personil','Nama') }}
+                                    {{ Form::text('nama_personil','',['class'=>'form-control','placeholder'=>'Nama']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('nrp_personil','NRP') }}
+                                    {{ Form::text('nrp_personil','',['class'=>'form-control','placeholder'=>'NRP']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('pangkat_personil','Pangkat') }}
+                                    {{ Form::text('pangkat_personil','',['class'=>'form-control','placeholder'=>'Pangkat']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('jabatan_personil','Jabatan') }}
+                                    {{ Form::text('jabatan_personil','',['class'=>'form-control','placeholder'=>'Jabatan']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
+                                    {{ Form::text('pendidikan_dikbang','',['class'=>'form-control','placeholder'=>'Pendidikan Dikbang']) }}
+                                </div>
+
+                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                {!! Form::close() !!}
+                                <!-- <form action="#" id="basicform" data-parsley-validate="">
                                     <div class="form-group ">
                                         <label for="namaPersonil">Nama Personil</label>
                                         <input id="namaPersonil" type="text" name="namaPersonil" data-parsley-trigger="change" required placeholder="Nama Personil" autocomplete="off" class="form-control form-control-lg">
@@ -66,7 +92,7 @@
                                         <label for="dikbang">Pendidikan Dikbang</label>
                                         <input id="dikbang" type="text" name="dikbang" data-parsley-trigger="change" required placeholder="Pendidikan Dikbang" autocomplete="off" class="form-control form-control-lg">
                                     </div>
-                                </form>
+                                </form> -->
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
