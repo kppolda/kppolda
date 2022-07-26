@@ -11,12 +11,9 @@ class Personil extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_personil',
-        'nrp_personil',
-        'pangkat_personil',
-        'jabatan_personil',
-        'pendidikan_dikum',
-        'pendidikan_dikbang',
+        'nama',
+        'tanggal',
+        'keterangan',
     ];
     // public function setPasswordAttribute($value)
     // {

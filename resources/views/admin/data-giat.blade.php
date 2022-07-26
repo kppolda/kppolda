@@ -37,17 +37,30 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        {{-- {!! Form::open(['route' => 'giat.tambah', 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => 'giat.tambah', 'method' => 'POST']) !!}
                                 {{ csrf_field() }}
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
-                                    {{ Form::label('nama_polres','Nama Polres') }}
-                                    {{ Form::text('nama_polres','',['class'=>'form-control','placeholder'=>'Nama Polres']) }}
+                                    {{ Form::label('nama','Nama Giat') }}
+                                    {{ Form::text('nama','',['class'=>'form-control','placeholder'=>'Nama Giat','type'=>'text']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('tanggal','Tanggal Giat') }}
+                                    {{ Form::text('tanggal','',['class'=>'form-control','placeholder'=>'Tanggal Giat','type'=>'date']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('keterangan','keterangan') }}
+                                    {{ Form::text('keterangan','',['class'=>'form-control','placeholder'=>'keterangan','type'=>'text']) }}
+                                </div>
+                                <div class="custom-file">
+                                    {!! form::file('file',['class'=>'form-control','placeholder'=>''])!!}
+                                    {{-- <input type="file" class="custom-file-input" id="dokumentasi">
+                                    <label class="custom-file-label" for="dokumentasi">Dokumentasi</label> --}}
                                 </div>
 
                                 {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
-                                {!! Form::close() !!} --}}
-                        <form action="#" id="basicform" data-parsley-validate="">
+                                {!! Form::close() !!}
+                        {{-- <form action="#" id="basicform" data-parsley-validate="">
                             <div class="form-group ">
                                 <label for="namaGiat">Nama Giat</label>
                                 <input id="namaGiat" type="text" name="namaGiat" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
@@ -64,7 +77,7 @@
                                 <input type="file" class="custom-file-input" id="dokumentasi">
                                 <label class="custom-file-label" for="dokumentasi">Dokumentasi</label>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

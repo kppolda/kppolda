@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Polres;
+use App\Models\Giat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 // use App\Http\Requests\RegisterRequest;
@@ -18,9 +18,12 @@ class DataGiatCon extends Controller
           if ($request->hasFile('file')) {
             $image = $request->file('file');
             $name = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/storage/galeryImages/');
+            $destinationPath = public_path('/images');
             $image->move($destinationPath, $name);
             $this->save();
+
+            $user = Giat::create($request->all());
+
             return back()->with('success','Image Upload successfully');
           }
     }
