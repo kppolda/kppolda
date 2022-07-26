@@ -73,13 +73,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="m-0">Data Giat</h5>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataGiat">
-                                    Tambah Data
-                                </button>
-                            </div>
+                            <h5 class="card-header">Data Giat</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="giat" class="table table-striped table-bordered" style="width:100%">
