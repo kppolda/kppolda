@@ -351,13 +351,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="m-0">Data Indihome</h5>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataIndihome">
-                                    Tambah Data
-                                </button>
-                            </div>
+                            <h5 class="card-header">Data Indihome</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="indihome" class="table table-striped table-bordered" style="width:100%">
@@ -393,13 +387,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="m-0">Data Telepon</h5>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataTelepon">
-                                    Tambah Data
-                                </button>
-                            </div>
+                            <h5 class="card-header">Data Telepon</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="telepon" class="table table-striped table-bordered" style="width:100%">
@@ -435,13 +423,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="m-0">Data Intranet</h5>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataIntranet">
-                                    Tambah Data
-                                </button>
-                            </div>
+                            <h5 class="card-header">Data Intranet</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="intranet" class="table table-striped table-bordered" style="width:100%">
@@ -477,13 +459,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="m-0">Data Wifi Id</h5>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataWifiId">
-                                    Tambah Data
-                                </button>
-                            </div>
+                            <h5 class="card-header">Data Wifi Id</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="wifiid" class="table table-striped table-bordered" style="width:100%">
@@ -519,13 +495,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="m-0">Data Astinet</h5>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataAstinet">
-                                    Tambah Data
-                                </button>
-                            </div>
+                            <h5 class="card-header">Data Astinet</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="astinet" class="table table-striped table-bordered" style="width:100%">

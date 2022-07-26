@@ -97,13 +97,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="m-0">Data Polres</h5>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataPolres">
-                                    Tambah Data
-                                </button>
-                            </div>
+                            <h5 class="card-header">Data Polres</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="polres" class="table table-striped table-bordered" style="width:100%">
