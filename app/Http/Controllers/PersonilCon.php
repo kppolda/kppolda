@@ -23,7 +23,7 @@ class PersonilCon extends Controller
 
         // auth()->login($data);
 
-        return redirect('/data-personil', ['data' => $data])->with('success', "Account successfully registered.");
+        return redirect('/data-personil', ['data' => $data]);
     }
     public function destroy($id)
     {
