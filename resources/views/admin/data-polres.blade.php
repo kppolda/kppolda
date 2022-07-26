@@ -104,7 +104,6 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <h5 class="card-header">Data Polres</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="polres" class="table table-striped table-bordered" style="width:100%">

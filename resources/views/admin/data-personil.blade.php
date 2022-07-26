@@ -115,8 +115,6 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Data Personil</h5>
-                            <div class="card-body p-0">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h5 class="m-0">Data Personil</h5>
                                 <!-- Button trigger modal -->
@@ -124,6 +122,7 @@
                                     Tambah Data
                                 </button>
                             </div>
+                            <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="personil" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
