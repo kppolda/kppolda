@@ -144,6 +144,11 @@
                                                 <td>{{$item->id}}</td>
                                                 <td>{{$item->nama_personil}}</td>
                                                 <td>{{$item->nrp_personil}} </td>
+                                                @if (isset(item->id_polres))
+                                                    <td>{{$item->id_polres}} </td>
+                                                @else
+                                                    <td></td>
+                                                @endif
                                                 <td>{{$item->pangkat_personil}}</td>
                                                 <td>{{$item->jabatan_personil}}</td>
                                                 <td>{{$item->pendidikan_dikum}}</td>
