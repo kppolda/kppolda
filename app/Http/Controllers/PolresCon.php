@@ -83,10 +83,10 @@ class PolresCon extends Controller
 
         //check email
         $polres = Polres::where('email', $fields['email'])->first();
-        $password = Polres::where('password', $fields['password'])->first();
+        // $password = Polres::where('password', $fields['password'])->first();
 
         //check password
-        if (!$polres || !$password) {
+        if (!$polres) {
             return response([
                 'message' => 'email atau password salah'
             ], 401);
