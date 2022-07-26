@@ -31,8 +31,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         /**
          * Register Routes
          */
-        // Route::get('/register', 'PolresCon@index')->name('register.show');
-        // Route::post('/register', 'PolresCon@register')->name('register.perform');
+        Route::get('/register', 'PolresCon@index')->name('register.show');
+        Route::post('/register', 'PolresCon@register')->name('register.perform');
 
         /**
          * Login Routes
