@@ -42,15 +42,15 @@
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
                                     {{ Form::label('nama','Nama Giat') }}
-                                    {{ Form::text('nama','',['class'=>'form-control','placeholder'=>'Nama Giat','type'=>'text']) }}
+                                    {{ Form::text('nama','',['class'=>'form-control','placeholder'=>'Nama Giat']) }}
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('tanggal','Tanggal Giat') }}
-                                    {{ Form::text('tanggal','',['class'=>'form-control','placeholder'=>'Tanggal Giat','type'=>'date']) }}
+                                    {{ Form::date('tanggal','',['class'=>'form-control','placeholder'=>'Tanggal Giat']) }}
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','keterangan') }}
-                                    {{ Form::text('keterangan','',['class'=>'form-control','placeholder'=>'keterangan','type'=>'text']) }}
+                                    {{ Form::text('keterangan','',['class'=>'form-control','placeholder'=>'keterangan']) }}
                                 </div>
                                 <div class="custom-file">
                                     {!! form::file('file',['class'=>'form-control','placeholder'=>''])!!}
