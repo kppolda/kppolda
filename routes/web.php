@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PolresCon;
+use App\Http\Controllers\PersonilCon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;

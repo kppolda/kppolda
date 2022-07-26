@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 // use App\Http\Requests\RegisterRequest;
 
-class PolresCon extends Controller
+class PersonilCon extends Controller
 {
 
     public function index()

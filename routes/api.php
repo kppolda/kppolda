@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\PolresCon;
 use App\Http\Controllers\PersonilCon;
+use App\Http\Controllers\PolresCon;
 use Illuminate\Support\Facades\Route;
 
 /*
