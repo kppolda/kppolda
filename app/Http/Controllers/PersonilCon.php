@@ -21,9 +21,9 @@ class PersonilCon extends Controller
     {
         $data = Personil::create($request->all());
 
-        auth()->login($data);
+        // auth()->login($data);
 
-        return redirect('/data-personil')->with('success', "Account successfully registered.");
+        return redirect('/data-personil', ['data' => $data])->with('success', "Account successfully registered.");
     }
     public function destroy($id)
     {
