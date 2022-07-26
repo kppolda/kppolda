@@ -129,6 +129,7 @@
                         @guest
                         <div class="text-end">
                             {{ csrf_field() }}
+                            {{ method_field('POST') }}
                             <a href="{{ route('login.perform') }}" class="btn btn-outline-light me-2">Login</a>
                             <!-- <a href="{{ route('register.perform') }}" class="btn btn-warning">Sign-up</a> -->
                         </div>
@@ -149,6 +150,9 @@
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
                                 <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout</a>
                             </div>
                         </li>
