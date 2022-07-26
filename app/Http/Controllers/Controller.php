@@ -31,7 +31,9 @@ class Controller extends BaseController
 
   public function data_personil()
   {
-    return view('admin/data-personil');
+    $datas = DB::table('personil')->get();
+
+    return view('/data-personil', ['users' => $datas]);
   }
 
   public function data_jarkomrad()
