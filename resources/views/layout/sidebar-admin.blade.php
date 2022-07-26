@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-            <?php echo getcwd() ?>
+<!-- <?php echo getcwd() ?> -->
 
 <head>
     <!-- Required meta tags -->
@@ -176,18 +176,18 @@
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link {{ Request::is('*home*') ? 'active' : '' }}" href="/home">
-									<i class="fa fa-fw fa-home"></i>Home <span class="badge badge-success">6</span>
-								</a>
+                                    <i class="fa fa-fw fa-home"></i>Home <span class="badge badge-success">6</span>
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('*data-polres*') ? 'active' : '' }}" href="/data-polres">
-									<i class="fa fa-fw fa-building "></i>Data Polres
-								</a>
+                                    <i class="fa fa-fw fa-building "></i>Data Polres
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('*data-personil*') ? 'active' : '' }}" href="/data-personil">
-									<i class="fa fa-fw fa-users"></i>Data Personil
-								</a>
+                                    <i class="fa fa-fw fa-users"></i>Data Personil
+                                </a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link {{ Request::is('*data-inventaris*') ? 'active' : '' }}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
@@ -209,8 +209,8 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('*data-giat*') ? 'active' : '' }}" href="/data-giat">
-									<i class="fa fa-fw fa-cogs"></i>Data Daftar Giat
-								</a>
+                                    <i class="fa fa-fw fa-cogs"></i>Data Daftar Giat
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -256,7 +256,7 @@
     <!-- end main wrapper  -->
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
-    
+
     <script src="/concept/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <script src="/concept/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="/concept/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
@@ -276,7 +276,7 @@
     <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
-    
+
     <script src="/concept/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="/concept/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <script src="/concept/assets/libs/js/main-js.js"></script>
@@ -288,7 +288,7 @@
     <script src="/concept/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="/concept/assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="/concept/assets/libs/js/dashboard-ecommerce.js"></script>
-	@yield('script')
+    @yield('script')
 
 </body>
 

@@ -29,28 +29,6 @@ class Controller extends BaseController
     return view('admin/data-polres');
   }
 
-  public function indexPolres()
-  {
-    $users = DB::table('polres')->get();
-
-    return view('admin/data-polres', ['users' => $users]);
-  }
-
-  public function registerPolres(Request $request)
-  {
-    $user = Polres::create($request->validated());
-
-    auth()->login($user);
-
-    return redirect('admin/data-polres')->with('success', "Account successfully registered.");
-  }
-  public function destroyPolres($id)
-  {
-    DB::table('polres')->where('id', $id)->delete();
-    $users = DB::table('polres')->get();
-    return view('admin/data-polres', ['users' => $users]);
-  }
-
   public function data_personil()
   {
     return view('admin/data-personil');
@@ -110,4 +88,25 @@ class Controller extends BaseController
   {
     return view('auth/data-giat');
   }
+  // public function indexPolres()
+  // {
+  //   $users = DB::table('polres')->get();
+
+  //   return view('admin/data-polres', ['users' => $users]);
+  // }
+
+  // public function registerPolres(Request $request)
+  // {
+  //   $user = Polres::create($request->validated());
+
+  //   auth()->login($user);
+
+  //   return redirect('admin/data-polres')->with('success', "Account successfully registered.");
+  // }
+  // public function destroyPolres($id)
+  // {
+  //   DB::table('polres')->where('id', $id)->delete();
+  //   $users = DB::table('polres')->get();
+  //   return view('admin/data-polres', ['users' => $users]);
+  // }
 }
