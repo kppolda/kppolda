@@ -19,11 +19,11 @@ class PersonilCon extends Controller
 
     public function register(Request $request)
     {
-        return Personil::create($request->all());
+        $data = Personil::create($request->all());
 
-        // auth()->login($data);
+        auth()->login($data);
 
-        // return redirect('/data-personil')->with('success', "Account successfully registered.");
+        return redirect('/data-personil')->with('success', "Account successfully registered.");
     }
     public function destroy($id)
     {

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('mappingRadios', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('polsek_id')->unsigned()->index()->nullable();
-            $table->foreign('polsek_id')->references('id')->on('polsek')->onDelete('cascade');
+            $table->foreign('polsek_id')->references('id')->on('polseks')->onDelete('cascade');
             $table->string('frekuensi_radio_UHF', 60);
             $table->string('keterangan', 255);
             $table->timestamps();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mappingRadio');
+        Schema::dropIfExists('mappingRadios');
     }
 };

@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('dataPengadaans', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('polsek_id')->unsigned()->index()->nullable();
-            $table->foreign('polsek_id')->references('id')->on('polsek')->onDelete('cascade');
+            $table->foreign('polsek_id')->references('id')->on('polseks')->onDelete('cascade');
             $table->bigInteger('pelanggan_id')->unsigned()->index()->nullable();
-            $table->foreign('pelanggan_id')->references('id')->on('pelangganInternet')->onDelete('cascade');
+            $table->foreign('pelanggan_id')->references('id')->on('pelangganInternets')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dataPengadaan');
+        Schema::dropIfExists('dataPengadaans');
     }
 };

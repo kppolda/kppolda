@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('dataBarangs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('polsek_id')->unsigned()->index()->nullable();
-            $table->foreign('polsek_id')->references('id')->on('polsek')->onDelete('cascade');
+            $table->foreign('polsek_id')->references('id')->on('polseks')->onDelete('cascade');
             $table->bigInteger('barang_id')->unsigned()->index()->nullable();
-            $table->foreign('barang_id')->references('id')->on('barang')->onDelete('cascade');
+            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dataBarang');
+        Schema::dropIfExists('dataBarangs');
     }
 };
