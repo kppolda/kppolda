@@ -33,7 +33,7 @@ class Controller extends BaseController
   {
     $datas = DB::table('personil')->get();
 
-    return view('/data-personil', ['users' => $datas]);
+    return view('admin/data-personil', ['datas' => $datas]);
   }
 
   public function data_jarkomrad()
