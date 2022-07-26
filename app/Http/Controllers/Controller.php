@@ -31,7 +31,7 @@ class Controller extends BaseController
 
   public function data_personil()
   {
-    $datas = DB::table('personil')->get();
+    $datas = DB::table('personils')->get();
 
     return view('admin/data-personil', ['datas' => $datas]);
   }

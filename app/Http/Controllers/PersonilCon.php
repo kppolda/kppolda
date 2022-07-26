@@ -12,7 +12,7 @@ class PersonilCon extends Controller
 
     public function index()
     {
-        $datas = DB::table('personil')->get();
+        $datas = DB::table('personils')->get();
 
         return view('admin/data-personil', ['datas' => $datas]);
     }
@@ -27,8 +27,8 @@ class PersonilCon extends Controller
     }
     public function destroy($id)
     {
-        DB::table('personil')->where('id', $id)->delete();
-        $datas = DB::table('personil')->get();
+        DB::table('personils')->where('id', $id)->delete();
+        $datas = DB::table('personils')->get();
         return redirect('/data-personil');
     }
 }
