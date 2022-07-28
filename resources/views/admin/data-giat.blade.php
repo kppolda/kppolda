@@ -37,51 +37,29 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                {!! Form::open(['route' => 'giat.tambah', 'method' => 'POST']) !!}
-                                {{ csrf_field() }}
-                                {{ method_field('POST') }}
-                                <div class='form-group'>
-                                    {{ Form::label('nama','Nama Giat') }}
-                                    {{ Form::text('nama','',['class'=>'form-control','placeholder'=>'Nama Giat']) }}
-                                </div>
-                                <div class='form-group'>
-                                    {{ Form::label('tanggal','Tanggal Giat') }}
-                                    {{ Form::date('tanggal','',['class'=>'form-control','placeholder'=>'Tanggal Giat']) }}
-                                </div>
-                                <div class='form-group'>
-                                    {{ Form::label('keterangan','keterangan') }}
-                                    {{ Form::text('keterangan','',['class'=>'form-control','placeholder'=>'keterangan']) }}
-                                </div>
-                                <div class="custom-file">
-                                    {!! Form::file('image',['class'=>'form-control','placeholder'=>''])!!}
-                                    <!-- <input type="file" class="custom-file-input" id="dokumentasi">
-                                    <label class="custom-file-label" for="dokumentasi">Dokumentasi</label> -->
-                                </div>
-
-                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
-                                {!! Form::close() !!}
-                                <!-- <form action="#" id="basicform" data-parsley-validate="">
-                            <div class="form-group ">
-                                <label for="namaGiat">Nama Giat</label>
-                                <input id="namaGiat" type="text" name="namaGiat" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="tanggalGiat">Tanggal Giat</label>
-                                <input id="tanggalGiat" type="date" name="tanggalGiat" data-parsley-trigger="change" required autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="keterangan">Keterangan</label>
-                                <input id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="dokumentasi">
-                                <label class="custom-file-label" for="dokumentasi">Dokumentasi</label>
-                            </div>
-                        </form> -->
+                                <form action="/api/giat" method="POST" id="basicform" data-parsley-validate="" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <div class="form-group ">
+                                        <label for="nama">Nama Giat</label>
+                                        <input id="nama" type="text" name="nama" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="tanggal">Tanggal Giat</label>
+                                        <input id="tanggal" type="date" name="tanggal" data-parsley-trigger="change" required autocomplete="off" class="form-control form-control-lg">
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="keterangan">Keterangan</label>
+                                        <input id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
+                                    </div>
+                                    <div class="custom-file">
+                                        <label class="custom-file-label" for="image">Dokumentasi</label>
+                                        <input type="file" class="custom-file-input" name="image" id="image">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </div>
@@ -116,6 +94,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($giat as $item)
+                                            <tr>
+                                                <td>{{$item->id}}</td>
+                                                <td>{{$item->nama}}</td>
+                                                <td>{{$item->keterangan}}</td>
+                                                <td>{{$item->tanggal}}</td>
+                                                @if (isset($item->image))
+                                                <td><img src="{{$item->image}}" style="height: 100px; width: flex;"></td>
+                                                @else
+                                                <td></td>
+                                                @endif
+                                            </tr>
+                                            @endforeach
                                             <tr>
                                                 <td>1</td>
                                                 <td>Pengecekan Tower Telkom</td>

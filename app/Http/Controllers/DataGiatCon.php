@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Giat;
+use App\Models\DataGiat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 // use App\Http\Requests\RegisterRequest;
@@ -12,19 +12,21 @@ class DataGiatCon extends Controller
 
   public function save(Request $request)
   {
-    $request->validate([
-      'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    $imageName = time() . '.' . $request->image->extension();
+    $validatedData = $request->validate([
+      'nama' => 'required',
+      'tanggal' => 'required',
+      'keterangan' => 'required|max:255',
+      'image' => 'image|file|max:2048',
     ]);
 
-    $imageName = time() . '.' . $request->image->extension();
+    if ($request->file('image')) {
+      $validatedData['image'] = $request->file('image')->store('images');
+      // $request->image->move(public_path('images'), $imageName);
+    }
 
-    $request->image->move(public_path('images'), $imageName);
+    Datagiat::create($validatedData);
 
-    /* Store $imageName name in DATABASE from HERE */
-    $user = Giat::create($request->all());
-
-    return back()
-      ->with('success', 'You have successfully upload image.')
-      ->with('image', $imageName);
+    return redirect('data-giat')->with('success', 'New post has been added!');
   }
 }

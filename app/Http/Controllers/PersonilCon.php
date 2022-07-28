@@ -19,7 +19,7 @@ class PersonilCon extends Controller
 
     public function register(Request $request)
     {
-        $data = Personil::create($request->all());
+        Personil::create($request->all());
 
         // auth()->login($data);
 

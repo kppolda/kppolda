@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('polres_id')->unsigned()->index()->nullable();
             $table->foreign('polres_id')->references('id')->on('polres')->onDelete('cascade');
             $table->bigInteger('pelanggan_id')->unsigned()->index()->nullable();
-            $table->foreign('pelanggan_id')->references('id')->on('pelangganInternet')->onDelete('cascade');
+            $table->foreign('pelanggan_id')->references('id')->on('pelangganInternets')->onDelete('cascade');
             $table->string('posisi_inventaris', 255);
             $table->string('bandwith', 15);
             $table->string('keterangan', 255);

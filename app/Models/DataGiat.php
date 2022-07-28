@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Giat extends Model
+class Datagiat extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'nama',
+        'image',
         'tanggal',
         'keterangan',
     ];

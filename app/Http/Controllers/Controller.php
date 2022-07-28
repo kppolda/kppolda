@@ -53,7 +53,9 @@ class Controller extends BaseController
 
   public function data_giat()
   {
-    return view('admin/data-giat');
+    $giat = DB::table('dataGiats')->get();
+
+    return view('admin/data-giat', ['giat' => $giat]);
   }
 
   public function laporan()

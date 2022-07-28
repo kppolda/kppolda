@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('dataGiats', function (Blueprint $table) {
             $table->id();
             $table->string('nama')->nullable();
+            $table->string('image')->nullable();
             $table->string('tanggal')->nullable();
             $table->string('keterangan')->nullable();
-            $table->string('file_path')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dataGiat');
+        Schema::dropIfExists('dataGiats');
     }
 };

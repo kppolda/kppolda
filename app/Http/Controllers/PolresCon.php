@@ -28,7 +28,7 @@ class PolresCon extends Controller
     public function destroy($id)
     {
         DB::table('polres')->where('id', $id)->delete();
-        $users = DB::table('polres')->get();
+        DB::table('polres')->get();
         return redirect('/data-polres');
     }
     // public function register(Request $request)
