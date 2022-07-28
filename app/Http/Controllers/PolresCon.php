@@ -14,7 +14,7 @@ class PolresCon extends Controller
     {
         $users = DB::table('polres')->get();
 
-        return view('admin/data-polres', ['users' => $users]);
+        return view('/data-polres', ['users' => $users]);
     }
 
     public function register(Request $request)

@@ -53,7 +53,7 @@
                                     {{ Form::text('keterangan','',['class'=>'form-control','placeholder'=>'keterangan']) }}
                                 </div>
                                 <div class="custom-file">
-                                    {!! Form::file('file',['class'=>'form-control','placeholder'=>''])!!}
+                                    {!! Form::file('image',['class'=>'form-control','placeholder'=>''])!!}
                                     <!-- <input type="file" class="custom-file-input" id="dokumentasi">
                                     <label class="custom-file-label" for="dokumentasi">Dokumentasi</label> -->
                                 </div>

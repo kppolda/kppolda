@@ -25,7 +25,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
-    Route::get('/', [PolresCon::class, 'index']);
+    Route::get('/', [Controller::class, 'home']);
 
 
     Route::group(['middleware' => ['guest']], function () {

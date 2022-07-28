@@ -10,21 +10,20 @@ use Illuminate\Support\Facades\DB;
 class DataGiatCon extends Controller
 {
 
-  public function save(Request $request)
+  public function imageUploadPost(Request $request)
   {
-    $this->validate($request, [
-      'file' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
+    $request->validate([
+      'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
-    if ($request->hasFile('file')) {
-      $image = $request->file('file');
-      $name = time() . '.' . $image->getClientOriginalExtension();
-      $destinationPath = public_path('/images');
-      $image->move($destinationPath, $name);
-      $this->save();
 
-      $user = Giat::create($request->all());
+    $imageName = time() . '.' . $request->image->extension();
 
-      return redirect('/data-giat')->with('success', 'Image Upload successfully');
-    }
+    $request->image->move(public_path('images'), $imageName);
+
+    /* Store $imageName name in DATABASE from HERE */
+
+    return back()
+      ->with('success', 'You have successfully upload image.')
+      ->with('image', $imageName);
   }
 }
