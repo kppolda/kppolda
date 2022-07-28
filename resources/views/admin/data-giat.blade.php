@@ -28,16 +28,16 @@
             <div class="ecommerce-widget">
                 <!-- Modal -->
                 <div class="modal fade" id="dataGiat" tabindex="-1" role="dialog" aria-labelledby="titleGiat" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="titleGiat">Tambah Data Giat</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        {!! Form::open(['route' => 'giat.tambah', 'method' => 'POST']) !!}
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleGiat">Tambah Data Giat</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {!! Form::open(['route' => 'giat.tambah', 'method' => 'POST']) !!}
                                 {{ csrf_field() }}
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
@@ -53,14 +53,14 @@
                                     {{ Form::text('keterangan','',['class'=>'form-control','placeholder'=>'keterangan']) }}
                                 </div>
                                 <div class="custom-file">
-                                    {!! form::file('file',['class'=>'form-control','placeholder'=>''])!!}
-                                    {{-- <input type="file" class="custom-file-input" id="dokumentasi">
-                                    <label class="custom-file-label" for="dokumentasi">Dokumentasi</label> --}}
+                                    {!! Form::file('file',['class'=>'form-control','placeholder'=>''])!!}
+                                    <!-- <input type="file" class="custom-file-input" id="dokumentasi">
+                                    <label class="custom-file-label" for="dokumentasi">Dokumentasi</label> -->
                                 </div>
 
                                 {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
                                 {!! Form::close() !!}
-                        {{-- <form action="#" id="basicform" data-parsley-validate="">
+                                {{-- <form action="#" id="basicform" data-parsley-validate="">
                             <div class="form-group ">
                                 <label for="namaGiat">Nama Giat</label>
                                 <input id="namaGiat" type="text" name="namaGiat" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
@@ -78,13 +78,13 @@
                                 <label class="custom-file-label" for="dokumentasi">Dokumentasi</label>
                             </div>
                         </form> --}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
 
                 <div class="row">
@@ -137,7 +137,7 @@
                     <!-- ============================================================== -->
                     <!-- customer acquistion  -->
                     <!-- ============================================================== -->
-                    
+
                 </div>
             </div>
         </div>
