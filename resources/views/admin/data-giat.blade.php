@@ -101,7 +101,7 @@
                                                 <td>{{$item->keterangan}}</td>
                                                 <td>{{$item->tanggal}}</td>
                                                 @if (isset($item->image))
-                                                <td><img src="{{secure_asset($item->image)}}" style="height: 100px; width: flex;"></td>
+                                                <td><img src="{{asset('/'.$item->image)}}" style="height: 100px; width: flex;"></td>
                                                 @else
                                                 <td></td>
                                                 @endif
