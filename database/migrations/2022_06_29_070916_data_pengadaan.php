@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('polsek_id')->unsigned()->index()->nullable();
             $table->foreign('polsek_id')->references('id')->on('polseks')->onDelete('cascade');
             $table->bigInteger('pelanggan_id')->unsigned()->index()->nullable();
-            $table->foreign('pelanggan_id')->references('id')->on('pelangganInternets')->onDelete('cascade');
+            $table->foreign('pelanggan_id')->references('id')->on('pelangganinternets')->onDelete('cascade');
             $table->timestamps();
         });
     }
