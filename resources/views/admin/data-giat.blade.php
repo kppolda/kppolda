@@ -98,8 +98,8 @@
                                             <tr>
                                                 <td>{{$item->id}}</td>
                                                 <td>{{$item->nama}}</td>
-                                                <td>{{$item->keterangan}}</td>
                                                 <td>{{$item->tanggal}}</td>
+                                                <td>{{$item->keterangan}}</td>
                                                 @if (isset($item->image))
                                                 <td><img src="{{asset('/'.$item->image)}}" style="height: 100px; width: flex;"></td>
                                                 @else
