@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dataInventaris', function (Blueprint $table) {
+        Schema::create('datainventaris', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('polres_id')->unsigned()->index()->nullable();
             $table->foreign('polres_id')->references('id')->on('polres')->onDelete('cascade');

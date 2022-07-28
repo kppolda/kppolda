@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dataGiats', function (Blueprint $table) {
+        Schema::create('datagiats', function (Blueprint $table) {
             $table->id();
             $table->string('nama')->nullable();
             $table->string('image')->nullable();

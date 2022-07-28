@@ -25,7 +25,7 @@ class DataGiatCon extends Controller
       // $request->image->move(public_path('images'), $imageName);
     }
 
-    Datagiat::create($validatedData);
+    DataGiat::create($validatedData);
 
     return redirect('data-giat')->with('success', 'New post has been added!');
   }

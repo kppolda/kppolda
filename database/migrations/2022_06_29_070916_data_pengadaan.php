@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dataPengadaans', function (Blueprint $table) {
+        Schema::create('datapengadaans', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('polsek_id')->unsigned()->index()->nullable();
             $table->foreign('polsek_id')->references('id')->on('polseks')->onDelete('cascade');
