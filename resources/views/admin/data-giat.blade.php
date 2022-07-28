@@ -60,7 +60,7 @@
 
                                 {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
                                 {!! Form::close() !!}
-                                {{-- <form action="#" id="basicform" data-parsley-validate="">
+                                <!-- <form action="#" id="basicform" data-parsley-validate="">
                             <div class="form-group ">
                                 <label for="namaGiat">Nama Giat</label>
                                 <input id="namaGiat" type="text" name="namaGiat" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
@@ -77,7 +77,7 @@
                                 <input type="file" class="custom-file-input" id="dokumentasi">
                                 <label class="custom-file-label" for="dokumentasi">Dokumentasi</label>
                             </div>
-                        </form> --}}
+                        </form> -->
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
