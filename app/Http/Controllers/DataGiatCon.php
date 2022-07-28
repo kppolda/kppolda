@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class DataGiatCon extends Controller
 {
 
-  public function imageUploadPost(Request $request)
+  public function save(Request $request)
   {
     $request->validate([
       'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
