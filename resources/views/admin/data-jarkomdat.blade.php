@@ -410,16 +410,6 @@
                                                 <td>{{$inhome->keterangan}}</td>
                                             </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -464,16 +454,6 @@
                                                 <td>{{$telpon->keterangan}}</td>
                                             </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -518,16 +498,6 @@
                                                 <td>{{$intran->keterangan}}</td>
                                             </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -572,16 +542,6 @@
                                                 <td>{{$wifii->keterangan}}</td>
                                             </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -626,16 +586,6 @@
                                                 <td>{{$astin->keterangan}}</td>
                                             </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

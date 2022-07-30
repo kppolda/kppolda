@@ -207,16 +207,6 @@
                                                 <td>{{$sites->keterangan}}</td>
                                             </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -261,16 +251,6 @@
                                                 <td>{{$alkoms->keterangan}}</td>
                                             </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

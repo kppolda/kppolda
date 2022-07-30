@@ -12,49 +12,16 @@ class BarangCon extends Controller
     {
         Barang::create($request->all());
 
-        $datas = DB::table('barangs')
-            ->where('jenis_barang', '!=', 'site')
-            ->where('jenis_barang', '!=', 'alkom')
-            ->where('jenis_barang', '!=', 'indihome')
-            ->where('jenis_barang', '!=', 'telepon')
-            ->where('jenis_barang', '!=', 'intranet')
-            ->where('jenis_barang', '!=', 'wifiid')
-            ->where('jenis_barang', '!=', 'astinet')
-            ->get();
-
-        return view('admin/data-barang', ['datas' => $datas]);
+        return redirect('data-inventaris/data-barang');
     }
     public function tambah_rad(Request $request)
     {
         Barang::create($request->all());
-
-        $site = DB::table('barangs')
-            ->where('jenis_barang', '=', 'site')
-            ->get();
-        $alkom = DB::table('barangs')
-            ->where('jenis_barang', '=', 'alkom')
-            ->get();
-        return view('admin/data-jarkomrad', ['site' => $site, 'alkom' => $alkom]);
+        return redirect('data-inventaris/data-jarkomrad');
     }
     public function tambah_dat(Request $request)
     {
         Barang::create($request->all());
-
-        $indi = DB::table('barangs')
-            ->where('jenis_barang', '=', 'indihome')
-            ->get();
-        $telp = DB::table('barangs')
-            ->where('jenis_barang', '=', 'telepon')
-            ->get();
-        $intra = DB::table('barangs')
-            ->where('jenis_barang', '=', 'intranet')
-            ->get();
-        $wifi = DB::table('barangs')
-            ->where('jenis_barang', '=', 'wifiid')
-            ->get();
-        $asti = DB::table('barangs')
-            ->where('jenis_barang', '=', 'astinet')
-            ->get();
-        return view('admin/data-jarkomdat', ['indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti]);
+        return redirect('data-inventaris/data-jarkomdat');
     }
 }

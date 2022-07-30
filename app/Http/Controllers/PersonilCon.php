@@ -9,14 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class PersonilCon extends Controller
 {
-
-    public function index()
-    {
-        $datas = DB::table('personils')->get();
-
-        return view('admin/data-personil', ['datas' => $datas]);
-    }
-
     public function register(Request $request)
     {
         Personil::create($request->all());
@@ -28,7 +20,6 @@ class PersonilCon extends Controller
     public function destroy($id)
     {
         DB::table('personils')->where('id', $id)->delete();
-        $datas = DB::table('personils')->get();
         return redirect('/data-personil');
     }
 }

@@ -123,16 +123,6 @@
                                                 <td>{{$item->pendidikan_dikbang}}</td>
                                             </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Samsul Guardian</td>
-                                                <td>089569</td>
-                                                <td>Kediri Kota</td>
-                                                <td>Iptu</td>
-                                                <td>Kanit Provos</td>
-                                                <td>Noinfo</td>
-                                                <td>Noinfo</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

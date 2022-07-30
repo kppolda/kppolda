@@ -125,19 +125,6 @@
                                                 <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td> -->
                                             </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Kediri Kota</td>
-                                                <td>Kediri_Kota</td>
-                                                <td>kedirikota@gmail.com</td>
-                                                <td>k3D1r1_k0t4</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
-                                                        <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

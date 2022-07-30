@@ -9,14 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class PolresCon extends Controller
 {
-
-    public function index()
-    {
-        $users = DB::table('polres')->get();
-
-        return view('/data-polres', ['users' => $users]);
-    }
-
     public function register(Request $request)
     {
         $user = Polres::create($request->all());

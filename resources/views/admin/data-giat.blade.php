@@ -107,13 +107,6 @@
                                                 @endif
                                             </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Pengecekan Tower Telkom</td>
-                                                <td>12/7/2022</td>
-                                                <td>-</td>
-                                                <td>-</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
