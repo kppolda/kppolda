@@ -55,11 +55,11 @@
                                         <label class="custom-file-label" for="image">Dokumentasi</label>
                                         <input type="file" class="custom-file-input" name="image" id="image">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
                                 </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                             </div>
                         </div>
                     </div>

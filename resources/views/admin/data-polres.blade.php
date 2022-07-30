@@ -58,31 +58,12 @@
                                     {{ Form::label('password','Password') }}
                                     {{ Form::text('password','',['class'=>'form-control','placeholder'=>'Password']) }}
                                 </div>
-                                <!-- <div class="form-group ">
-                                    <label for="nama_polres">Nama Polres</label>
-                                    <input id="nama_polres" type="text" name="nama_polres" data-parsley-trigger="change" required placeholder="Nama Polres" autocomplete="off" class="form-control form-control-lg">
-                                </div> -->
-                                <!-- <div class="form-group ">
-                                    <label for="username">Username</label>
-                                    <input id="username" type="text" name="username" data-parsley-trigger="change" required placeholder="Username" autocomplete="off" class="form-control form-control-lg">
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
                                 </div>
-                                <div class="form-group ">
-                                    <label for="email">Email</label>
-                                    <input id="email" type="text" name="email" data-parsley-trigger="change" required placeholder="Email" autocomplete="off" class="form-control form-control-lg">
-                                </div>
-                                <div class="form-group ">
-                                    <label for="password">Password</label>
-                                    <input id="password" type="text" name="password" data-parsley-trigger="change" required placeholder="Password" autocomplete="off" class="form-control form-control-lg">
-                                </div> -->
-                                <!-- </form> -->
-
-
-                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
                                 {!! Form::close() !!}
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </div>

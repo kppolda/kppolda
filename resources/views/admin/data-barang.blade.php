@@ -28,67 +28,72 @@
             <div class="ecommerce-widget">
                 <!-- Modal -->
                 <div class="modal fade" id="dataBarang" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="titleBarang">Tambah Data Barang</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="#" id="basicform" data-parsley-validate="">
-                            <div class="form-group ">
-                                <label for="namaBarang">Nama Barang</label>
-                                <input id="namaBarang" type="text" name="namaBarang" data-parsley-trigger="change" required placeholder="Nama Barang" autocomplete="off" class="form-control form-control-lg">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleBarang">Tambah Data Barang</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group ">
-                                <label for="jenisBarang">Jenis Barang</label>
-                                <input id="jenisBarang" type="text" name="jenisBarang" data-parsley-trigger="change" required placeholder="Jenis Barang" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="sumber">Sumber</label>
-                                <input id="sumber" type="text" name="sumber" data-parsley-trigger="change" required placeholder="Sumber" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="jumlahBarang">Jumlah Barang</label>
-                                <input id="jumlahBarang" type="text" name="jumlahBarang" data-parsley-trigger="change" required placeholder="Total Barang" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <label>Kondisi</label>
-                            <div class="row form-group pt-0">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiBB" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">BB</span></div>
+
+                            <div class="modal-body">
+                                {!! Form::open(['route' => 'barang.regis', 'method' => 'POST']) !!}
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class='form-group'>
+                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('jenis_barang','Jenis Barang') }}
+                                    {{ Form::text('jenis_barang','',['class'=>'form-control','placeholder'=>'Jenis Barang']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('sumber','Sumber') }}
+                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>'Sumber']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control','placeholder'=>'Jumlah Barang']) }}
+                                </div>
+                                <label>Kondisi</label>
+                                <div class="row form-group pt-0">
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRR" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RR</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('keterangan','Keterangan') }}
+                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRB" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RB</span></div>
-                                    </div>
-                                </div>
+
+                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                {!! Form::close() !!}
                             </div>
-                            <div class="form-group ">
-                                <label for="keterangan">Keterangan</label>
-                                <input id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-                
+
                 <div class="row">
                     <!-- ============================================================== -->
 
@@ -98,10 +103,16 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Data Barang</h5>
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="m-0">Data Barang</h5>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataBarang">
+                                    Tambah Data
+                                </button>
+                            </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
-                                <table id="barang" class="table table-striped table-bordered" style="width:100%">
+                                    <table id="barang" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
                                             <tr class="border-0">
                                                 <th class="border-0 align-middle" rowspan="2">No</th>
@@ -119,6 +130,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($datas as $item)
+                                            <tr>
+                                                <td>{{$item->id}}</td>
+                                                <td>{{$item->nama_barang}}</td>
+                                                <td>{{$item->jenis_barang}} </td>
+                                                <td>{{$item->sumber}} </td>
+                                                <!-- @if (isset($item->id_polres))
+                                                @else
+                                                <td></td>
+                                                @endif -->
+                                                <td>{{$item->jml_barang}}</td>
+                                                <td>{{$item->kondisi_bb}}</td>
+                                                <td>{{$item->kondisi_rr}}</td>
+                                                <td>{{$item->kondisi_rb}}</td>
+                                                <td>{{$item->keterangan}}</td>
+                                            </tr>
+                                            @endforeach
                                             <tr>
                                                 <td>1</td>
                                                 <td>Motorola 420</td>
@@ -144,7 +172,7 @@
                     <!-- ============================================================== -->
                     <!-- customer acquistion  -->
                     <!-- ============================================================== -->
-                    
+
                 </div>
             </div>
         </div>

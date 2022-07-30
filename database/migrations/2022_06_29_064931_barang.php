@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('nama_barang', 255)->nullable();
             $table->string('jenis_barang', 50)->nullable();
             $table->string('sumber', 50)->nullable();
-            $table->string('jml_barang', 5)->nullable();
-            $table->string('kondisi_bb', 5)->nullable();
-            $table->string('kondisi_rr', 5)->nullable();
-            $table->string('kondisi_rb', 5)->nullable();
+            $table->integer('jml_barang')->nullable();
+            $table->integer('kondisi_bb')->nullable();
+            $table->integer('kondisi_rr')->nullable();
+            $table->integer('kondisi_rb')->nullable();
             $table->string('keterangan', 255)->nullable();
             $table->timestamps();
         });

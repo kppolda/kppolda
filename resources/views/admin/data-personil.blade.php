@@ -64,43 +64,12 @@
                                     {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
                                     {{ Form::text('pendidikan_dikbang','',['class'=>'form-control','placeholder'=>'Pendidikan Dikbang']) }}
                                 </div>
-
-                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                </div>
                                 {!! Form::close() !!}
-                                <!-- <form action="#" id="basicform" data-parsley-validate="">
-                                    <div class="form-group ">
-                                        <label for="namaPersonil">Nama Personil</label>
-                                        <input id="namaPersonil" type="text" name="namaPersonil" data-parsley-trigger="change" required placeholder="Nama Personil" autocomplete="off" class="form-control form-control-lg">
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="nrp">NRP</label>
-                                        <input id="nrp" type="text" name="nrp" data-parsley-trigger="change" required placeholder="NRP" autocomplete="off" class="form-control form-control-lg">
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="polres">Polres</label>
-                                        <input id="polres" type="text" name="polres" data-parsley-trigger="change" required placeholder="Polres" autocomplete="off" class="form-control form-control-lg">
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="pangkat">Pangkat</label>
-                                        <input id="pangkat" type="text" name="pangkat" data-parsley-trigger="change" required placeholder="Pangkat" autocomplete="off" class="form-control form-control-lg">
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="jabatan">Jabatan</label>
-                                        <input id="jabatan" type="text" name="jabatan" data-parsley-trigger="change" required placeholder="Jabtan" autocomplete="off" class="form-control form-control-lg">
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="dikum">Pendidikan Dikum</label>
-                                        <input id="dikum" type="text" name="dikum" data-parsley-trigger="change" required placeholder="Pendidikan Dikum" autocomplete="off" class="form-control form-control-lg">
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="dikbang">Pendidikan Dikbang</label>
-                                        <input id="dikbang" type="text" name="dikbang" data-parsley-trigger="change" required placeholder="Pendidikan Dikbang" autocomplete="off" class="form-control form-control-lg">
-                                    </div>
-                                </form> -->
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </div>
@@ -144,9 +113,9 @@
                                                 <td>{{$item->nama_personil}}</td>
                                                 <td>{{$item->nrp_personil}} </td>
                                                 @if (isset($item->id_polres))
-                                                    <td>{{$item->id_polres}} </td>
+                                                <td>{{$item->id_polres}} </td>
                                                 @else
-                                                    <td></td>
+                                                <td></td>
                                                 @endif
                                                 <td>{{$item->pangkat_personil}}</td>
                                                 <td>{{$item->jabatan_personil}}</td>

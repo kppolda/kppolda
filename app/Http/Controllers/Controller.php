@@ -38,17 +38,40 @@ class Controller extends BaseController
 
   public function data_jarkomrad()
   {
-    return view('admin/data-jarkomrad');
+    $site = DB::table('barangs')
+      ->where('jenis_barang', '=', 'site')
+      ->get();
+    $alkom = DB::table('barangs')
+      ->where('jenis_barang', '=', 'alkom')
+      ->get();
+    return view('admin/data-jarkomrad', ['site' => $site, 'alkom' => $alkom]);
   }
 
   public function data_jarkomdat()
   {
-    return view('admin/data-jarkomdat');
+    $indi = DB::table('barangs')
+      ->where('jenis_barang', '=', 'indihome')
+      ->get();
+    $telp = DB::table('barangs')
+      ->where('jenis_barang', '=', 'telepon')
+      ->get();
+    $intra = DB::table('barangs')
+      ->where('jenis_barang', '=', 'intranet')
+      ->get();
+    $wifi = DB::table('barangs')
+      ->where('jenis_barang', '=', 'wifiid')
+      ->get();
+    $asti = DB::table('barangs')
+      ->where('jenis_barang', '=', 'astinet')
+      ->get();
+    return view('admin/data-jarkomdat', ['indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti]);
   }
 
   public function data_barang()
   {
-    return view('admin/data-barang');
+    $datas = DB::table('barangs')->get();
+
+    return view('admin/data-barang', ['datas' => $datas]);
   }
 
   public function data_giat()
