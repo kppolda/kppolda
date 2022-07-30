@@ -69,8 +69,15 @@ class Controller extends BaseController
 
   public function data_barang()
   {
-    $datas = DB::table('barangs')->get();
-
+    $datas = DB::table('barangs')
+      ->where('jenis_barang', '!=', 'site')
+      ->where('jenis_barang', '!=', 'alkom')
+      ->where('jenis_barang', '!=', 'indihome')
+      ->where('jenis_barang', '!=', 'telepon')
+      ->where('jenis_barang', '!=', 'intranet')
+      ->where('jenis_barang', '!=', 'wifiid')
+      ->where('jenis_barang', '!=', 'astinet')
+      ->get();
     return view('admin/data-barang', ['datas' => $datas]);
   }
 
