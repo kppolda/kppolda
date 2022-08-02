@@ -104,6 +104,7 @@
                                                 <th class="border-0">Jabatan</th>
                                                 <th class="border-0">Pendidikan Dikum</th>
                                                 <th class="border-0">Pendidikan Dikbang</th>
+                                                <th class="border-0" rowspan="2">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -121,6 +122,12 @@
                                                 <td>{{$item->jabatan_personil}}</td>
                                                 <td>{{$item->pendidikan_dikum}}</td>
                                                 <td>{{$item->pendidikan_dikbang}}</td>
+                                                <td>
+                                                    <form method="POST" action="" style="margin:0;">
+                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                        <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>

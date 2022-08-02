@@ -53,43 +53,41 @@
                                     {{ Form::label('sumber','Sumber') }}
                                     {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>'Sumber']) }}
                                 </div>
-                                <div class='form-group'>
-                                    {{ Form::label('jml_barang','Jumlah Barang') }}
-                                    {{ Form::text('jml_barang','',['class'=>'form-control','placeholder'=>'Jumlah Barang']) }}
-                                </div>
                                 <label>Kondisi</label>
                                 <div class="row form-group pt-0">
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class='form-group'>
+                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total','placeholder'=>'Jumlah Barang']) }}
+                                </div>
+                                <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
-
-                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
-                                {!! Form::close() !!}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
                             </div>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -122,6 +120,7 @@
                                                 <th class="border-0 align-middle" rowspan="2">Jumlah Barang</th>
                                                 <th class="border-0 text-center" colspan="3">Kondisi</th>
                                                 <th class="border-0 align-middle" rowspan="2">Keterangan</th>
+                                                <th class="border-0 align-middle" rowspan="2">Action</th>
                                             </tr>
                                             <tr class="border-0">
                                                 <th class="border-0">BB</th>
@@ -145,6 +144,12 @@
                                                 <td>{{$item->kondisi_rr}}</td>
                                                 <td>{{$item->kondisi_rb}}</td>
                                                 <td>{{$item->keterangan}}</td>
+                                                <td>
+                                                    <form method="POST" action="" style="margin:0;">
+                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                        <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -178,6 +183,15 @@
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ]
         });
+    });
+</script>
+<script>
+    $(document).on("change", ".qty1", function() {
+        var sum = 0;
+        $(".qty1").each(function(){
+            sum += +$(this).val();
+        });
+        $(".total").val(sum);
     });
 </script>
 

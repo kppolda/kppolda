@@ -91,6 +91,7 @@
                                                 <th class="border-0">Tanggal Giat</th>
                                                 <th class="border-0">Keterangan</th>
                                                 <th class="border-0">Dokumentasi</th>
+                                                <th class="border-0" rowspan="2">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -105,6 +106,12 @@
                                                 @else
                                                 <td></td>
                                                 @endif
+                                                <td>
+                                                    <form method="POST" action="" style="margin:0;">
+                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                        <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>

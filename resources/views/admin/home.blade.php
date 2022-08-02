@@ -115,8 +115,8 @@
                                                 <td>kedirikota@gmail.com</td>
                                                 <td>k3D1r1_k0T4</td>
                                                 <td class="d-flex">
-                                                    <a href="/home/id" class="btn btn-rounded btn-info mr-2">Info</a>
                                                     <form method="POST" action="" style="margin:0;">
+                                                        <a href="/home/id" class="btn btn-rounded btn-info">Info</a>
                                                         <button type="submit" class="btn btn-rounded btn-warning">Edit</button>
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
