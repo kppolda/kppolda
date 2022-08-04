@@ -21,10 +21,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('polres', [PolresCon::class, 'register'])->name('polres.regis');
 Route::post('personil', [PersonilCon::class, 'register'])->name('personil.regis');
 Route::post('barang', [BarangCon::class, 'tambah_barang'])->name('barang.regis');
+Route::delete('barang/{id}', [BarangCon::class, 'destroy_barang'])->name('barang.delete');
+Route::put('barang/{id}', [BarangCon::class, 'edit_barang'])->name('barang.edit');
 Route::post('rad', [BarangCon::class, 'tambah_rad'])->name('rad.regis');
 Route::post('dat', [BarangCon::class, 'tambah_dat'])->name('dat.regis');
 Route::post('giat', [DataGiatCon::class, 'save'])->name('giat.tambah');
 Route::post('login', [PolresCon::class, 'login'])->name('polres.login');
+Route::put('polres/{id}', [PolresCon::class, 'edit'])->name('polres.edit');
 Route::delete('polres/{id}', [PolresCon::class, 'destroy'])->name('polres.delete');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

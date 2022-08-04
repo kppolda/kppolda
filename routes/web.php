@@ -53,7 +53,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 // Route::get('/home', [PolresCon::class, 'index']);
 Route::get('/home', [Controller::class, 'home']);
 Route::get('/homedup', [Controller::class, 'homedup']);
-Route::get('/home/id', [Controller::class, 'laporan']);
+Route::get('/home/{id}', [Controller::class, 'laporan']);
 
 
 Route::get('/data-polres', [Controller::class, 'indexPolres']);
@@ -68,7 +68,7 @@ Route::get('/data-personil/{id}', [Controller::class, 'data_personil_id']);
 Route::get('/data-inventaris/data-jarkomrad/{id}', [Controller::class, 'data_jarkomrad_id']);
 Route::get('/data-inventaris/data-jarkomdat/{id}', [Controller::class, 'data_jarkomdat_id']);
 Route::get('/data-inventaris/data-barang/{id}', [Controller::class, 'data_barang_id']);
-Route::get('/data-giat/id', [Controller::class, 'data_giat_id']);
+Route::get('/data-giat/{id}', [Controller::class, 'data_giat_id']);
 
 // Route::get('/', function () {
 //     return view('index');

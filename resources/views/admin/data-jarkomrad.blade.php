@@ -207,8 +207,10 @@
                                                 <td>{{$sites->kondisi_rb}}</td>
                                                 <td>{{$sites->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="" style="margin:0;">
+                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                 </td>
@@ -258,8 +260,10 @@
                                                 <td>{{$alkoms->kondisi_rb}}</td>
                                                 <td>{{$alkoms->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="" style="margin:0;">
+                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                 </td>

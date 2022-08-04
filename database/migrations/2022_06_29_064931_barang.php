@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('kondisi_rr')->nullable();
             $table->integer('kondisi_rb')->nullable();
             $table->string('keterangan', 255)->nullable();
+            $table->string('_token', 255)->nullable();
+            $table->string('_method', 5)->nullable();
             $table->timestamps();
         });
     }

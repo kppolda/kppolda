@@ -405,8 +405,10 @@
                                                 <td>{{$inhome->kondisi_rb}}</td>
                                                 <td>{{$inhome->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="" style="margin:0;">
+                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                 </td>
@@ -456,8 +458,10 @@
                                                 <td>{{$telpon->kondisi_rb}}</td>
                                                 <td>{{$telpon->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="" style="margin:0;">
+                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                 </td>
@@ -507,8 +511,10 @@
                                                 <td>{{$intran->kondisi_rb}}</td>
                                                 <td>{{$intran->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="" style="margin:0;">
+                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                 </td>
@@ -558,8 +564,10 @@
                                                 <td>{{$wifii->kondisi_rb}}</td>
                                                 <td>{{$wifii->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="" style="margin:0;">
+                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                 </td>
@@ -609,8 +617,10 @@
                                                 <td>{{$astin->kondisi_rb}}</td>
                                                 <td>{{$astin->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="" style="margin:0;">
+                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                 </td>

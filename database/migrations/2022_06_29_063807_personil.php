@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('jabatan_personil', 30);
             $table->string('pendidikan_dikum', 30);
             $table->string('pendidikan_dikbang', 30);
+            $table->string('_token', 255)->nullable();
+            $table->string('_method', 5)->nullable();
             $table->timestamps();
         });
     }

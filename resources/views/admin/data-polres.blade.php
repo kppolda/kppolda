@@ -51,10 +51,6 @@
                                     {{ Form::text('username','',['class'=>'form-control','placeholder'=>'Username']) }}
                                 </div>
                                 <div class='form-group'>
-                                    {{ Form::label('email','Email') }}
-                                    {{ Form::text('email','',['class'=>'form-control','placeholder'=>'Email']) }}
-                                </div>
-                                <div class='form-group'>
                                     {{ Form::label('password','Password') }}
                                     {{ Form::text('password','',['class'=>'form-control','placeholder'=>'Password']) }}
                                 </div>
@@ -78,7 +74,13 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Data Polres</h5>
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="m-0">Data Polres</h5>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataPolres">
+                                    Tambah Data
+                                </button>
+                            </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table id="polres" class="table table-striped table-bordered" style="width:100%">
@@ -87,7 +89,6 @@
                                                 <th class="border-0">id</th>
                                                 <th class="border-0">nama polres</th>
                                                 <th class="border-0">username</th>
-                                                <th class="border-0">email</th>
                                                 <th class="border-0">password</th>
                                                 <th class="border-0">action</th>
                                             </tr>
@@ -101,22 +102,15 @@
                                                 </td> -->
                                                 <td>{{$item->nama_polres}}</td>
                                                 <td>{{$item->username}} </td>
-                                                <td>{{$item->email}}</td>
                                                 <td>{{$item->password}}</td>
                                                 <td>
                                                     <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
+                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
-                                                    <!-- <a href="{{route('polres.delete', [$item->id])}}" onclick="return confirm('yang benul bang?')">
-                                                        {{ method_field('DELETE') }}
-                                                    </a> -->
                                                 </td>
-                                                <!-- <td>$80.00</td>
-                                                <td>27-08-2018 01:22:12</td>
-                                                <td>Patricia J. King </td>
-                                                <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td> -->
                                             </tr>
                                             @endforeach
                                         </tbody>
