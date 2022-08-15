@@ -5,17 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Polres;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 // use App\Http\Requests\RegisterRequest;
 
 class PolresCon extends Controller
 {
     public function register(Request $request)
     {
-        $user = Polres::create($request->all());
-
-        auth()->login($user);
+        Polres::create($request->all());
 
         return redirect('/data-polres')->with('success', "Account successfully registered.");
+    }
+    public function edit(Request $request,$id)
+    {
+        Polres::whereId($id)->update($request->all());
+
+        return redirect()->back();
     }
     public function destroy($id)
     {
@@ -66,32 +71,48 @@ class PolresCon extends Controller
     //     return response()->json($respone, 201);
     // }
 
+    // public function login(Request $request)
+    // {
+    //     $fields = $request->validate([
+    //         'email' => 'required|string',
+    //         'password' => 'required|string'
+    //     ]);
+
+    //     //check email
+    //     $polres = Polres::where('email', $fields['email'])->first();
+
+    //     //check password
+    //     if (!$polres || !$password) {
+    //         return response([
+    //             'message' => 'email atau password salah'
+    //         ], 401);
+    //     }
+
+    //     // $token = $user->createToken('myapptoken')->plainTextToken;
+
+    //     $respone = [
+    //         'polres' => $polres,
+    //         // 'token' => $token
+    //     ];
+
+    //     // return response()->json($respone, 201);
+    //     return redirect('/home');
+    // }
+
     public function login(Request $request)
     {
-        $fields = $request->validate([
-            'email' => 'required|string',
-            'password' => 'required|string'
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
         ]);
 
-        //check email
-        $polres = Polres::where('email', $fields['email'])->first();
-
-        //check password
-        if (!$polres || !$password) {
-            return response([
-                'message' => 'email atau password salah'
-            ], 401);
+        $credentials = $request->only('username', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/')
+                        ->withSuccess('Signed in');
         }
 
-        // $token = $user->createToken('myapptoken')->plainTextToken;
-
-        $respone = [
-            'polres' => $polres,
-            // 'token' => $token
-        ];
-
-        // return response()->json($respone, 201);
-        return redirect('/home');
+        return redirect("login")->withSuccess('Login details are not valid');
     }
 
     public function logout(Request $request)

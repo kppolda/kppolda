@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php echo getcwd() ?>
 
 <head>
     <!-- Required meta tags -->

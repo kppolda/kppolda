@@ -52,7 +52,10 @@
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('password','Password') }}
-                                    {{ Form::text('password','',['class'=>'form-control','placeholder'=>'Password']) }}
+                                    {{ Form::text('password','',['class'=>'form-control qty1','placeholder'=>'Password']) }}
+                                </div>
+                                <div class="form-group ">
+                                    <input id="pass" type="text" name="pass" data-parsley-trigger="change" autocomplete="off" class="form-control total" hidden>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -102,14 +105,51 @@
                                                 </td> -->
                                                 <td>{{$item->nama_polres}}</td>
                                                 <td>{{$item->username}} </td>
-                                                <td>{{$item->password}}</td>
-                                                <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                <td>{{$item->pass}}</td>
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$item->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
+                                                    <div class="modal fade" id="editBarang{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="titleBarang">Edit Data Polres</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    {!! Form::open(['route' => ['polres.edit',$item->id], 'method' => 'PUT']) !!}
+                                                                    {{ csrf_field() }}
+                                                                    {{ method_field('PUT') }}
+                                                                    <div class='form-group'>
+                                                                        {{ Form::label('nama_polres','Nama Polres') }}
+                                                                        {{ Form::text('nama_polres','',['class'=>'form-control','placeholder'=>'Nama Polres']) }}
+                                                                    </div>
+                                                                    <div class='form-group'>
+                                                                        {{ Form::label('username','Username') }}
+                                                                        {{ Form::text('username','',['class'=>'form-control','placeholder'=>'Username']) }}
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <input id="password" type="text" name="password" value="{{$item->password}}" data-parsley-trigger="change" autocomplete="off" class="form-control total" hidden>
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <input id="pass" type="text" name="pass" value="{{$item->pass}}" data-parsley-trigger="change" autocomplete="off" class="form-control total" hidden>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                        {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                                                    </div>
+                                                                {!! Form::close() !!}
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -144,6 +184,13 @@
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ]
         });
+    });
+</script>
+
+<script>
+    $(document).on("change", ".qty1", function() {
+        var inputString = $("#password").val();
+        $(".total").val(inputString);
     });
 </script>
 

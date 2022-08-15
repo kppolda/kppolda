@@ -12,6 +12,7 @@ class Datagiat extends Model
 
     protected $fillable = [
         'nama',
+        'id_polres',
         'image',
         'tanggal',
         'keterangan',

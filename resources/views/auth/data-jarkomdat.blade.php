@@ -1,4 +1,4 @@
-@extends('layout/sidebar')
+@extends('layout/sidebar-admin')
 
 @section('title', 'Data JarKomDat')
 
@@ -14,6 +14,7 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/home" class="breadcrumb-link">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Data JarKomDat</li>
                                 </ol>
                             </nav>
@@ -28,317 +29,348 @@
 
                 <!-- Modal Indihome -->
                 <div class="modal fade" id="dataIndihome" tabindex="-1" role="dialog" aria-labelledby="titleIndihome" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="titleIndihome">Tambah Data Indihome</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <form action="#" id="basicform" data-parsley-validate="">
-                            <div class="form-group ">
-                                <label for="namaBarangIndihome">Nama Barang</label>
-                                <input id="namaBarangIndihome" type="text" name="namaBarangIndihome" data-parsley-trigger="change" required placeholder="Nama Barang" autocomplete="off" class="form-control form-control-lg">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleIndihome">Tambah Data Indihome</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group ">
-                                <label for="jenisBarangIndihome">Jenis Barang</label>
-                                <input id="jenisBarangIndihome" type="text" name="jenisBarangIndihome" data-parsley-trigger="change" required placeholder="Indihome" disabled autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="sumberIndihome">Sumber</label>
-                                <input id="sumberIndihome" type="text" name="sumberIndihome" data-parsley-trigger="change" required placeholder="Sumber" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="jumlahBarangIndihome">Jumlah Barang</label>
-                                <input id="jumlahBarangIndihome" type="text" name="jumlahBarangIndihome" data-parsley-trigger="change" required placeholder="Total Barang" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <label>Kondisi</label>
-                            <div class="row form-group pt-0">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiBBIndihome" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">BB</span></div>
+
+                            <div class="modal-body">
+                                {!! Form::open(['route' => 'dat.regis', 'method' => 'POST']) !!}
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class='form-group'>
+                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                </div>
+                                <div class="form-group">
+                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="jenis_barang">Jenis Barang</label>
+                                    <input id="jenis_barang" value="indihome" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Indihome" autocomplete="off" class="form-control form-control-lg" readonly>
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('sumber','Sumber') }}
+                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>'Sumber']) }}
+                                </div>
+                                <label>Kondisi</label>
+                                <div class="row form-group pt-0">
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRRIndihome" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RR</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total1','placeholder'=>'Jumlah Barang']) }}
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRBIndihome" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RB</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('keterangan','Keterangan') }}
+                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                    {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                </div>
+                                {!! Form::close() !!}
                             </div>
-                            <div class="form-group ">
-                                <label for="keteranganIndihome">Keterangan</label>
-                                <input id="keteranganIndihome" type="text" name="keteranganIndihome" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
 
                 <!-- Modal Telepon -->
                 <div class="modal fade" id="dataTelepon" tabindex="-1" role="dialog" aria-labelledby="titleTelepon" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="titleTelepon">Tambah Data Telepon</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <form action="#" id="basicform" data-parsley-validate="">
-                            <div class="form-group ">
-                                <label for="namaBarangTelepon">Nama Barang</label>
-                                <input id="namaBarangTelepon" type="text" name="namaBarangTelepon" data-parsley-trigger="change" required placeholder="Nama Barang" autocomplete="off" class="form-control form-control-lg">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleTelepon">Tambah Data Telepon</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group ">
-                                <label for="jenisBarangTelepon">Jenis Barang</label>
-                                <input id="jenisBarangTelepon" type="text" name="jenisBarangTelepon" data-parsley-trigger="change" required placeholder="Telepon" disabled autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="sumberTelepon">Sumber</label>
-                                <input id="sumberTelepon" type="text" name="sumberTelepon" data-parsley-trigger="change" required placeholder="Sumber" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="jumlahBarangTelepon">Jumlah Barang</label>
-                                <input id="jumlahBarangTelepon" type="text" name="jumlahBarangTelepon" data-parsley-trigger="change" required placeholder="Total Barang" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <label>Kondisi</label>
-                            <div class="row form-group pt-0">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiBBTelepon" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                            <div class="modal-body">
+                                {!! Form::open(['route' => 'dat.regis', 'method' => 'POST']) !!}
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class='form-group'>
+                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                </div>
+                                <div class="form-group">
+                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="jenis_barang">Jenis Barang</label>
+                                    <input id="jenis_barang" value="telepon" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Telepon" autocomplete="off" class="form-control form-control-lg" readonly>
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('sumber','Sumber') }}
+                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>'Sumber']) }}
+                                </div>
+                                <label>Kondisi</label>
+                                <div class="row form-group pt-0">
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty2','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty2','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty2','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRRTelepon" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RR</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total2','placeholder'=>'Jumlah Barang']) }}
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRBTelepon" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RB</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('keterangan','Keterangan') }}
+                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                    {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                </div>
+                                {!! Form::close() !!}
                             </div>
-                            <div class="form-group ">
-                                <label for="keteranganTelepon">Keterangan</label>
-                                <input id="keteranganTelepon" type="text" name="keteranganTelepon" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
 
                 <!-- Modal Intranet -->
                 <div class="modal fade" id="dataIntranet" tabindex="-1" role="dialog" aria-labelledby="titleIntranet" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="titleIntranet">Tambah Data Intranet</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <form action="#" id="basicform" data-parsley-validate="">
-                            <div class="form-group ">
-                                <label for="namaBarangIntranet">Nama Barang</label>
-                                <input id="namaBarangIntranet" type="text" name="namaBarangIntranet" data-parsley-trigger="change" required placeholder="Nama Barang" autocomplete="off" class="form-control form-control-lg">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleIntranet">Tambah Data Intranet</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group ">
-                                <label for="jenisBarangIntranet">Jenis Barang</label>
-                                <input id="jenisBarangIntranet" type="text" name="jenisBarangIntranet" data-parsley-trigger="change" required placeholder="Intranet" disabled autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="sumberIntranet">Sumber</label>
-                                <input id="sumberIntranet" type="text" name="sumberIntranet" data-parsley-trigger="change" required placeholder="Sumber" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="jumlahBarangIntranet">Jumlah Barang</label>
-                                <input id="jumlahBarangIntranet" type="text" name="jumlahBarangIntranet" data-parsley-trigger="change" required placeholder="Total Barang" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <label>Kondisi</label>
-                            <div class="row form-group pt-0">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiBBIntranet" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                            <div class="modal-body">
+                                {!! Form::open(['route' => 'dat.regis', 'method' => 'POST']) !!}
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class='form-group'>
+                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                </div>
+                                <div class="form-group">
+                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="jenis_barang">Jenis Barang</label>
+                                    <input id="jenis_barang" value="intranet" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Intranet" autocomplete="off" class="form-control form-control-lg" readonly>
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('sumber','Sumber') }}
+                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>'Sumber']) }}
+                                </div>
+                                <label>Kondisi</label>
+                                <div class="row form-group pt-0">
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty3','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty3','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty3','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRRIntranet" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RR</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total3','placeholder'=>'Jumlah Barang']) }}
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRBIntranet" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RB</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('keterangan','Keterangan') }}
+                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                </div>
+                                {!! Form::close() !!}
                             </div>
-                            <div class="form-group ">
-                                <label for="keteranganIntranet">Keterangan</label>
-                                <input id="keteranganIntranet" type="text" name="keteranganIntranet" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
 
                 <!-- Modal Wifi Id -->
                 <div class="modal fade" id="dataWifiId" tabindex="-1" role="dialog" aria-labelledby="titleWifiId" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="titleWifiId">Tambah Data Wifi Id</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <form action="#" id="basicform" data-parsley-validate="">
-                            <div class="form-group ">
-                                <label for="namaBarangWifiId">Nama Barang</label>
-                                <input id="namaBarangWifiId" type="text" name="namaBarangWifiId" data-parsley-trigger="change" required placeholder="Nama Barang" autocomplete="off" class="form-control form-control-lg">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleWifiId">Tambah Data Wifi Id</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group ">
-                                <label for="jenisBarangWifiId">Jenis Barang</label>
-                                <input id="jenisBarangWifiId" type="text" name="jenisBarangWifiId" data-parsley-trigger="change" required placeholder="Wifi Id" disabled autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="sumberWifiId">Sumber</label>
-                                <input id="sumberWifiId" type="text" name="sumberWifiId" data-parsley-trigger="change" required placeholder="Sumber" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="jumlahBarangWifiId">Jumlah Barang</label>
-                                <input id="jumlahBarangWifiId" type="text" name="jumlahBarangWifiId" data-parsley-trigger="change" required placeholder="Total Barang" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <label>Kondisi</label>
-                            <div class="row form-group pt-0">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiBBWifiId" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                            <div class="modal-body">
+                                {!! Form::open(['route' => 'dat.regis', 'method' => 'POST']) !!}
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class='form-group'>
+                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                </div>
+                                <div class="form-group">
+                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="jenis_barang">Jenis Barang</label>
+                                    <input id="jenis_barang" value="wifiid" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Wifi Id" autocomplete="off" class="form-control form-control-lg" readonly>
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('sumber','Sumber') }}
+                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>'Sumber']) }}
+                                </div>
+                                <label>Kondisi</label>
+                                <div class="row form-group pt-0">
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty4','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty4','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty4','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRRWifiId" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RR</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total4','placeholder'=>'Jumlah Barang']) }}
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRBWifiId" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RB</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('keterangan','Keterangan') }}
+                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                </div>
+                                {!! Form::close() !!}
                             </div>
-                            <div class="form-group ">
-                                <label for="keteranganWifiId">Keterangan</label>
-                                <input id="keteranganWifiId" type="text" name="keteranganWifiId" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
 
                 <!-- Modal Astinet -->
                 <div class="modal fade" id="dataAstinet" tabindex="-1" role="dialog" aria-labelledby="titleAstinet" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="titleAstinet">Tambah Data Astinet</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <form action="#" id="basicform" data-parsley-validate="">
-                            <div class="form-group ">
-                                <label for="namaBarangAstinet">Nama Barang</label>
-                                <input id="namaBarangAstinet" type="text" name="namaBarangAstinet" data-parsley-trigger="change" required placeholder="Nama Barang" autocomplete="off" class="form-control form-control-lg">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleAstinet">Tambah Data Astinet</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group ">
-                                <label for="jenisBarangAstinet">Jenis Barang</label>
-                                <input id="jenisBarangAstinet" type="text" name="jenisBarangAstinet" data-parsley-trigger="change" required placeholder="Astinet" disabled autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="sumberAstinet">Sumber</label>
-                                <input id="sumberAstinet" type="text" name="sumberAstinet" data-parsley-trigger="change" required placeholder="Sumber" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="jumlahBarangAstinet">Jumlah Barang</label>
-                                <input id="jumlahBarangAstinet" type="text" name="jumlahBarangAstinet" data-parsley-trigger="change" required placeholder="Total Barang" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <label>Kondisi</label>
-                            <div class="row form-group pt-0">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiBBAstinet" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                            <div class="modal-body">
+                                {!! Form::open(['route' => 'dat.regis', 'method' => 'POST']) !!}
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class='form-group'>
+                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                </div>
+                                <div class="form-group">
+                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="jenis_barang">Jenis Barang</label>
+                                    <input id="jenis_barang" value="astinet" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Astinet" autocomplete="off" class="form-control form-control-lg" readonly>
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('sumber','Sumber') }}
+                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>'Sumber']) }}
+                                </div>
+                                <label>Kondisi</label>
+                                <div class="row form-group pt-0">
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty5','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty5','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                        </div>
+                                    </div>
+                                    <div class='col'>
+                                        <div class="input-group">
+                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty5','placeholder'=>'Masukkan Jumlah']) }}
+                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRRAstinet" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RR</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total5','placeholder'=>'Jumlah Barang']) }}
                                 </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" name="kondisiRBAstinet" data-parsley-trigger="change" required placeholder="Masukkan Jumlah" autocomplete="off" class="form-control form-control-lg">
-                                        <div class="input-group-append"><span class="input-group-text">RB</span></div>
-                                    </div>
+                                <div class='form-group'>
+                                    {{ Form::label('keterangan','Keterangan') }}
+                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                </div>
+                                {!! Form::close() !!}
                             </div>
-                            <div class="form-group ">
-                                <label for="keteranganAstinet">Keterangan</label>
-                                <input id="keteranganAstinet" type="text" name="keteranganAstinet" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
 
                 <div class="row">
@@ -368,7 +400,7 @@
                                                 <th class="border-0 align-middle" rowspan="2">Jumlah Barang</th>
                                                 <th class="border-0 text-center" colspan="3">Kondisi</th>
                                                 <th class="border-0 align-middle" rowspan="2">Keterangan</th>
-                                                <th class="border-0 align-middle" rowspan="2">action</th>
+                                                <th class="border-0 align-middle" rowspan="2">Action</th>
                                             </tr>
                                             <tr class="border-0">
                                                 <th class="border-0">BB</th>
@@ -377,22 +409,92 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($indi as $inhome)
+                                            @if (Auth::user()->username === $inhom->id_polres)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                <td>{{$inhome->id}}</td>
+                                                <td>{{$inhome->nama_barang}}</td>
+                                                <td>{{$inhome->sumber}} </td>
+                                                <td>{{$inhome->jml_barang}}</td>
+                                                <td>{{$inhome->kondisi_bb}}</td>
+                                                <td>{{$inhome->kondisi_rr}}</td>
+                                                <td>{{$inhome->kondisi_rb}}</td>
+                                                <td>{{$inhome->keterangan}}</td>
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2"method="POST" action="{{ route('barang.delete', [$inhome->id]) }}">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$inhome->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
                                                 </td>
+                                                <div class="modal fade" id="editBarang{{$inhome->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['barang.edit',$inhome->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$inhome->nama_barang]) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label for="jenis_barang">Jenis Barang</label>
+                                                                    <input id="jenis_barang" value="{{$inhome->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('sumber','Sumber') }}
+                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$inhome->sumber]) }}
+                                                                </div>
+                                                                <label>Kondisi</label>
+                                                                <div class="row form-group pt-0">
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_bb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_rr]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_rb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total1','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('keterangan','Keterangan') }}
+                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$inhome->keterangan]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
+                                            @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -417,7 +519,7 @@
                                                 <th class="border-0 align-middle" rowspan="2">Jumlah Barang</th>
                                                 <th class="border-0 text-center" colspan="3">Kondisi</th>
                                                 <th class="border-0 align-middle" rowspan="2">Keterangan</th>
-                                                <th class="border-0 align-middle" rowspan="2">action</th>
+                                                <th class="border-0 align-middle" rowspan="2">Action</th>
                                             </tr>
                                             <tr class="border-0">
                                                 <th class="border-0">BB</th>
@@ -426,22 +528,92 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($telp as $telpon)
+                                            @if (Auth::user()->username === $telpon->id_polres)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                <td>{{$telpon->id}}</td>
+                                                <td>{{$telpon->nama_barang}}</td>
+                                                <td>{{$telpon->sumber}} </td>
+                                                <td>{{$telpon->jml_barang}}</td>
+                                                <td>{{$telpon->kondisi_bb}}</td>
+                                                <td>{{$telpon->kondisi_rr}}</td>
+                                                <td>{{$telpon->kondisi_rb}}</td>
+                                                <td>{{$telpon->keterangan}}</td>
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('barang.delete', [$telpon->id]) }}">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$telpon->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
                                                 </td>
+                                                <div class="modal fade" id="editBarang{{$telpon->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['barang.edit',$telpon->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$telpon->nama_barang]) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label for="jenis_barang">Jenis Barang</label>
+                                                                    <input id="jenis_barang" value="{{$telpon->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('sumber','Sumber') }}
+                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$telpon->sumber]) }}
+                                                                </div>
+                                                                <label>Kondisi</label>
+                                                                <div class="row form-group pt-0">
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_bb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_rr]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_rb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total2','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('keterangan','Keterangan') }}
+                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$telpon->keterangan]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
+                                            @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -466,7 +638,7 @@
                                                 <th class="border-0 align-middle" rowspan="2">Jumlah Barang</th>
                                                 <th class="border-0 text-center" colspan="3">Kondisi</th>
                                                 <th class="border-0 align-middle" rowspan="2">Keterangan</th>
-                                                <th class="border-0 align-middle" rowspan="2">action</th>
+                                                <th class="border-0 align-middle" rowspan="2">Action</th>
                                             </tr>
                                             <tr class="border-0">
                                                 <th class="border-0">BB</th>
@@ -475,22 +647,92 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($intranet as $intran)
+                                            @if (Auth::user()->username === $intran->id_polres)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                <td>{{$intran->id}}</td>
+                                                <td>{{$intran->nama_barang}}</td>
+                                                <td>{{$intran->sumber}} </td>
+                                                <td>{{$intran->jml_barang}}</td>
+                                                <td>{{$intran->kondisi_bb}}</td>
+                                                <td>{{$intran->kondisi_rr}}</td>
+                                                <td>{{$intran->kondisi_rb}}</td>
+                                                <td>{{$intran->keterangan}}</td>
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('barang.delete', [$intran->id]) }}">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$intran->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
                                                 </td>
+                                                <div class="modal fade" id="editBarang{{$intran->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['barang.edit',$intran->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$intran->nama_barang]) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label for="jenis_barang">Jenis Barang</label>
+                                                                    <input id="jenis_barang" value="{{$intran->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('sumber','Sumber') }}
+                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$intran->sumber]) }}
+                                                                </div>
+                                                                <label>Kondisi</label>
+                                                                <div class="row form-group pt-0">
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_bb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_rr]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_rb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total3','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('keterangan','Keterangan') }}
+                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$intran->keterangan]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
+                                            @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -515,7 +757,7 @@
                                                 <th class="border-0 align-middle" rowspan="2">Jumlah Barang</th>
                                                 <th class="border-0 text-center" colspan="3">Kondisi</th>
                                                 <th class="border-0 align-middle" rowspan="2">Keterangan</th>
-                                                <th class="border-0 align-middle" rowspan="2">action</th>
+                                                <th class="border-0 align-middle" rowspan="2">Action</th>
                                             </tr>
                                             <tr class="border-0">
                                                 <th class="border-0">BB</th>
@@ -524,22 +766,92 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($wifi as $wifii)
+                                            @if (Auth::user()->username === $wifii->id_polres)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                <td>{{$wifii->id}}</td>
+                                                <td>{{$wifii->nama_barang}}</td>
+                                                <td>{{$wifii->sumber}} </td>
+                                                <td>{{$wifii->jml_barang}}</td>
+                                                <td>{{$wifii->kondisi_bb}}</td>
+                                                <td>{{$wifii->kondisi_rr}}</td>
+                                                <td>{{$wifii->kondisi_rb}}</td>
+                                                <td>{{$wifii->keterangan}}</td>
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('barang.delete', [$wifii->id]) }}">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$wifii->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
                                                 </td>
+                                                <div class="modal fade" id="editBarang{{$wifii->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['barang.edit',$wifii->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$wifii->nama_barang]) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label for="jenis_barang">Jenis Barang</label>
+                                                                    <input id="jenis_barang" value="{{$wifii->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('sumber','Sumber') }}
+                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$wifii->sumber]) }}
+                                                                </div>
+                                                                <label>Kondisi</label>
+                                                                <div class="row form-group pt-0">
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_bb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_rr]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_rb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total4','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('keterangan','Keterangan') }}
+                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$wifii->keterangan]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
+                                            @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -564,7 +876,7 @@
                                                 <th class="border-0 align-middle" rowspan="2">Jumlah Barang</th>
                                                 <th class="border-0 text-center" colspan="3">Kondisi</th>
                                                 <th class="border-0 align-middle" rowspan="2">Keterangan</th>
-                                                <th class="border-0 align-middle" rowspan="2">action</th>
+                                                <th class="border-0 align-middle" rowspan="2">Action</th>
                                             </tr>
                                             <tr class="border-0">
                                                 <th class="border-0">BB</th>
@@ -573,22 +885,92 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($asti as $astin)
+                                            @if (Auth::user()->username === $astin->id_polres)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Motorola 420</td>
-                                                <td>Pemasukan Ini</td>
-                                                <td>6</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>-</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                <td>{{$astin->id}}</td>
+                                                <td>{{$astin->nama_barang}}</td>
+                                                <td>{{$astin->sumber}} </td>
+                                                <td>{{$astin->jml_barang}}</td>
+                                                <td>{{$astin->kondisi_bb}}</td>
+                                                <td>{{$astin->kondisi_rr}}</td>
+                                                <td>{{$astin->kondisi_rb}}</td>
+                                                <td>{{$astin->keterangan}}</td>
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('barang.delete', [$astin->id]) }}">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$astin->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
                                                 </td>
+                                                <div class="modal fade" id="editBarang{{$astin->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['barang.edit',$astin->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$astin->nama_barang]) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label for="jenis_barang">Jenis Barang</label>
+                                                                    <input id="jenis_barang" value="{{$astin->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('sumber','Sumber') }}
+                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$astin->sumber]) }}
+                                                                </div>
+                                                                <label>Kondisi</label>
+                                                                <div class="row form-group pt-0">
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_bb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_rr]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_rb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total5','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('keterangan','Keterangan') }}
+                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$astin->keterangan]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
+                                            @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -603,7 +985,7 @@
                     <!-- ============================================================== -->
                     <!-- customer acquistion  -->
                     <!-- ============================================================== -->
-                    
+
                 </div>
             </div>
         </div>
@@ -660,6 +1042,52 @@
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ]
         });
+    });
+</script>
+
+<script>
+    $(document).on("change", ".qty1", function() {
+        var sum = 0;
+        $(".qty1").each(function(){
+            sum += +$(this).val();
+        });
+        $(".total1").val(sum);
+    });
+</script>
+<script>
+    $(document).on("change", ".qty2", function() {
+        var sum = 0;
+        $(".qty2").each(function(){
+            sum += +$(this).val();
+        });
+        $(".total2").val(sum);
+    });
+</script>
+<script>
+    $(document).on("change", ".qty3", function() {
+        var sum = 0;
+        $(".qty3").each(function(){
+            sum += +$(this).val();
+        });
+        $(".total3").val(sum);
+    });
+</script>
+<script>
+    $(document).on("change", ".qty4", function() {
+        var sum = 0;
+        $(".qty4").each(function(){
+            sum += +$(this).val();
+        });
+        $(".total4").val(sum);
+    });
+</script>
+<script>
+    $(document).on("change", ".qty5", function() {
+        var sum = 0;
+        $(".qty5").each(function(){
+            sum += +$(this).val();
+        });
+        $(".total5").val(sum);
     });
 </script>
 

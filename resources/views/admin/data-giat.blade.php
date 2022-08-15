@@ -2,7 +2,33 @@
 
 @section('title', 'Data Daftar Giat')
 
-<div class="dashboard-wrapper">
+@section('style')
+<style>
+    #fullpage {
+        display: none;
+        position: absolute;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-size: contain;
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+        background-color: black;
+    }
+    .gallery {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        align-content: center;
+        object-position: center;
+        transition: transform ease-in-out 0.5s;
+    }
+</style>
+@endsection
+
+<div class="dashboard-wrapper" onload="getPics()">
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
             <!-- ============================================================== -->
@@ -53,7 +79,8 @@
                                     </div>
                                     <div class="custom-file">
                                         <label class="custom-file-label" for="image">Dokumentasi</label>
-                                        <input type="file" class="custom-file-input" name="image" id="image">
+                                        <input accept="image/*" type="file" class="custom-file-input" name="image" id="image" onchange="readURL(this);" >
+                                        <!-- <img id="blah" src="http://placehold.it/180" alt="your image" style="max-width: 180px;"/> -->
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -91,24 +118,22 @@
                                                 <th class="border-0">Tanggal Giat</th>
                                                 <th class="border-0">Keterangan</th>
                                                 <th class="border-0">Dokumentasi</th>
-                                                <th class="border-0" rowspan="2">Action</th>
+                                                <th class="border-0">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($giat as $item)
                                             <tr>
-                                                <td>{{$item->id}}</td>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{$item->nama}}</td>
                                                 <td>{{$item->tanggal}}</td>
                                                 <td>{{$item->keterangan}}</td>
                                                 @if (isset($item->image))
                                                 <td><img src="{{asset('/'.$item->image)}}" style="height: 100px; width: flex;"></td>
                                                 @else
-                                                <td></td>
                                                 @endif
                                                 <td>
                                                     <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
@@ -146,6 +171,32 @@
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ]
+        });
+    });
+</script>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<script>
+    function getPics() {} //just for this demo
+        const imgs = document.querySelectorAll('.gallery img');
+        const fullPage = document.querySelector('#fullpage');
+
+        imgs.forEach(img => {
+        img.addEventListener('click', function() {
+            fullPage.style.backgroundImage = 'url(' + img.src + ')';
+            fullPage.style.display = 'block';
         });
     });
 </script>

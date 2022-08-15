@@ -100,27 +100,62 @@ class Controller extends BaseController
 
   public function data_personil_id()
   {
-    return view('auth/data-personil');
+    $datas = DB::table('personils')->get();
+    $count = 1;
+
+    return view('auth/data-personil', ['datas' => $datas, 'count'=> $count]);
   }
 
   public function data_jarkomrad_id()
   {
-    return view('auth/data-jarkomrad');
+    $site = DB::table('barangs')
+      ->where('jenis_barang', '=', 'site')
+      ->get();
+    $alkom = DB::table('barangs')
+      ->where('jenis_barang', '=', 'alkom')
+      ->get();
+    return view('auth/data-jarkomrad', ['site' => $site, 'alkom' => $alkom]);
   }
 
   public function data_jarkomdat_id()
   {
-    return view('auth/data-jarkomdat');
+    $indi = DB::table('barangs')
+      ->where('jenis_barang', '=', 'indihome')
+      ->get();
+    $telp = DB::table('barangs')
+      ->where('jenis_barang', '=', 'telepon')
+      ->get();
+    $intra = DB::table('barangs')
+      ->where('jenis_barang', '=', 'intranet')
+      ->get();
+    $wifi = DB::table('barangs')
+      ->where('jenis_barang', '=', 'wifiid')
+      ->get();
+    $asti = DB::table('barangs')
+      ->where('jenis_barang', '=', 'astinet')
+      ->get();
+    return view('auth/data-jarkomdat', ['indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti]);
   }
 
   public function data_barang_id()
   {
-    return view('auth/data-barang');
+    $datas = DB::table('barangs')
+      ->where('jenis_barang', '!=', 'site')
+      ->where('jenis_barang', '!=', 'alkom')
+      ->where('jenis_barang', '!=', 'indihome')
+      ->where('jenis_barang', '!=', 'telepon')
+      ->where('jenis_barang', '!=', 'intranet')
+      ->where('jenis_barang', '!=', 'wifiid')
+      ->where('jenis_barang', '!=', 'astinet')
+      ->get();
+    return view('auth/data-barang', ['datas' => $datas]);
   }
 
   public function data_giat_id()
   {
-    return view('auth/data-giat');
+    $giat = DB::table('datagiats')->get();
+
+    return view('auth/data-giat', ['giat' => $giat]);
   }
   public function indexPolres()
   {

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama_barang', 255)->nullable();
             $table->string('jenis_barang', 50)->nullable();
             $table->string('sumber', 50)->nullable();
+            $table->string('id_polres')->nullable();
             $table->integer('jml_barang')->nullable();
             $table->integer('kondisi_bb')->nullable();
             $table->integer('kondisi_rr')->nullable();

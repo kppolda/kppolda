@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- <?php echo getcwd() ?> -->
 
 <head>
     <!-- Required meta tags -->
@@ -23,6 +22,7 @@
     <link rel="stylesheet" href="/concept/assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="/concept/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
     <title>@yield('title')</title>
+    @yield('style')
 </head>
 
 <body>
@@ -138,7 +138,7 @@
 
                         @auth
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/concept/assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            {{-- <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/concept/assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name">
@@ -148,8 +148,8 @@
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                                <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout</a>
-                            </div>
+                            </div> --}}
+                            <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout</a>
                         </li>
                         @endauth
                     </ul>
@@ -174,6 +174,15 @@
                             <li class="nav-divider">
                                 Menu
                             </li>
+                            @guest
+                            <li class="nav-item ">
+                                <a class="nav-link {{ Request::is('*home*') ? 'active' : '' }}" href="/home">
+                                    <i class="fa fa-fw fa-home"></i>Home <span class="badge badge-success">6</span>
+                                </a>
+                            </li>
+                            @endguest
+                            @auth
+                            @if (Auth::user()->username === 'admin')
                             <li class="nav-item ">
                                 <a class="nav-link {{ Request::is('*home*') ? 'active' : '' }}" href="/home">
                                     <i class="fa fa-fw fa-home"></i>Home <span class="badge badge-success">6</span>
@@ -212,6 +221,38 @@
                                     <i class="fa fa-fw fa-cogs"></i>Data Daftar Giat
                                 </a>
                             </li>
+                            @else
+
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('*data-personil*') ? 'active' : '' }}" href="/data-personil/id">
+                                    <i class="fa fa-fw fa-users"></i>Data Personil
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link {{ Request::is('*data-inventaris*') ? 'active' : '' }}" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
+                                    <i class="fa fa-fw fa-tags"></i>Data Inventaris <span class="badge badge-success">6</span>
+                                </a>
+                                <div id="submenu-1" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/data-inventaris/data-jarkomrad/id">Data JarKomRad</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/data-inventaris/data-jarkomdat/id">Data JarKomDat</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/data-inventaris/data-barang/id">Data Barang</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('*data-giat*') ? 'active' : '' }}" href="/data-giat/id">
+                                    <i class="fa fa-fw fa-cogs"></i>Data Daftar Giat
+                                </a>
+                            </li>
+                            @endif
+                            @endauth
                         </ul>
                     </div>
                 </nav>

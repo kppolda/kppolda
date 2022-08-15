@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_polres', 60);
             $table->string('username', 25);
+            $table->string('pass', 100);
             $table->string('password', 100);
             $table->string('_token', 255)->nullable();
             $table->string('_method', 5)->nullable();

@@ -1,4 +1,4 @@
-@extends('layout/sidebar')
+@extends('layout/sidebar-admin')
 
 @section('title', 'Data Polsek')
 
@@ -119,7 +119,7 @@
                     <!-- ============================================================== -->
                     <!-- customer acquistion  -->
                     <!-- ============================================================== -->
-                    
+
                 </div>
             </div>
         </div>

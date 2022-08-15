@@ -396,7 +396,7 @@
                                         <tbody>
                                             @foreach ($indi as $inhome)
                                             <tr>
-                                                <td>{{$inhome->id}}</td>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{$inhome->nama_barang}}</td>
                                                 <td>{{$inhome->sumber}} </td>
                                                 <td>{{$inhome->jml_barang}}</td>
@@ -405,13 +405,77 @@
                                                 <td>{{$inhome->kondisi_rb}}</td>
                                                 <td>{{$inhome->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <form method="POST" action="{{ route('barang.delete', [$inhome->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$inhome->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
                                                 </td>
+                                                <div class="modal fade" id="editBarang{{$inhome->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['barang.edit',$inhome->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$inhome->nama_barang]) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label for="jenis_barang">Jenis Barang</label>
+                                                                    <input id="jenis_barang" value="{{$inhome->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('sumber','Sumber') }}
+                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$inhome->sumber]) }}
+                                                                </div>
+                                                                <label>Kondisi</label>
+                                                                <div class="row form-group pt-0">
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_bb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_rr]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_rb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total1','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('keterangan','Keterangan') }}
+                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$inhome->keterangan]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -449,7 +513,7 @@
                                         <tbody>
                                             @foreach ($telp as $telpon)
                                             <tr>
-                                                <td>{{$telpon->id}}</td>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{$telpon->nama_barang}}</td>
                                                 <td>{{$telpon->sumber}} </td>
                                                 <td>{{$telpon->jml_barang}}</td>
@@ -458,13 +522,77 @@
                                                 <td>{{$telpon->kondisi_rb}}</td>
                                                 <td>{{$telpon->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <form method="POST" action="{{ route('barang.delete', [$telpon->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$telpon->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
                                                 </td>
+                                                <div class="modal fade" id="editBarang{{$telpon->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['barang.edit',$telpon->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$telpon->nama_barang]) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label for="jenis_barang">Jenis Barang</label>
+                                                                    <input id="jenis_barang" value="{{$telpon->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('sumber','Sumber') }}
+                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$telpon->sumber]) }}
+                                                                </div>
+                                                                <label>Kondisi</label>
+                                                                <div class="row form-group pt-0">
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_bb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_rr]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_rb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total2','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('keterangan','Keterangan') }}
+                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$telpon->keterangan]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -502,7 +630,7 @@
                                         <tbody>
                                             @foreach ($intranet as $intran)
                                             <tr>
-                                                <td>{{$intran->id}}</td>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{$intran->nama_barang}}</td>
                                                 <td>{{$intran->sumber}} </td>
                                                 <td>{{$intran->jml_barang}}</td>
@@ -511,13 +639,77 @@
                                                 <td>{{$intran->kondisi_rb}}</td>
                                                 <td>{{$intran->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <form method="POST" action="{{ route('barang.delete', [$intran->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$intran->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
                                                 </td>
+                                                <div class="modal fade" id="editBarang{{$intran->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['barang.edit',$intran->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$intran->nama_barang]) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label for="jenis_barang">Jenis Barang</label>
+                                                                    <input id="jenis_barang" value="{{$intran->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('sumber','Sumber') }}
+                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$intran->sumber]) }}
+                                                                </div>
+                                                                <label>Kondisi</label>
+                                                                <div class="row form-group pt-0">
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_bb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_rr]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_rb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total3','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('keterangan','Keterangan') }}
+                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$intran->keterangan]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -555,7 +747,7 @@
                                         <tbody>
                                             @foreach ($wifi as $wifii)
                                             <tr>
-                                                <td>{{$wifii->id}}</td>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{$wifii->nama_barang}}</td>
                                                 <td>{{$wifii->sumber}} </td>
                                                 <td>{{$wifii->jml_barang}}</td>
@@ -564,13 +756,77 @@
                                                 <td>{{$wifii->kondisi_rb}}</td>
                                                 <td>{{$wifii->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <form method="POST" action="{{ route('barang.delete', [$wifii->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$wifii->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
                                                 </td>
+                                                <div class="modal fade" id="editBarang{{$wifii->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['barang.edit',$wifii->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$wifii->nama_barang]) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label for="jenis_barang">Jenis Barang</label>
+                                                                    <input id="jenis_barang" value="{{$wifii->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('sumber','Sumber') }}
+                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$wifii->sumber]) }}
+                                                                </div>
+                                                                <label>Kondisi</label>
+                                                                <div class="row form-group pt-0">
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_bb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_rr]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_rb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total4','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('keterangan','Keterangan') }}
+                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$wifii->keterangan]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -608,7 +864,7 @@
                                         <tbody>
                                             @foreach ($asti as $astin)
                                             <tr>
-                                                <td>{{$astin->id}}</td>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{$astin->nama_barang}}</td>
                                                 <td>{{$astin->sumber}} </td>
                                                 <td>{{$astin->jml_barang}}</td>
@@ -617,13 +873,77 @@
                                                 <td>{{$astin->kondisi_rb}}</td>
                                                 <td>{{$astin->keterangan}}</td>
                                                 <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <form method="POST" action="{{ route('barang.delete', [$astin->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editBarang{{$astin->id}}" class="btn btn-rounded btn-brand">Edit</button>
+                                                    <!-- Modal Edit -->
                                                 </td>
+                                                <div class="modal fade" id="editBarang{{$astin->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Barang</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['barang.edit',$astin->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_barang','Nama Barang') }}
+                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$astin->nama_barang]) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label for="jenis_barang">Jenis Barang</label>
+                                                                    <input id="jenis_barang" value="{{$astin->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('sumber','Sumber') }}
+                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$astin->sumber]) }}
+                                                                </div>
+                                                                <label>Kondisi</label>
+                                                                <div class="row form-group pt-0">
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_bb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_rr]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class='col'>
+                                                                        <div class="input-group">
+                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_rb]) }}
+                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total5','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('keterangan','Keterangan') }}
+                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$astin->keterangan]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
                                             @endforeach
                                         </tbody>

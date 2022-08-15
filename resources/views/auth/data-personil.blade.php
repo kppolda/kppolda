@@ -1,4 +1,4 @@
-@extends('layout/sidebar')
+@extends('layout/sidebar-admin')
 
 @section('title', 'Data Personil')
 
@@ -14,6 +14,7 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/home" class="breadcrumb-link">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Data Personil</li>
                                 </ol>
                             </nav>
@@ -27,54 +28,56 @@
             <div class="ecommerce-widget">
                 <!-- Modal -->
                 <div class="modal fade" id="dataPersonil" tabindex="-1" role="dialog" aria-labelledby="titlePersonil" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="titlePersonil">Tambah Data Personil</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="#" id="basicform" data-parsley-validate="">
-                            <div class="form-group ">
-                                <label for="namaPersonil">Nama Personil</label>
-                                <input id="namaPersonil" type="text" name="namaPersonil" data-parsley-trigger="change" required placeholder="Nama Personil" autocomplete="off" class="form-control form-control-lg">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titlePersonil">Tambah Data Personil</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group ">
-                                <label for="nrp">NRP</label>
-                                <input id="nrp" type="text" name="nrp" data-parsley-trigger="change" required placeholder="NRP" autocomplete="off" class="form-control form-control-lg">
+                            <div class="modal-body">
+                                {!! Form::open(['route' => 'personil.regisid', 'method' => 'POST']) !!}
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class='form-group'>
+                                    {{ Form::label('nama_personil','Nama') }}
+                                    {{ Form::text('nama_personil','',['class'=>'form-control','placeholder'=>'Nama']) }}
+                                </div>
+                                <div class="form-group">
+                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('nrp_personil','NRP') }}
+                                    {{ Form::text('nrp_personil','',['class'=>'form-control','placeholder'=>'NRP']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('pangkat_personil','Pangkat') }}
+                                    {{ Form::text('pangkat_personil','',['class'=>'form-control','placeholder'=>'Pangkat']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('jabatan_personil','Jabatan') }}
+                                    {{ Form::text('jabatan_personil','',['class'=>'form-control','placeholder'=>'Jabatan']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
+                                    {{ Form::text('pendidikan_dikum','',['class'=>'form-control','placeholder'=>'Pendidikan Dikum']) }}
+                                </div>
+                                <div class='form-group'>
+                                    {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
+                                    {{ Form::text('pendidikan_dikbang','',['class'=>'form-control','placeholder'=>'Pendidikan Dikbang']) }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                </div>
+                                {!! Form::close() !!}
                             </div>
-                            <div class="form-group ">
-                                <label for="polres">Polres</label>
-                                <input id="polres" type="text" name="polres" data-parsley-trigger="change" required placeholder="Polres" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="pangkat">Pangkat</label>
-                                <input id="pangkat" type="text" name="pangkat" data-parsley-trigger="change" required placeholder="Pangkat" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="jabatan">Jabatan</label>
-                                <input id="jabatan" type="text" name="jabatan" data-parsley-trigger="change" required placeholder="Jabtan" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="dikum">Pendidikan Dikum</label>
-                                <input id="dikum" type="text" name="dikum" data-parsley-trigger="change" required placeholder="Pendidikan Dikum" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                            <div class="form-group ">
-                                <label for="dikbang">Pendidikan Dikbang</label>
-                                <input id="dikbang" type="text" name="dikbang" data-parsley-trigger="change" required placeholder="Pendidikan Dikbang" autocomplete="off" class="form-control form-control-lg">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-                
+
                 <div class="row">
                     <!-- ============================================================== -->
 
@@ -104,26 +107,86 @@
                                                 <th class="border-0">Jabatan</th>
                                                 <th class="border-0">Pendidikan Dikum</th>
                                                 <th class="border-0">Pendidikan Dikbang</th>
-                                                <th class="border-0">action</th>
+                                                <th class="border-0">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($datas as $item)
+                                            @if (Auth::user()->username === $item->id_polres)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Samsul Guardian</td>
-                                                <td>089569</td>
-                                                <td>Kediri Kota</td>
-                                                <td>Iptu</td>
-                                                <td>Kanit Provos</td>
-                                                <td>Noinfo</td>
-                                                <td>Noinfo</td>
-                                                <td>
-                                                    <form method="POST" action="" style="margin:0;">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                <td>{{ $count++ }}</td>
+                                                <td>{{$item->nama_personil}}</td>
+                                                <td>{{$item->nrp_personil}} </td>
+                                                @if (isset($item->id_polres))
+                                                <td>{{$item->id_polres}} </td>
+                                                @else
+                                                <td></td>
+                                                @endif
+                                                <td>{{$item->pangkat_personil}}</td>
+                                                <td>{{$item->jabatan_personil}}</td>
+                                                <td>{{$item->pendidikan_dikum}}</td>
+                                                <td>{{$item->pendidikan_dikbang}}</td>
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('personil.deleteid', [$item->id]) }}">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editPersonil{{$item->id}}" class="btn btn-rounded btn-brand">Edit</button>
+
                                                 </td>
+                                                <div class="modal fade" id="editPersonil{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="titlePersonil" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titlePersonil">Edit Data Personil</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['personil.editid',$item->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_personil','Nama') }}
+                                                                    {{ Form::text('nama_personil','',['class'=>'form-control','placeholder'=>$item->nama_personil]) }}
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nrp_personil','NRP') }}
+                                                                    {{ Form::text('nrp_personil','',['class'=>'form-control','placeholder'=>$item->nrp_personil]) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('pangkat_personil','Pangkat') }}
+                                                                    {{ Form::text('pangkat_personil','',['class'=>'form-control','placeholder'=>$item->pangkat_personil]) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jabatan_personil','Jabatan') }}
+                                                                    {{ Form::text('jabatan_personil','',['class'=>'form-control','placeholder'=>$item->jabatan_personil]) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
+                                                                    {{ Form::text('pendidikan_dikum','',['class'=>'form-control','placeholder'=>$item->pendidikan_dikum]) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
+                                                                    {{ Form::text('pendidikan_dikbang','',['class'=>'form-control','placeholder'=>$item->pendidikan_dikbang]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
+                                            @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -138,7 +201,7 @@
                     <!-- ============================================================== -->
                     <!-- customer acquistion  -->
                     <!-- ============================================================== -->
-                    
+
                 </div>
             </div>
         </div>

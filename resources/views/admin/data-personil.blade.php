@@ -104,13 +104,13 @@
                                                 <th class="border-0">Jabatan</th>
                                                 <th class="border-0">Pendidikan Dikum</th>
                                                 <th class="border-0">Pendidikan Dikbang</th>
-                                                <th class="border-0" rowspan="2">Action</th>
+                                                <th class="border-0">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($datas as $item)
                                             <tr>
-                                                <td>{{$item->id}}</td>
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{$item->nama_personil}}</td>
                                                 <td>{{$item->nrp_personil}} </td>
                                                 @if (isset($item->id_polres))
@@ -122,14 +122,64 @@
                                                 <td>{{$item->jabatan_personil}}</td>
                                                 <td>{{$item->pendidikan_dikum}}</td>
                                                 <td>{{$item->pendidikan_dikbang}}</td>
-                                                <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
-                                                        <button type="submit" class="btn btn-rounded btn-brand">Edit</button>
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('polres.delete', [$item->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
+                                                    <button data-toggle="modal" data-target="#editPersonil{{$item->id}}" class="btn btn-rounded btn-brand">Edit</button>
+
                                                 </td>
+                                                <div class="modal fade" id="editPersonil{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="titlePersonil" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titlePersonil">Edit Data Personil</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['personil.editid',$item->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_personil','Nama') }}
+                                                                    {{ Form::text('nama_personil','',['class'=>'form-control','placeholder'=>$item->nama_personil]) }}
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{$item->id_polres}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nrp_personil','NRP') }}
+                                                                    {{ Form::text('nrp_personil','',['class'=>'form-control','placeholder'=>$item->nrp_personil]) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('pangkat_personil','Pangkat') }}
+                                                                    {{ Form::text('pangkat_personil','',['class'=>'form-control','placeholder'=>$item->pangkat_personil]) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('jabatan_personil','Jabatan') }}
+                                                                    {{ Form::text('jabatan_personil','',['class'=>'form-control','placeholder'=>$item->jabatan_personil]) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
+                                                                    {{ Form::text('pendidikan_dikum','',['class'=>'form-control','placeholder'=>$item->pendidikan_dikum]) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
+                                                                    {{ Form::text('pendidikan_dikbang','',['class'=>'form-control','placeholder'=>$item->pendidikan_dikbang]) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
                                             @endforeach
                                         </tbody>

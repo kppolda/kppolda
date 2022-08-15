@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('personils', function (Blueprint $table) {
             $table->id();
+            $table->string('polres')->nullable();
             $table->string('nama_personil', 255);
             $table->string('nrp_personil', 25)->unique();
             $table->string('pangkat_personil', 25);

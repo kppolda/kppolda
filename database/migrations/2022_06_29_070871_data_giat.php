@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('datagiats', function (Blueprint $table) {
             $table->id();
             $table->string('nama')->nullable();
+            $table->string('id_polres')->nullable();
             $table->string('image')->nullable();
             $table->string('tanggal')->nullable();
             $table->string('keterangan')->nullable();
