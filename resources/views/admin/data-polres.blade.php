@@ -113,7 +113,7 @@
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                     <button data-toggle="modal" data-target="#editBarang{{$item->id}}" class="btn mr-2 btn-rounded btn-brand">Edit</button>
-                                                    <a href="/home/{{$item->id}}" class="btn btn-rounded btn-info">Info</a>
+                                                    <a href="/laporan/{{$item->username}}" class="btn btn-rounded btn-info">Info</a>
                                                 </td>
                                                 <!-- Modal Edit -->
                                                 <div class="modal fade" id="editBarang{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">

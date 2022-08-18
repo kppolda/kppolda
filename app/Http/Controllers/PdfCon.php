@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Polres;
 use PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PdfCon extends Controller
 {
@@ -14,13 +17,21 @@ class PdfCon extends Controller
      */
     public function index()
     {
-        $pdf = PDF::loadView('/layout/pdf');
+        $person = DB::table('personils')
+        // ->where('polres', '=', $id)
+        ->get();
+
+        $pdf = PDF::loadView('/layout/pdf',['personil'=>$person]);
         return $pdf->stream();
     }
 
     public function index2()
     {
-        return view('/layout/pdf');
+
+        $person = DB::table('personils')
+        // ->where('polres', '=', $id)
+        ->get();
+        return view('/layout/pdf',['personil'=>$person]);
     }
 
     public function htmlPdf()

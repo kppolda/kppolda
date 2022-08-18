@@ -37,9 +37,9 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h1 class="m-0">Polres Kediri Kota</h1>
-                            <button type="button" class="btn btn-primary">
+                            <a href="/pdf" type="button" class="btn btn-primary">
                                 Export to PDF
-                            </button>
+                            </a>
                         </div>
                         <div class="card">
                             <h5 class="m-0 card-header">Data Personil</h5>

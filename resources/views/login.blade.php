@@ -34,7 +34,7 @@
     <!-- ============================================================== -->
     <!-- navbar -->
     <!-- ============================================================== -->
-    <div class="dashboard-header">
+    <!-- <div class="dashboard-header">
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
             <a class="navbar-brand" href="/">Dashboard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@
                     @guest
                     <div class="text-end">
                         <a href="{{ route('login.perform') }}" class="btn btn-outline-light me-2">Login</a>
-                        <!-- <a href="{{ route('register.perform') }}" class="btn btn-warning">Sign-up</a> -->
+                        <a href="{{ route('register.perform') }}" class="btn btn-warning">Sign-up</a>
                     </div>
                     @endguest
 
@@ -60,7 +60,7 @@
                 </ul>
             </div>
         </nav>
-    </div>
+    </div> -->
     <section class="container forms">
         <div class="form login">
             <div class="form-content">
@@ -112,6 +112,8 @@
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
 
                 </form>
+
+                <p class="text-center mt-3" style="font-size:14px;">Back to <a class="" href="/">Dashboard</a></p>
 
                 <!-- {{ Form::submit('Login',['class'=>'field button-field']) }}
                 {!! Form::close() !!} -->
