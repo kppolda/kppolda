@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('polres', [PolresCon::class, 'register'])->name('polres.regis');
 Route::post('personil', [PersonilCon::class, 'register'])->name('personil.regis');
-Route::delete('personil/{id}', [PersonilCon::class, 'destroy'])->name('barang.delete');
-Route::put('personil/{id}', [PersonilCon::class, 'edit'])->name('barang.edit');
+Route::delete('personil/{id}', [PersonilCon::class, 'destroy'])->name('personil.delete');
+Route::put('personil/{id}', [PersonilCon::class, 'edit'])->name('personil.edit');
 Route::post('barang', [BarangCon::class, 'tambah_barang'])->name('barang.regis');
 Route::delete('barang/{id}', [BarangCon::class, 'destroy_barang'])->name('barang.delete');
 Route::put('barang/{id}', [BarangCon::class, 'edit_barang'])->name('barang.edit');

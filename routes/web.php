@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PolresCon;
+use App\Http\Controllers\PdfCon;
 use App\Http\Controllers\PersonilCon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/data-inventaris/data-jarkomdat', [Controller::class, 'data_jarkomdat']);
         Route::get('/data-inventaris/data-barang', [Controller::class, 'data_barang']);
         Route::get('/data-giat', [Controller::class, 'data_giat']);
+        Route::get('/laporan/{id}', [Controller::class, 'laporan']);
     });
     Route::group(['middleware' => ['auth']], function () {
 
@@ -68,15 +70,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 // Route::get('/home', [PolresCon::class, 'index']);
 Route::get('/home', [Controller::class, 'home']);
 Route::get('/homedup', [Controller::class, 'homedup']);
-Route::get('/home/{id}', [Controller::class, 'laporan']);
 
 
-Route::get('/data-polsek/id', [Controller::class, 'data_polsek_id']);
-Route::get('/data-personil/id', [Controller::class, 'data_personil_id']);
-Route::get('/data-inventaris/data-jarkomrad/id', [Controller::class, 'data_jarkomrad_id']);
-Route::get('/data-inventaris/data-jarkomdat/id', [Controller::class, 'data_jarkomdat_id']);
-Route::get('/data-inventaris/data-barang/id', [Controller::class, 'data_barang_id']);
-Route::get('/data-giat/id', [Controller::class, 'data_giat_id']);
+Route::get('/html-pdf', [PdfCon::class, 'htmlpdf'])->name('htmlPdf');
+Route::get('/pdf', [PdfCon::class, 'index']);
+Route::get('/pdf2', [PdfCon::class, 'index2']);
+
 
 // Route::get('/', function () {
 //     return view('index');

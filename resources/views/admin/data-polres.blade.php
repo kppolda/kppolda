@@ -89,7 +89,7 @@
                                     <table id="polres" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
                                             <tr class="border-0">
-                                                <th class="border-0">id</th>
+                                                <th class="border-0">no</th>
                                                 <th class="border-0">nama polres</th>
                                                 <th class="border-0">username</th>
                                                 <th class="border-0">password</th>
@@ -99,7 +99,7 @@
                                         <tbody>
                                             @foreach ($users as $item)
                                             <tr>
-                                                <td>{{$item->id}}</td>
+                                                <td>{{$loop->iteration}}</td>
                                                 <!-- <td>
                                                     <div class="m-r-10"><img src="/concept/assets/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
                                                 </td> -->
@@ -112,45 +112,47 @@
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
-                                                    <button data-toggle="modal" data-target="#editBarang{{$item->id}}" class="btn btn-rounded btn-brand">Edit</button>
-                                                    <!-- Modal Edit -->
-                                                    <div class="modal fade" id="editBarang{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="titleBarang">Edit Data Polres</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    {!! Form::open(['route' => ['polres.edit',$item->id], 'method' => 'PUT']) !!}
-                                                                    {{ csrf_field() }}
-                                                                    {{ method_field('PUT') }}
-                                                                    <div class='form-group'>
-                                                                        {{ Form::label('nama_polres','Nama Polres') }}
-                                                                        {{ Form::text('nama_polres','',['class'=>'form-control','placeholder'=>'Nama Polres']) }}
-                                                                    </div>
-                                                                    <div class='form-group'>
-                                                                        {{ Form::label('username','Username') }}
-                                                                        {{ Form::text('username','',['class'=>'form-control','placeholder'=>'Username']) }}
-                                                                    </div>
-                                                                    <div class="form-group ">
-                                                                        <input id="password" type="text" name="password" value="{{$item->password}}" data-parsley-trigger="change" autocomplete="off" class="form-control total" hidden>
-                                                                    </div>
-                                                                    <div class="form-group ">
-                                                                        <input id="pass" type="text" name="pass" value="{{$item->pass}}" data-parsley-trigger="change" autocomplete="off" class="form-control total" hidden>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                                                        {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
-                                                                    </div>
-                                                                {!! Form::close() !!}
+                                                    <button data-toggle="modal" data-target="#editBarang{{$item->id}}" class="btn mr-2 btn-rounded btn-brand">Edit</button>
+                                                    <a href="/home/{{$item->id}}" class="btn btn-rounded btn-info">Info</a>
+                                                </td>
+                                                <!-- Modal Edit -->
+                                                <div class="modal fade" id="editBarang{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="titleBarang" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="titleBarang">Edit Data Polres</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
                                                             </div>
+                                                            <div class="modal-body">
+                                                                {!! Form::open(['route' => ['polres.edit',$item->id], 'method' => 'PUT']) !!}
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('PUT') }}
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('nama_polres','Nama Polres') }}
+                                                                    {{ Form::text('nama_polres',$item->nama_polres,['class'=>'form-control']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('username','Username') }}
+                                                                    {{ Form::text('username',$item->username,['class'=>'form-control']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('password','Password') }}
+                                                                    {{ Form::text('password',$item->pass,['class'=>'form-control qty2']) }}
+                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <input id="pass" type="text" name="pass" data-parsley-trigger="change" autocomplete="off" class="form-control total2" hidden>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                                                </div>
+                                                            {!! Form::close() !!}
                                                         </div>
                                                     </div>
-                                                </td>
+                                                </div>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -191,6 +193,12 @@
     $(document).on("change", ".qty1", function() {
         var inputString = $("#password").val();
         $(".total").val(inputString);
+    });
+</script>
+<script>
+    $(document).on("change", ".qty2", function() {
+        var inputString = $(".qty2").val();
+        $(".total2").val(inputString);
     });
 </script>
 

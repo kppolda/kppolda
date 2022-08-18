@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('polres', function (Blueprint $table) {
             $table->id();
             $table->string('nama_polres', 60);
-            $table->string('username', 25);
+            $table->string('username', 45);
             $table->string('pass', 100);
             $table->string('password', 100);
             $table->string('_token', 255)->nullable();

@@ -113,8 +113,8 @@
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$item->nama_personil}}</td>
                                                 <td>{{$item->nrp_personil}} </td>
-                                                @if (isset($item->id_polres))
-                                                <td>{{$item->id_polres}} </td>
+                                                @if (isset($item->polres))
+                                                <td>{{$item->polres}} </td>
                                                 @else
                                                 <td></td>
                                                 @endif
@@ -123,13 +123,12 @@
                                                 <td>{{$item->pendidikan_dikum}}</td>
                                                 <td>{{$item->pendidikan_dikbang}}</td>
                                                 <td class="d-flex">
-                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('polres.delete', [$item->id]) }}">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('personil.delete', [$item->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
                                                     </form>
                                                     <button data-toggle="modal" data-target="#editPersonil{{$item->id}}" class="btn btn-rounded btn-brand">Edit</button>
-
                                                 </td>
                                                 <div class="modal fade" id="editPersonil{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="titlePersonil" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -141,35 +140,35 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                {!! Form::open(['route' => ['personil.editid',$item->id], 'method' => 'PUT']) !!}
+                                                                {!! Form::open(['route' => ['personil.edit',$item->id], 'method' => 'PUT']) !!}
                                                                 {{ csrf_field() }}
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_personil','Nama') }}
-                                                                    {{ Form::text('nama_personil','',['class'=>'form-control','placeholder'=>$item->nama_personil]) }}
+                                                                    {{ Form::text('nama_personil',$item->nama_personil,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input id="id_polres" value='{{$item->id_polres}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                    <input id="polres" value='{{$item->polres}}' type="text" name="polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nrp_personil','NRP') }}
-                                                                    {{ Form::text('nrp_personil','',['class'=>'form-control','placeholder'=>$item->nrp_personil]) }}
+                                                                    {{ Form::text('nrp_personil',$item->nrp_personil,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('pangkat_personil','Pangkat') }}
-                                                                    {{ Form::text('pangkat_personil','',['class'=>'form-control','placeholder'=>$item->pangkat_personil]) }}
+                                                                    {{ Form::text('pangkat_personil',$item->pangkat_personil,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jabatan_personil','Jabatan') }}
-                                                                    {{ Form::text('jabatan_personil','',['class'=>'form-control','placeholder'=>$item->jabatan_personil]) }}
+                                                                    {{ Form::text('jabatan_personil',$item->jabatan_personil,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
-                                                                    {{ Form::text('pendidikan_dikum','',['class'=>'form-control','placeholder'=>$item->pendidikan_dikum]) }}
+                                                                    {{ Form::text('pendidikan_dikum',$item->pendidikan_dikum,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
-                                                                    {{ Form::text('pendidikan_dikbang','',['class'=>'form-control','placeholder'=>$item->pendidikan_dikbang]) }}
+                                                                    {{ Form::text('pendidikan_dikbang',$item->pendidikan_dikbang,['class'=>'form-control']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">

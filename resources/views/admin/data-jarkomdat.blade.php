@@ -77,7 +77,7 @@
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                    {{ Form::text('jml_barang','',['class'=>'form-control total1','placeholder'=>'Jumlah Barang']) }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total1' ,'readonly']) }}
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
@@ -143,7 +143,7 @@
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                    {{ Form::text('jml_barang','',['class'=>'form-control total2','placeholder'=>'Jumlah Barang']) }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total2' ,'readonly']) }}
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
@@ -209,7 +209,7 @@
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                    {{ Form::text('jml_barang','',['class'=>'form-control total3','placeholder'=>'Jumlah Barang']) }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total3' ,'readonly']) }}
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
@@ -275,7 +275,7 @@
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                    {{ Form::text('jml_barang','',['class'=>'form-control total4','placeholder'=>'Jumlah Barang']) }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total4' ,'readonly']) }}
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
@@ -341,7 +341,7 @@
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                    {{ Form::text('jml_barang','',['class'=>'form-control total5','placeholder'=>'Jumlah Barang']) }}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total5' ,'readonly']) }}
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
@@ -404,8 +404,8 @@
                                                 <td>{{$inhome->kondisi_rr}}</td>
                                                 <td>{{$inhome->kondisi_rb}}</td>
                                                 <td>{{$inhome->keterangan}}</td>
-                                                <td>
-                                                    <form method="POST" action="{{ route('barang.delete', [$inhome->id]) }}">
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('barang.delete', [$inhome->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
@@ -428,7 +428,7 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$inhome->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$inhome->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
@@ -436,36 +436,36 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$inhome->sumber]) }}
+                                                                    {{ Form::text('sumber',$inhome->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_bb]) }}
+                                                                            {{ Form::text('kondisi_bb',$inhome->kondisi_bb,['class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_rr]) }}
+                                                                            {{ Form::text('kondisi_rr',$inhome->kondisi_rr,['class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_rb]) }}
+                                                                            {{ Form::text('kondisi_rb',$inhome->kondisi_rb,['class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total1','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total1', 'readonly']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$inhome->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$inhome->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -521,8 +521,8 @@
                                                 <td>{{$telpon->kondisi_rr}}</td>
                                                 <td>{{$telpon->kondisi_rb}}</td>
                                                 <td>{{$telpon->keterangan}}</td>
-                                                <td>
-                                                    <form method="POST" action="{{ route('barang.delete', [$telpon->id]) }}">
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('barang.delete', [$telpon->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
@@ -545,7 +545,7 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$telpon->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$telpon->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
@@ -553,36 +553,36 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$telpon->sumber]) }}
+                                                                    {{ Form::text('sumber',$telpon->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_bb]) }}
+                                                                            {{ Form::text('kondisi_bb',$telpon->kondisi_bb,['class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_rr]) }}
+                                                                            {{ Form::text('kondisi_rr',$telpon->kondisi_rr,['class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_rb]) }}
+                                                                            {{ Form::text('kondisi_rb',$telpon->kondisi_rb,['class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total2','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total2', 'readonly']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$telpon->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$telpon->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -638,8 +638,8 @@
                                                 <td>{{$intran->kondisi_rr}}</td>
                                                 <td>{{$intran->kondisi_rb}}</td>
                                                 <td>{{$intran->keterangan}}</td>
-                                                <td>
-                                                    <form method="POST" action="{{ route('barang.delete', [$intran->id]) }}">
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('barang.delete', [$intran->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
@@ -662,7 +662,7 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$intran->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$intran->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
@@ -670,36 +670,36 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$intran->sumber]) }}
+                                                                    {{ Form::text('sumber',$intran->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_bb]) }}
+                                                                            {{ Form::text('kondisi_bb',$intran->kondisi_bb,['class'=>'form-control form-control-lg qty3']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_rr]) }}
+                                                                            {{ Form::text('kondisi_rr',$intran->kondisi_rr,['class'=>'form-control form-control-lg qty3']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_rb]) }}
+                                                                            {{ Form::text('kondisi_rb',$intran->kondisi_rb,['class'=>'form-control form-control-lg qty3']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total3','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total3', 'readonly']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$intran->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$intran->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -755,8 +755,8 @@
                                                 <td>{{$wifii->kondisi_rr}}</td>
                                                 <td>{{$wifii->kondisi_rb}}</td>
                                                 <td>{{$wifii->keterangan}}</td>
-                                                <td>
-                                                    <form method="POST" action="{{ route('barang.delete', [$wifii->id]) }}">
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('barang.delete', [$wifii->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
@@ -779,7 +779,7 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$wifii->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$wifii->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
@@ -787,36 +787,36 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$wifii->sumber]) }}
+                                                                    {{ Form::text('sumber',$wifii->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_bb]) }}
+                                                                            {{ Form::text('kondisi_bb',$wifii->kondisi_bb,['class'=>'form-control form-control-lg qty4']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_rr]) }}
+                                                                            {{ Form::text('kondisi_rr',$wifii->kondisi_rr,['class'=>'form-control form-control-lg qty4']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_rb]) }}
+                                                                            {{ Form::text('kondisi_rb',$wifii->kondisi_rb,['class'=>'form-control form-control-lg qty4']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total4','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total4', 'readonly']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$wifii->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$wifii->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -872,8 +872,8 @@
                                                 <td>{{$astin->kondisi_rr}}</td>
                                                 <td>{{$astin->kondisi_rb}}</td>
                                                 <td>{{$astin->keterangan}}</td>
-                                                <td>
-                                                    <form method="POST" action="{{ route('barang.delete', [$astin->id]) }}">
+                                                <td class="d-flex">
+                                                    <form class="mb-0 mr-2" method="POST" action="{{ route('barang.delete', [$astin->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>
@@ -896,7 +896,7 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$astin->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$astin->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
@@ -904,36 +904,36 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$astin->sumber]) }}
+                                                                    {{ Form::text('sumber',$astin->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_bb]) }}
+                                                                            {{ Form::text('kondisi_bb',$astin->kondisi_bb,['class'=>'form-control form-control-lg qty5']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_rr]) }}
+                                                                            {{ Form::text('kondisi_rr',$astin->kondisi_rr,['class'=>'form-control form-control-lg qty5']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_rb]) }}
+                                                                            {{ Form::text('kondisi_rb',$astin->kondisi_rb,['class'=>'form-control form-control-lg qty5']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total5','placeholder'=>'Jumlah Barang', 'readonly']) }}
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total5', 'readonly']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$astin->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$astin->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">

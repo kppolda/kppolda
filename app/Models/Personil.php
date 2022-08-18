@@ -13,7 +13,7 @@ class Personil extends Model
     protected $fillable = [
         'nama_personil',
         'nrp_personil',
-        'id_polres',
+        'polres',
         'pangkat_personil',
         'jabatan_personil',
         'pendidikan_dikum',
