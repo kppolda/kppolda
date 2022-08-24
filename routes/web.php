@@ -56,6 +56,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/data-inventaris/data-barang', [Controller::class, 'data_barang']);
         Route::get('/data-giat', [Controller::class, 'data_giat']);
         Route::get('/laporan/{id}', [Controller::class, 'laporan']);
+        Route::get('/pdf/{id}', [PdfCon::class, 'index']);
     });
     Route::group(['middleware' => ['auth']], function () {
 
@@ -73,8 +74,8 @@ Route::get('/homedup', [Controller::class, 'homedup']);
 
 
 Route::get('/html-pdf', [PdfCon::class, 'htmlpdf'])->name('htmlPdf');
-Route::get('/pdf', [PdfCon::class, 'index']);
 Route::get('/pdf2', [PdfCon::class, 'index2']);
+// Route::get('/pdf', [PdfCon::class, 'index']);
 
 
 // Route::get('/', function () {

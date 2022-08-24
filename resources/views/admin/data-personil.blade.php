@@ -54,7 +54,15 @@
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('jabatan_personil','Jabatan') }}
-                                    {{ Form::text('jabatan_personil','',['class'=>'form-control','placeholder'=>'Jabatan']) }}
+                                    <select name="jabatan_personil" class="form-control" id="jabatan_personil">
+                                        <option hidden>Pilih jabatan</option>
+                                        <option value="kasitik">KASI TIK</option>
+                                        <option value="baurmin">BAURMIN</option>
+                                        <option value="baurtekinfo">BAUR TEKINFO</option>
+                                        <option value="baurtekom">BAUR TEKOM</option>
+                                        <option value="bamintekinfo">BAMIN TEKINFO</option>
+                                        <option value="bamintekom">BAMIN TEKOM</option>
+                                    </select>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
@@ -160,7 +168,15 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jabatan_personil','Jabatan') }}
-                                                                    {{ Form::text('jabatan_personil',$item->jabatan_personil,['class'=>'form-control']) }}
+                                                                    <select name="jabatan_personil" class="form-control" id="jabatan_personil">
+                                                                        <option hidden value="{{$item->jabatan_personil}}">{{$item->jabatan_personil}}</option>
+                                                                        <option value="kasitik">KASI TIK</option>
+                                                                        <option value="baurmin">BAURMIN</option>
+                                                                        <option value="baurtekinfo">BAUR TEKINFO</option>
+                                                                        <option value="baurtekom">BAUR TEKOM</option>
+                                                                        <option value="bamintekinfo">BAMIN TEKINFO</option>
+                                                                        <option value="bamintekom">BAMIN TEKOM</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}

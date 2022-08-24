@@ -101,7 +101,9 @@ class Controller extends BaseController
     ->where('id_polres', '=', $id)
     ->where('jenis_barang', '=', 'alkom')
     ->get();
-    $giat = DB::table('datagiats')->get();
+    $giat = DB::table('datagiats')
+    ->where('id_polres', '=', $id)
+    ->get();
     $datas = DB::table('barangs')
     ->where('id_polres', '=', $id)
     ->where('jenis_barang', '!=', 'site')
@@ -134,7 +136,6 @@ class Controller extends BaseController
     ->get();
     return view('admin/full-table', ['indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti, 'barang'=>$datas,
      'giat'=>$giat,'site' => $site, 'alkom' => $alkom, 'personil'=>$person]);
-    // return view('admin/full-table');
   }
 
   public function data_polsek_id()
