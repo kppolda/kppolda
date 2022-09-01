@@ -78,21 +78,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class='form-group'>
+                                {{-- <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                     {{ Form::text('jml_barang','',['class'=>'form-control total1', 'readonly']) }}
-                                </div>
+                                </div> --}}
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                    {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
-                                </div>
-                                {!! Form::close() !!}
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                            </div>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -147,21 +146,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class='form-group'>
+                                {{-- <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                     {{ Form::text('jml_barang','',['class'=>'form-control total2', 'readonly']) }}
-                                </div>
+                                </div> --}}
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                    {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
-                                </div>
-                                {!! Form::close() !!}
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
+                            </div>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -216,21 +214,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class='form-group'>
+                                {{-- <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                     {{ Form::text('jml_barang','',['class'=>'form-control total3', 'readonly']) }}
-                                </div>
+                                </div> --}}
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
-                                </div>
-                                {!! Form::close() !!}
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                            </div>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -285,21 +282,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class='form-group'>
+                                {{-- <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                     {{ Form::text('jml_barang','',['class'=>'form-control total4', 'readonly']) }}
-                                </div>
+                                </div> --}}
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
-                                </div>
-                                {!! Form::close() !!}
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                            </div>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -354,21 +350,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class='form-group'>
+                                {{-- <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                     {{ Form::text('jml_barang','',['class'=>'form-control total5', 'readonly']) }}
-                                </div>
+                                </div> --}}
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
-                                </div>
-                                {!! Form::close() !!}
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                            </div>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -389,7 +384,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="indihome" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
@@ -409,10 +404,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $a=1;
+                                            @endphp
                                             @foreach ($indi as $inhome)
                                             @if (Auth::user()->username === $inhome->id_polres)
                                             <tr>
-                                                <td>{{$inhome->id}}</td>
+                                                <td>{{$a++}}</td>
                                                 <td>{{$inhome->nama_barang}}</td>
                                                 <td>{{$inhome->sumber}} </td>
                                                 <td>{{$inhome->jml_barang}}</td>
@@ -446,6 +444,9 @@
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
                                                                     {{ Form::text('nama_barang',$inhome->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
                                                                     <input id="jenis_barang" value="{{$inhome->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
@@ -475,10 +476,10 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                                                     {{ Form::text('jml_barang','',['class'=>'form-control total1', 'readonly']) }}
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
                                                                     {{ Form::text('keterangan',$inhome->keterangan,['class'=>'form-control form-control-lg']) }}
@@ -508,7 +509,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="telepon" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
@@ -528,10 +529,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $b=1;
+                                            @endphp
                                             @foreach ($telp as $telpon)
                                             @if (Auth::user()->username === $telpon->id_polres)
                                             <tr>
-                                                <td>{{$telpon->id}}</td>
+                                                <td>{{$b++}}</td>
                                                 <td>{{$telpon->nama_barang}}</td>
                                                 <td>{{$telpon->sumber}} </td>
                                                 <td>{{$telpon->jml_barang}}</td>
@@ -565,6 +569,9 @@
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
                                                                     {{ Form::text('nama_barang',$telpon->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
                                                                     <input id="jenis_barang" value="{{$telpon->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
@@ -594,10 +601,10 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                                                     {{ Form::text('jml_barang','',['class'=>'form-control total2','readonly']) }}
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
                                                                     {{ Form::text('keterangan',$telpon->keterangan,['class'=>'form-control form-control-lg']) }}
@@ -627,7 +634,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="intranet" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
@@ -647,10 +654,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $c=1;
+                                            @endphp
                                             @foreach ($intranet as $intran)
                                             @if (Auth::user()->username === $intran->id_polres)
                                             <tr>
-                                                <td>{{$intran->id}}</td>
+                                                <td>{{$c++}}</td>
                                                 <td>{{$intran->nama_barang}}</td>
                                                 <td>{{$intran->sumber}} </td>
                                                 <td>{{$intran->jml_barang}}</td>
@@ -684,6 +694,9 @@
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
                                                                     {{ Form::text('nama_barang',$intran->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
                                                                     <input id="jenis_barang" value="{{$intran->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
@@ -713,10 +726,10 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                                                     {{ Form::text('jml_barang','',['class'=>'form-control total3', 'readonly']) }}
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
                                                                     {{ Form::text('keterangan',$intran->keterangan,['class'=>'form-control form-control-lg']) }}
@@ -746,7 +759,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="wifiid" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
@@ -766,10 +779,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $d=1;
+                                            @endphp
                                             @foreach ($wifi as $wifii)
                                             @if (Auth::user()->username === $wifii->id_polres)
                                             <tr>
-                                                <td>{{$wifii->id}}</td>
+                                                <td>{{$d++}}</td>
                                                 <td>{{$wifii->nama_barang}}</td>
                                                 <td>{{$wifii->sumber}} </td>
                                                 <td>{{$wifii->jml_barang}}</td>
@@ -803,6 +819,9 @@
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
                                                                     {{ Form::text('nama_barang',$wifii->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
                                                                     <input id="jenis_barang" value="{{$wifii->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
@@ -832,10 +851,10 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                                                     {{ Form::text('jml_barang','',['class'=>'form-control total4', 'readonly']) }}
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
                                                                     {{ Form::text('keterangan',$wifii->keterangan,['class'=>'form-control form-control-lg']) }}
@@ -865,7 +884,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="astinet" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
@@ -885,10 +904,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $e=1;
+                                            @endphp
                                             @foreach ($asti as $astin)
                                             @if (Auth::user()->username === $astin->id_polres)
                                             <tr>
-                                                <td>{{$astin->id}}</td>
+                                                <td>{{$e++}}</td>
                                                 <td>{{$astin->nama_barang}}</td>
                                                 <td>{{$astin->sumber}} </td>
                                                 <td>{{$astin->jml_barang}}</td>
@@ -922,6 +944,9 @@
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
                                                                     {{ Form::text('nama_barang',$astin->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
                                                                     <input id="jenis_barang" value="{{$astin->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
@@ -951,10 +976,10 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                                                     {{ Form::text('jml_barang','',['class'=>'form-control total5', 'readonly']) }}
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
                                                                     {{ Form::text('keterangan',$astin->keterangan,['class'=>'form-control form-control-lg']) }}

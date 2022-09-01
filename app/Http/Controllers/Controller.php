@@ -16,7 +16,13 @@ class Controller extends BaseController
 
   public function home()
   {
-    return view('admin/home');
+    $datas = DB::table('personils')->get();
+    $users = DB::table('polres')
+    ->where('id', '!=', '1')
+    ->get();
+    $invent = DB::table('barangs')->get();
+
+    return view('admin/home', ['users' => $users, 'personil'=>$datas, 'invent'=>$invent]);
   }
 
   public function homedup()
@@ -225,4 +231,27 @@ class Controller extends BaseController
   //   $users = DB::table('polres')->get();
   //   return view('admin/data-polres', ['users' => $users]);
   // }
+
+  public function data_hambatan_id()
+  {
+    $hambatan = DB::table('hambatans')
+      ->where('jenis', '=', 'hambatan')
+      ->get();
+    $count = 1;
+    return view('auth/data-hambatan', ['hambatan' => $hambatan, 'count'=>$count]);
+    }
+
+  public function kesimpulan_saran_id()
+  {
+    $kesimpulan = DB::table('hambatans')
+      ->where('jenis', '=', 'kesimpulan')
+      ->get();
+    $saran = DB::table('hambatans')
+      ->where('jenis', '=', 'saran')
+      ->get();
+    $count = 1;
+    $i = 1;
+    return view('auth/cobakesimpulan', ['kesimpulan' => $kesimpulan, 'saran'=>$saran, 'count'=>$count, 'i'=>$i]);
+    }
+
 }

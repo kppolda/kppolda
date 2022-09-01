@@ -24,7 +24,7 @@ class PolresCon extends Controller
         $user->password=$request->password;
         $user->nama_polres=$request->nama_polres;
         $user->username=$request->username;
-        $user->pass=$request->pass;
+        $user->pass=$request->password;
         $user->save();
         return redirect()->back();
     }

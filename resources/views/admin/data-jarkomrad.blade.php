@@ -73,22 +73,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class='form-group'>
+                                {{-- <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                     {{ Form::text('jml_barang','',['class'=>'form-control total1','readonly']) }}
-                                </div>
+                                </div> --}}
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
 
+                            </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                     {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
                                 </div>
                                 {!! Form::close() !!}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,22 +140,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class='form-group'>
+                                {{-- <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                     {{ Form::text('jml_barang','',['class'=>'form-control total2','readonly']) }}
-                                </div>
+                                </div> --}}
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
                                 </div>
 
+                            </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                     {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
                                 </div>
                                 {!! Form::close() !!}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="site" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
@@ -196,9 +196,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $a=1;
+                                            @endphp
                                             @foreach ($site as $sites)
                                             <tr>
-                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$a++}}</td>
                                                 <td>{{$sites->nama_barang}}</td>
                                                 <td>{{$sites->sumber}} </td>
                                                 <td>{{$sites->jml_barang}}</td>
@@ -261,10 +264,10 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                                                     {{ Form::text('jml_barang','',['class'=>'form-control total1','readonly']) }}
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
                                                                     {{ Form::text('keterangan',$sites->keterangan,['class'=>'form-control form-control-lg']) }}
@@ -293,7 +296,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="alkom" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
@@ -313,9 +316,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $b=1;
+                                            @endphp
                                             @foreach ($alkom as $alkoms)
                                             <tr>
-                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$b++}}</td>
                                                 <td>{{$alkoms->nama_barang}}</td>
                                                 <td>{{$alkoms->sumber}} </td>
                                                 <td>{{$alkoms->jml_barang}}</td>
@@ -378,10 +384,10 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                                                     {{ Form::text('jml_barang','',['class'=>'form-control total2','readonly']) }}
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
                                                                     {{ Form::text('keterangan',$alkoms->keterangan,['class'=>'form-control form-control-lg']) }}

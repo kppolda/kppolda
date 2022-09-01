@@ -4,27 +4,6 @@
 
 @section('style')
 <style>
-    #fullpage {
-        display: none;
-        position: absolute;
-        z-index: 9999;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-size: contain;
-        background-repeat: no-repeat no-repeat;
-        background-position: center center;
-        background-color: black;
-    }
-    .gallery {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        align-content: center;
-        object-position: center;
-        transition: transform ease-in-out 0.5s;
-    }
 </style>
 @endsection
 
@@ -82,12 +61,12 @@
                                         <input accept="image/*" type="file" class="custom-file-input" name="image" id="image" onchange="readURL(this);" >
                                         <!-- <img id="blah" src="http://placehold.it/180" alt="your image" style="max-width: 180px;"/> -->
                                     </div>
+                                </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,7 +87,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="giat" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
@@ -129,7 +108,7 @@
                                                 <td>{{$item->tanggal}}</td>
                                                 <td>{{$item->keterangan}}</td>
                                                 @if (isset($item->image))
-                                                <td><img src="{{asset('/'.$item->image)}}" style="height: 100px; width: flex;"></td>
+                                                <td><img id="myImg{{$item->id}}" src="{{asset('/'.$item->image)}}" style="height: 100px; width: flex;"></td>
                                                 @else
                                                 @endif
                                                 <td>
@@ -188,17 +167,4 @@
         }
     }
 </script>
-<script>
-    function getPics() {} //just for this demo
-        const imgs = document.querySelectorAll('.gallery img');
-        const fullPage = document.querySelector('#fullpage');
-
-        imgs.forEach(img => {
-        img.addEventListener('click', function() {
-            fullPage.style.backgroundImage = 'url(' + img.src + ')';
-            fullPage.style.display = 'block';
-        });
-    });
-</script>
-
 @endsection

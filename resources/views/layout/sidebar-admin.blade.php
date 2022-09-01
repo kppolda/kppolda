@@ -149,7 +149,7 @@
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
                             </div> --}}
-                            <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout</a>
+                            <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout   <i class="fa fa-fw fa-sign-out-alt"></i></a>
                         </li>
                         @endauth
                     </ul>
@@ -249,6 +249,16 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('*data-giat*') ? 'active' : '' }}" href="/data-giat/id">
                                     <i class="fa fa-fw fa-cogs"></i>Data Daftar Giat
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('*data-hambatan*') ? 'active' : '' }}" href="/data-hambatan/id">
+                                    <i class="fa fa-fw fa-minus-circle"></i>Data Hambatan
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('*kesimpulan-saran*') ? 'active' : '' }}" href="/kesimpulan-saran/id">
+                                    <i class="fa fa-fw fa-hands"></i>Kesimpulan Saran
                                 </a>
                             </li>
                             @endif

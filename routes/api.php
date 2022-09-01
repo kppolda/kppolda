@@ -5,6 +5,7 @@ use App\Http\Controllers\PersonilCon;
 use App\Http\Controllers\PolresCon;
 use App\Http\Controllers\BarangCon;
 use App\Http\Controllers\DataGiatCon;
+use App\Http\Controllers\HambatanCon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,11 @@ Route::post('giat_id', [DataGiatCon::class, 'save_id'])->name('giat.tambahid');
 Route::post('login', [PolresCon::class, 'login'])->name('polres.login');
 Route::put('polres/{id}', [PolresCon::class, 'edit'])->name('polres.edit');
 Route::delete('polres/{id}', [PolresCon::class, 'destroy'])->name('polres.delete');
+
+Route::post('hambatan', [HambatanCon::class, 'tambah_hambatan'])->name('hambatan.regis');
+Route::put('hambatan/{id}', [HambatanCon::class, 'edit_hambatan'])->name('hambatan.edit');
+Route::delete('hambatan/{id}', [HambatanCon::class, 'destroy_hambatan'])->name('hambatan.delete');
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

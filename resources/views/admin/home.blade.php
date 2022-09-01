@@ -32,7 +32,11 @@
                             <div class="card-body">
                                 <h5 class="text-muted">Jumlah Polres</h5>
                                 <div class="metric-value d-inline-block">
-                                    <h1 class="mb-1">39</h1>
+                                    <h1 class="mb-1">@foreach ($users as $polres)
+                                        @if ($loop->remaining===0)
+                                        {{$loop->count}}
+                                        @endif
+                                        @endforeach</h1>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +46,11 @@
                             <div class="card-body">
                                 <h5 class="text-muted">Jumlah Personil</h5>
                                 <div class="metric-value d-inline-block">
-                                    <h1 class="mb-1">823</h1>
+                                    <h1 class="mb-1">@foreach ($personil as $person)
+                                        @if ($loop->remaining===0)
+                                        {{$loop->count}}
+                                        @endif
+                                        @endforeach</h1>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +60,11 @@
                             <div class="card-body">
                                 <h5 class="text-muted">Jumlah Inventaris</h5>
                                 <div class="metric-value d-inline-block">
-                                    <h1 class="mb-1">235,862,648</h1>
+                                    <h1 class="mb-1">@foreach ($invent as $invents)
+                                        @if ($loop->remaining===0)
+                                        {{$loop->count}}
+                                        @endif
+                                        @endforeach</h1>
                                 </div>
                             </div>
                         </div>

@@ -152,7 +152,7 @@
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
                                 {{ csrf_field() }}
                                 {{ method_field('POST') }}
-                                <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout</a>
+                                <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout   <i class="fa fa-fw fa-sign-out-alt"></i></a>
                             </div>
                         </li>
                         @endauth

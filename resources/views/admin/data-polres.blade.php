@@ -57,13 +57,13 @@
                                 <div class="form-group ">
                                     <input id="pass" type="text" name="pass" data-parsley-trigger="change" autocomplete="off" class="form-control total" hidden>
                                 </div>
+                            </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                     {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
                                 </div>
                                 {!! Form::close() !!}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="polres" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
@@ -139,11 +139,11 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('password','Password') }}
-                                                                    {{ Form::text('password',$item->pass,['class'=>'form-control qty2']) }}
+                                                                    {{ Form::text('password',$item->pass,['class'=>'form-control qty3']) }}
                                                                 </div>
-                                                                <div class="form-group ">
-                                                                    <input id="pass" type="text" name="pass" data-parsley-trigger="change" autocomplete="off" class="form-control total2" hidden>
-                                                                </div>
+                                                                {{-- <div class='form-group'>
+                                                                    <input id="pass" type="text" name="pass" data-parsley-trigger="change" autocomplete="off" class="form-control total3" readonly>
+                                                                </div> --}}
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                     <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
@@ -191,7 +191,7 @@
 
 <script>
     $(document).on("change", ".qty1", function() {
-        var inputString = $("#password").val();
+        var inputString = $(".qty1").val();
         $(".total").val(inputString);
     });
 </script>
@@ -199,6 +199,12 @@
     $(document).on("change", ".qty2", function() {
         var inputString = $(".qty2").val();
         $(".total2").val(inputString);
+    });
+</script>
+<script>
+    $(document).on("change", ".qty3", function() {
+        var inputString = $("#password").val();
+        $(".total3").val(inputString);
     });
 </script>
 

@@ -65,6 +65,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/data-inventaris/data-jarkomdat/id', [Controller::class, 'data_jarkomdat_id']);
         Route::get('/data-inventaris/data-barang/id', [Controller::class, 'data_barang_id']);
         Route::get('/data-giat/id', [Controller::class, 'data_giat_id']);
+        Route::get('/data-hambatan/id', [Controller::class, 'data_hambatan_id']);
+        Route::get('/kesimpulan-saran/id', [Controller::class, 'kesimpulan_saran_id']);
     });
 });
 

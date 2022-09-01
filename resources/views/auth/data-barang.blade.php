@@ -74,10 +74,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class='form-group'>
+                                {{-- <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                     {{ Form::text('jml_barang','',['class'=>'form-control total','placeholder'=>'Jumlah Barang']) }}
-                                </div>
+                                </div> --}}
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
@@ -110,7 +110,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="barang" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">
@@ -131,17 +131,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $a=1;
+                                            @endphp
                                             @foreach ($datas as $item)
+                                            @if (Auth::user()->username === $item->id_polres)
                                             <tr>
-                                                <td>
-                                                    {{ $loop->iteration }} {{-- Starts with 1 --}}</td>
+                                                <td>{{$a++}}</td>
                                                 <td>{{$item->nama_barang}}</td>
                                                 <td>{{$item->jenis_barang}} </td>
                                                 <td>{{$item->sumber}} </td>
-                                                <!-- @if (isset($item->id_polres))
-                                                @else
-                                                <td></td>
-                                                @endif -->
                                                 <td>{{$item->jml_barang}}</td>
                                                 <td>{{$item->kondisi_bb}}</td>
                                                 <td>{{$item->kondisi_rr}}</td>
@@ -174,6 +173,9 @@
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
                                                                     {{ Form::text('nama_barang',$item->nama_barang,['class'=>'form-control']) }}
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jenis_barang','Jenis Barang') }}
                                                                     {{ Form::text('jenis_barang',$item->jenis_barang,['class'=>'form-control']) }}
@@ -203,10 +205,10 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                                                     {{ Form::text('jml_barang','',['class'=>'form-control total','readonly']) }}
-                                                                </div>
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
                                                                     {{ Form::text('keterangan',$item->keterangan,['class'=>'form-control form-control-lg']) }}
@@ -221,6 +223,7 @@
                                                     </div>
                                                 </div>
                                             </tr>
+                                            @endif
                                             @endforeach
                                         </tbody>
                                     </table>

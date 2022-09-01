@@ -80,7 +80,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="polsek" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">

@@ -75,13 +75,13 @@
                                     {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
                                     {{ Form::text('pendidikan_dikbang','',['class'=>'form-control','placeholder'=>'Pendidikan Dikbang']) }}
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
-                                </div>
-                                {!! Form::close() !!}
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                            </div>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                                     Tambah Data
                                 </button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="personil" class="table table-striped table-bordered" style="width:100%">
                                         <thead class="bg-light">

@@ -2,7 +2,8 @@
 
 use Carbon\Carbon;
 
-$message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
+$message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3);
+$bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
 @endphp
 
 <!DOCTYPE html>
@@ -55,6 +56,9 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                 font-size: 14px;
                 margin-bottom: 15px;
             }
+            .page-break {
+                page-break-after: always;
+            }
         </style>
     </head>
     <body>
@@ -68,10 +72,10 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                 @endforeach</p>
         </div>
         <div class="center mx-auto my-3" style="width:400px;">
-            <img src="{{asset('/images/logo.png')}}" alt="tribarata" width="100px;" class="mb-2">
+            <img src="{{public_path('/images/logo.png')}}" alt="tribarata" width="100px;" class="mb-2">
             <p>LAPORAN BULANAN</p>
             <p>SIE TIK POLRI {{$polres[0]->nama_polres}}</p>
-            <p>BULAN "nama bulan"</p>
+            <p>BULAN {{$bulan[Carbon::now()->month]}}</p>
         </div>
         <div>
             <ol type="I">
@@ -91,13 +95,13 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                         <li class="sub-bab">Maksud dan Tujuan</li>
                         <div class="konten">
                             <ol type="a">
-                                <li>Memberikan gambaran secara garis besar tentang pelaksanaan tugas dan kegiatan Sitikpol "{nama polres}" pada "nama bulan" "tahun"</li>
-                                <li>Dapatnya dijadikan bahan masukan bagi pimpinan guna mengevaluasi pelaksanaan tugas Sitikpol "{nama polres}" yang telah dilaksanakan, guna untuk menentukan kebijakan pelaksanaan tugas lebih lanjut.</li>
+                                <li>Memberikan gambaran secara garis besar tentang pelaksanaan tugas dan kegiatan Sitikpol {{$polres[0]->nama_polres}} pada {{$bulan[Carbon::now()->month]}} {{Carbon::now()->format('Y')}}</li>
+                                <li>Dapatnya dijadikan bahan masukan bagi pimpinan guna mengevaluasi pelaksanaan tugas Sitikpol {{$polres[0]->nama_polres}} yang telah dilaksanakan, guna untuk menentukan kebijakan pelaksanaan tugas lebih lanjut.</li>
                             </ol>
                         </div>
                         <li class="sub-bab">Ruang Lingkup</li>
                         <div class="konten">
-                            <p style="margin:0;">Laporan bulanan Sitikpol "{nama polres}" ini dibuat meliputi situasi dan kondisi personil maupun materiil yang ada pelaksanaan tugas dan hasil yang di capai serta hambatan yang terjadi dan saran yang diajukan</p>
+                            <p style="margin:0;">Laporan bulanan Sitikpol {{$polres[0]->nama_polres}} ini dibuat meliputi situasi dan kondisi personil maupun materiil yang ada pelaksanaan tugas dan hasil yang di capai serta hambatan yang terjadi dan saran yang diajukan</p>
                         </div>
                         <li class="sub-bab">Tata-Urut</li>
                         <div class="konten">
@@ -118,7 +122,7 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                         <li class="sub-bab">Kondisi Personil</li>
                         <div class="konten">
                             <ol type="a">
-                                <li>Secara kuantitas jumlah personil Sitikpol "{nama polres}" serta pendidikan terakhir (Dikum/Dikbang) yang dimiliki dapat digambarkan sebagai berikut:</li>
+                                <li>Secara kuantitas jumlah personil Sitikpol {{$polres[0]->nama_polres}} serta pendidikan terakhir (Dikum/Dikbang) yang dimiliki dapat digambarkan sebagai berikut:</li>
                                 <li>Berdasarkan Perkap Kapolri Nomor 23 Tahun 2010 tanggal 30 September 2010 maka jumlah DSPP personil Sitikpol kekurangan 1 personil, sedangkan Riil Personil di Sitikpol saat ini Jumlah "" Personil yang terdiri dari: "" KaSitikpol dibantu "" Baur, "" Bamin, dan "" Baurmin, adapun kekurangan ""</li>
                                 <table>""</table>
                             </ol>
@@ -145,7 +149,7 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                                         </tr>
                                         @foreach ($site as $sites)
                                         <tr>
-                                            <td>{{$sites->id}}</td>
+                                            <td>{{$loop->iteration}}</td>
                                             <td>{{$sites->nama_barang}}</td>
                                             <td>{{$sites->sumber}} </td>
                                             <td>{{$sites->jml_barang}}</td>
@@ -175,7 +179,7 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                                         </tr>
                                         @foreach ($alkom as $alkoms)
                                         <tr>
-                                            <td>{{$alkoms->id}}</td>
+                                            <td>{{$loop->iteration}}</td>
                                             <td>{{$alkoms->nama_barang}}</td>
                                             <td>{{$alkoms->sumber}} </td>
                                             <td>{{$alkoms->jml_barang}}</td>
@@ -207,7 +211,7 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                                         </tr>
                                         @foreach ($indi as $inhome)
                                         <tr>
-                                            <td>{{$inhome->id}}</td>
+                                            <td>{{$loop->iteration}}</td>
                                             <td>{{$inhome->nama_barang}}</td>
                                             <td>{{$inhome->sumber}} </td>
                                             <td>{{$inhome->jml_barang}}</td>
@@ -237,7 +241,7 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                                         </tr>
                                         @foreach ($telp as $telpon)
                                         <tr>
-                                            <td>{{$telpon->id}}</td>
+                                            <td>{{$loop->iteration}}</td>
                                             <td>{{$telpon->nama_barang}}</td>
                                             <td>{{$telpon->sumber}} </td>
                                             <td>{{$telpon->jml_barang}}</td>
@@ -267,7 +271,7 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                                         </tr>
                                         @foreach ($intranet as $intran)
                                         <tr>
-                                            <td>{{$intran->id}}</td>
+                                            <td>{{$loop->iteration}}</td>
                                             <td>{{$intran->nama_barang}}</td>
                                             <td>{{$intran->sumber}} </td>
                                             <td>{{$intran->jml_barang}}</td>
@@ -297,7 +301,7 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                                         </tr>
                                         @foreach ($wifi as $wifii)
                                         <tr>
-                                            <td>{{$wifii->id}}</td>
+                                            <td>{{$loop->iteration}}</td>
                                             <td>{{$wifii->nama_barang}}</td>
                                             <td>{{$wifii->sumber}} </td>
                                             <td>{{$wifii->jml_barang}}</td>
@@ -327,7 +331,7 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                                         </tr>
                                         @foreach ($asti as $astin)
                                         <tr>
-                                            <td>{{$astin->id}}</td>
+                                            <td>{{$loop->iteration}}</td>
                                             <td>{{$astin->nama_barang}}</td>
                                             <td>{{$astin->sumber}} </td>
                                             <td>{{$astin->jml_barang}}</td>
@@ -375,7 +379,7 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                                     </table>
                                 </div>
                                 <li>Anggaran sumber dari Pemeliharaan Komlek/Harkomlek, Pengepakan/pengiriman surat, dukungan sehari-hari Perkantoran/pengadaan ATK dan Dukungan operasional Kepolisian lainnya dalam DIPA TA 2022:
-                                    <br>Alokasi anggaran yang diterima Sitikpol "{nama polres}" dalam TA "tahun" sebesar ""
+                                    <br>Alokasi anggaran yang diterima Sitikpol {{$polres[0]->nama_polres}} dalam TA {{Carbon::now()->format('Y')}} sebesar ""
                                 </li>
                             </ol>
                         </div>
@@ -391,8 +395,8 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                                 <li>Dalam pelaksanaan tugas sebagaimana tersebut di atas, Sitikpol menyelenggarakan fungsi:</li>
                                 <ol type="1">
                                     <li>Pemeliharaan jaringan komunikasi Kepolisian dan data, serta pelayanan telekomunikasi.</li>
-                                    <li>Pemeliharaan jaringan komunikasi meliputi jaringan internet, intranet/VPN dan jaringan komunikasi radio/alkom di lingkungan "{nama polres}" dan Polsek Jajaran.</li>
-                                    <li>Penyelenggaraan koordinasi dalam penggunaan teknologi komunikasi dan informasi dengan satuan fungsi di lingkungan "{nama polres}"</li>
+                                    <li>Pemeliharaan jaringan komunikasi meliputi jaringan internet, intranet/VPN dan jaringan komunikasi radio/alkom di lingkungan {{$polres[0]->nama_polres}} dan Polsek Jajaran.</li>
+                                    <li>Penyelenggaraan koordinasi dalam penggunaan teknologi komunikasi dan informasi dengan satuan fungsi di lingkungan {{$polres[0]->nama_polres}}</li>
                                 </ol>
                                 <li>Dalam pelaksanaan tugas, KaSitikpol dibantu oleh:</li>
                                 <ol type="1">
@@ -401,11 +405,15 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                                 </ol>
                             </ol>
                         </div>
-                        <li class="sub-bab">Pelaksanaan tugas Sitikpol "{nama polres}" bulan "bulan" "tahun":</li>
+                        <li class="sub-bab">Pelaksanaan tugas Sitikpol {{$polres[0]->nama_polres}} bulan {{$bulan[Carbon::now()->month]}} {{Carbon::now()->format('Y')}}</li>
                         <div class="konten">
                             <ol type="a">
-                                <li>"Nama Giat"</li>
-                                <p>"Keterangan Giat"</p>
+                                {{-- <li>"Nama Giat"</li>
+                                <p>"Keterangan Giat"</p> --}}
+                                @foreach ($giat as $item)
+                                    <li>{{$item->nama}}</li>
+                                    <p>{{$item->keterangan}}</p>
+                                @endforeach
                             </ol>
                         </div>
                     </ol>
@@ -413,7 +421,11 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                 <li class="bab">HAMBATAN YANG TERJADI</li>
                 <div class="konten">
                     <ol type="1">
-                        <li>"isian"</li>
+                        @foreach ($hambatan as $item)
+                        <li>
+                            {{$item->hambatan}}
+                        </li>
+                        @endforeach
                     </ol>
                 </div>
                 <li class="bab">KESIMPULAN DAN SARAN</li>
@@ -421,19 +433,27 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
                     <ol type="1">
                         <li class="sub-bab">Kesimpulan</li>
                         <div class="konten">
-                            <p>"isian"</p>
+                            @foreach ($kesimpulan as $item)
+                            <p>
+                                {{$item->kesimpulan}}
+                            </p>
+                            @endforeach
                         </div>
                         <li class="sub-bab">Saran</li>
                         <div class="konten">
                             <ol type="a">
-                                <li>"isian"</li>
+                                @foreach ($saran as $item)
+                                <li>
+                                    {{$item->saran}}
+                                </li>
+                                @endforeach
                             </ol>
                         </div>
                     </ol>
                 </div>
                 <li class="bab">PENUTUP</li>
                 <div>
-                    <p>Demikian laporan bulanan Sitikpol "{nama polres}" ini dibuat untuk menjadi maklum dan dapatnya dijadikan masukan bahan evaluasi bahan pimpinan di satuan atas guna menentukan kebijakan pelaksanaan tugas selanjutnya yang lebih baik.</p>
+                    <p>Demikian laporan bulanan Sitikpol {{$polres[0]->nama_polres}} ini dibuat untuk menjadi maklum dan dapatnya dijadikan masukan bahan evaluasi bahan pimpinan di satuan atas guna menentukan kebijakan pelaksanaan tugas selanjutnya yang lebih baik.</p>
                 </div>
             </ol>
         </div>
@@ -444,8 +464,7 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
             <p>
                 @foreach ($message as $mess)
                 @if ($loop->first) @continue @endif
-                    {{$mess}}
-                @endforeach, {{Carbon::now()->format('d F Y')}}</p>
+                    {{$mess}}@endforeach, {{Carbon::now()->format('d ') . $bulan[Carbon::now()->month] . Carbon::now()->format(' Y')}}</p>
             <p>Kasi TIK {{$polres[0]->nama_polres}}</p>
             @endif
             <br><br><br><br>
@@ -458,7 +477,35 @@ $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3)
             <p>{{$kasitik[0]->pangkat_personil}}, NRP {{$kasitik[0]->nrp_personil}}</p>
             @endif
         </div>
-
+        <br>
+        <div class="page-break"></div>
+        <div class="text-center mx-auto my-3" style="">
+            <p><u>DOKUMENTASI GIAT TIK {{$polres[0]->nama_polres}} PADA BULAN {{$bulan[Carbon::now()->month]}}</u></p>
+        </div>
+        <div class="tabel">
+            <table style="width:100%">
+                <tr>
+                    <th >No</th>
+                    <th >Nama Giat</th>
+                    <th >Tanggal Giat</th>
+                    <th >Keterangan</th>
+                    <th >Dokumentasi</th>
+                </tr>
+                @foreach ($giat as $item)
+                <tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$item->nama}}</td>
+                    <td>{{$item->tanggal}}</td>
+                    <td>{{$item->keterangan}}</td>
+                    @if (isset($item->image))
+                    <td><img src="{{public_path('/'.$item->image)}}" style="height: 100px; width: flex;"></td>
+                    @else
+                    <td></td>
+                    @endif
+                </tr>
+                @endforeach
+            </table>
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     </body>
