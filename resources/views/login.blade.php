@@ -28,6 +28,10 @@
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
+    <!-- toast -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 </head>
 
 <body>
@@ -162,3 +166,18 @@
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function() {
+
+    // show when page load
+    toastr.success('Username atau Password salah', 'Warning');
+
+    $('#linkButton').click(function() {
+       // show when the button is clicked
+       toastr.success('Click Button');
+
+    });
+
+});
+</script>

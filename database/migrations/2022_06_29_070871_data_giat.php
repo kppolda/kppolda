@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('id_polres')->nullable();
             $table->string('image')->nullable();
             $table->string('tanggal')->nullable();
-            $table->string('keterangan')->nullable();
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

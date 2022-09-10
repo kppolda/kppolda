@@ -50,34 +50,48 @@
                                     {{ Form::text('jenis_barang','',['class'=>'form-control','placeholder'=>'Jenis Barang']) }}
                                 </div>
                                 <div class='form-group'>
+                                    {{ Form::label('polres','Polres') }}
+                                    <select name="polres" class="form-control" id="polres">
+                                        <option hidden>Pilih Polres</option>
+                                        @foreach ($polres as $user)
+                                        <option value="{{$user->username}}">{{$user->nama_polres}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class='form-group'>
                                     {{ Form::label('sumber','Sumber') }}
-                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>'Sumber']) }}
+                                    <select name="sumber" class="form-control" id="sumber">
+                                        <option hidden>Pilih Sumber</option>
+                                        <option value="pengadaan">Pengadaan</option>
+                                        <option value="hibah">Hibah</option>
+                                        <option value="lainnya">Lainnya</option>
+                                    </select>
                                 </div>
                                 <label>Kondisi</label>
                                 <div class="row form-group pt-0">
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class='form-group'>
+                                {{-- <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
                                     {{ Form::text('jml_barang','',['class'=>'form-control total']) }}
-                                </div>
+                                </div> --}}
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
@@ -118,6 +132,7 @@
                                                 <th class="border-0 align-middle" rowspan="2">No</th>
                                                 <th class="border-0 align-middle" rowspan="2">Nama Barang</th>
                                                 <th class="border-0 align-middle" rowspan="2">Jenis Barang</th>
+                                                <th class="border-0 align-middle" rowspan="2">Polres</th>
                                                 <th class="border-0 align-middle" rowspan="2">Sumber</th>
                                                 <th class="border-0 align-middle" rowspan="2">Jumlah Barang</th>
                                                 <th class="border-0 text-center" colspan="3">Kondisi</th>
@@ -132,11 +147,19 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($datas as $item)
+                                            @php
+                                            $message = preg_split('/[\s,]+/', $item->id_polres, 3);
+                                            @endphp
                                             <tr>
                                                 <td>
                                                     {{ $loop->iteration }} {{-- Starts with 1 --}}</td>
                                                 <td>{{$item->nama_barang}}</td>
-                                                <td>{{$item->jenis_barang}} </td>
+                                                <td>{{$item->jenis_barang}} </std>
+                                                <td>@foreach ($polres as $user)
+                                                    @if ($user->username === $item->id_polres)
+                                                    {{$user->nama_polres}}
+                                                    @endif
+                                                    @endforeach</td>
                                                 <td>{{$item->sumber}} </td>
                                                 <!-- @if (isset($item->id_polres))
                                                 @else
@@ -185,27 +208,27 @@
                                                                     <div class="row form-group pt-0">
                                                                         <div class='col'>
                                                                             <div class="input-group">
-                                                                                {{ Form::text('kondisi_bb',$item->kondisi_bb,['class'=>'form-control form-control-lg qty1']) }}
+                                                                                {{ Form::number('kondisi_bb',$item->kondisi_bb,['class'=>'form-control form-control-lg qty1']) }}
                                                                                 <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                             </div>
                                                                         </div>
                                                                         <div class='col'>
                                                                             <div class="input-group">
-                                                                                {{ Form::text('kondisi_rr',$item->kondisi_rr,['class'=>'form-control form-control-lg qty1']) }}
+                                                                                {{ Form::number('kondisi_rr',$item->kondisi_rr,['class'=>'form-control form-control-lg qty1']) }}
                                                                                 <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                             </div>
                                                                         </div>
                                                                         <div class='col'>
                                                                             <div class="input-group">
-                                                                                {{ Form::text('kondisi_rb',$item->kondisi_rb,['class'=>'form-control form-control-lg qty1']) }}
+                                                                                {{ Form::number('kondisi_rb',$item->kondisi_rb,['class'=>'form-control form-control-lg qty1']) }}
                                                                                 <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class='form-group'>
+                                                                    {{-- <div class='form-group'>
                                                                         {{ Form::label('jml_barang','Jumlah Barang') }}
                                                                         {{ Form::text('jml_barang','',['class'=>'form-control total']) }}
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <div class='form-group'>
                                                                         {{ Form::label('keterangan','Keterangan') }}
                                                                         {{ Form::text('keterangan',$item->keterangan,['class'=>'form-control form-control-lg']) }}

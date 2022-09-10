@@ -176,7 +176,7 @@
 
 @section('script')
 
-<script>
+{{-- <script>
     $(document).ready(function() {
         $('#hambatan').DataTable({
             dom: 'Bfrtip',
@@ -185,7 +185,7 @@
             ]
         });
     });
-</script>
+</script> --}}
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {

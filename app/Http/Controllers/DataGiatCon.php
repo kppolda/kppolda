@@ -49,4 +49,10 @@ class DataGiatCon extends Controller
 
     return redirect('data-giat/id')->with('success', 'New post has been added!');
   }
+  public function destroy_giat($id)
+  {
+      DB::table('datagiats')->where('id', $id)->delete();
+      DB::table('datagiats')->get();
+      return redirect()->back();
+  }
 }

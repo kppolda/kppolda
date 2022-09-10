@@ -34,6 +34,7 @@ Route::post('personil_id', [PersonilCon::class, 'register_id'])->name('personil.
 Route::delete('personil_id/{id}', [PersonilCon::class, 'destroy_id'])->name('personil.deleteid');
 Route::put('personil_id/{id}', [PersonilCon::class, 'edit_id'])->name('personil.editid');
 Route::post('giat_id', [DataGiatCon::class, 'save_id'])->name('giat.tambahid');
+Route::delete('giat/{id}', [DataGiatCon::class, 'destroy_giat'])->name('giat.delete');
 
 Route::post('login', [PolresCon::class, 'login'])->name('polres.login');
 Route::put('polres/{id}', [PolresCon::class, 'edit'])->name('polres.edit');

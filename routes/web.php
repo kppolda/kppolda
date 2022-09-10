@@ -40,8 +40,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          * Login Routes
          */
         Route::get('/login', 'LoginController@show')->name('login.show');
-        Route::post('/login', 'PolresCon@login')->name('login.perform');
-    });
+        Route::post('/login', 'PolresCon@login')->name('login.perform');    });
 
     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
     Route::group(['middleware' => ['admin']], function () {
@@ -67,6 +66,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/data-giat/id', [Controller::class, 'data_giat_id']);
         Route::get('/data-hambatan/id', [Controller::class, 'data_hambatan_id']);
         Route::get('/kesimpulan-saran/id', [Controller::class, 'kesimpulan_saran_id']);
+        Route::get('/daftar-lapbul/id', [Controller::class, 'daftar_lapbul_id']);
     });
 });
 

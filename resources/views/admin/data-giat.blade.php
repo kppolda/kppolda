@@ -44,6 +44,15 @@
                             <div class="modal-body">
                                 <form action="/api/giat" method="POST" id="basicform" data-parsley-validate="" enctype="multipart/form-data">
                                     {{ csrf_field() }}
+                                    <div class='form-group'>
+                                        {{ Form::label('polres','Polres') }}
+                                        <select name="polres" class="form-control" id="polres">
+                                            <option hidden>Pilih Polres</option>
+                                            @foreach ($polres as $user)
+                                            <option value="{{$user->username}}">{{$user->nama_polres}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="form-group ">
                                         <label for="nama">Nama Giat</label>
                                         <input id="nama" type="text" name="nama" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
@@ -54,7 +63,7 @@
                                     </div>
                                     <div class="form-group ">
                                         <label for="keterangan">Keterangan</label>
-                                        <input id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
+                                        <textarea id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg"></textarea>
                                     </div>
                                     <div class="custom-file">
                                         <label class="custom-file-label" for="image">Dokumentasi</label>
@@ -94,6 +103,7 @@
                                             <tr class="border-0">
                                                 <th class="border-0">No</th>
                                                 <th class="border-0">Nama Giat</th>
+                                                <th class="border-0">Polres</th>
                                                 <th class="border-0">Tanggal Giat</th>
                                                 <th class="border-0">Keterangan</th>
                                                 <th class="border-0">Dokumentasi</th>
@@ -105,6 +115,11 @@
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$item->nama}}</td>
+                                                <td>@foreach ($polres as $user)
+                                                    @if ($user->username === $item->id_polres)
+                                                    {{$user->nama_polres}}
+                                                    @endif
+                                                    @endforeach</td>
                                                 <td>{{$item->tanggal}}</td>
                                                 <td>{{$item->keterangan}}</td>
                                                 @if (isset($item->image))
@@ -112,7 +127,7 @@
                                                 @else
                                                 @endif
                                                 <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
+                                                    <form method="POST" action="{{ route('giat.delete', [$item->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>

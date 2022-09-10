@@ -28,10 +28,12 @@ $bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli"
             }
             .center p {
                 font-size: 18px;
+                text-transform: uppercase;
             }
             .header {
                 border-bottom: 1px solid #000;
                 padding-bottom: 5px;
+                text-transform: uppercase;
             }
             .bab {
                 font-size: 14px;
@@ -479,7 +481,7 @@ $bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli"
         </div>
         <br>
         <div class="page-break"></div>
-        <div class="text-center mx-auto my-3" style="">
+        <div class="text-center mx-auto my-3" style="text-transform: uppercase;">
             <p><u>DOKUMENTASI GIAT TIK {{$polres[0]->nama_polres}} PADA BULAN {{$bulan[Carbon::now()->month]}}</u></p>
         </div>
         <div class="tabel">

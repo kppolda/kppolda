@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="form-group ">
                                         <label for="keterangan">Keterangan</label>
-                                        <input id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg">
+                                        <textarea id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg"></textarea>
                                     </div>
                                     <div class="custom-file">
                                         <label class="custom-file-label" for="image">Dokumentasi</label>
@@ -117,10 +117,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $a=1;
+                                            @endphp
                                             @foreach ($giat as $item)
                                             @if (Auth::user()->username === $item->id_polres)
                                             <tr>
-                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$a++}}</td>
                                                 <td>{{$item->nama}}</td>
                                                 <td>{{$item->tanggal}}</td>
                                                 <td>{{$item->keterangan}}</td>
@@ -130,7 +133,7 @@
                                                 <td></td>
                                                 @endif
                                                 <td>
-                                                    <form method="POST" action="{{ route('polres.delete', [$item->id]) }}">
+                                                    <form method="POST" action="{{ route('giat.delete', [$item->id]) }}">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" class="btn btn-rounded btn-danger">Delete</button>

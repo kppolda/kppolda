@@ -37,65 +37,83 @@ class Controller extends BaseController
 
   public function data_personil()
   {
+    $users = DB::table('polres')
+    ->where('id', '!=', '1')
+    ->get();
     $datas = DB::table('personils')->get();
 
-    return view('admin/data-personil', ['datas' => $datas]);
+    return view('admin/data-personil', ['datas' => $datas, 'polres' => $users]);
   }
 
   public function data_jarkomrad()
   {
-    $site = DB::table('barangs')
+      $users = DB::table('polres')
+      ->where('id', '!=', '1')
+      ->get();
+      $site = DB::table('barangs')
       ->where('jenis_barang', '=', 'site')
       ->get();
     $alkom = DB::table('barangs')
       ->where('jenis_barang', '=', 'alkom')
       ->get();
-    return view('admin/data-jarkomrad', ['site' => $site, 'alkom' => $alkom]);
-  }
+      return view('admin/data-jarkomrad', ['site' => $site, 'alkom' => $alkom, 'polres' => $users]);
+    }
 
-  public function data_jarkomdat()
-  {
-    $indi = DB::table('barangs')
-      ->where('jenis_barang', '=', 'indihome')
-      ->get();
-    $telp = DB::table('barangs')
-      ->where('jenis_barang', '=', 'telepon')
-      ->get();
-    $intra = DB::table('barangs')
-      ->where('jenis_barang', '=', 'intranet')
-      ->get();
-    $wifi = DB::table('barangs')
-      ->where('jenis_barang', '=', 'wifiid')
-      ->get();
-    $asti = DB::table('barangs')
-      ->where('jenis_barang', '=', 'astinet')
-      ->get();
-    return view('admin/data-jarkomdat', ['indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti]);
-  }
+    public function data_jarkomdat()
+    {
+        $users = DB::table('polres')
+        ->where('id', '!=', '1')
+        ->get();
+        $indi = DB::table('barangs')
+        ->where('jenis_barang', '=', 'indihome')
+        ->get();
+        $telp = DB::table('barangs')
+        ->where('jenis_barang', '=', 'telepon')
+        ->get();
+        $intra = DB::table('barangs')
+        ->where('jenis_barang', '=', 'intranet')
+        ->get();
+        $wifi = DB::table('barangs')
+        ->where('jenis_barang', '=', 'wifiid')
+        ->get();
+        $asti = DB::table('barangs')
+        ->where('jenis_barang', '=', 'astinet')
+        ->get();
+        return view('admin/data-jarkomdat', ['indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti, 'polres' => $users]);
+    }
 
-  public function data_barang()
-  {
-    $datas = DB::table('barangs')
-      ->where('jenis_barang', '!=', 'site')
-      ->where('jenis_barang', '!=', 'alkom')
-      ->where('jenis_barang', '!=', 'indihome')
-      ->where('jenis_barang', '!=', 'telepon')
-      ->where('jenis_barang', '!=', 'intranet')
-      ->where('jenis_barang', '!=', 'wifiid')
+    public function data_barang()
+    {
+        $users = DB::table('polres')
+        ->where('id', '!=', '1')
+        ->get();
+        $datas = DB::table('barangs')
+        ->where('jenis_barang', '!=', 'site')
+        ->where('jenis_barang', '!=', 'alkom')
+        ->where('jenis_barang', '!=', 'indihome')
+        ->where('jenis_barang', '!=', 'telepon')
+        ->where('jenis_barang', '!=', 'intranet')
+        ->where('jenis_barang', '!=', 'wifiid')
       ->where('jenis_barang', '!=', 'astinet')
       ->get();
-    return view('admin/data-barang', ['datas' => $datas]);
+    return view('admin/data-barang', ['datas' => $datas, 'polres' => $users]);
   }
 
   public function data_giat()
   {
+    $users = DB::table('polres')
+    ->where('id', '!=', '1')
+    ->get();
     $giat = DB::table('datagiats')->get();
 
-    return view('admin/data-giat', ['giat' => $giat]);
+    return view('admin/data-giat', ['giat' => $giat, 'polres' => $users]);
   }
 
   public function laporan($id)
   {
+    $users = DB::table('polres')
+    ->where('username', '=', $id)
+    ->get();
     $person = DB::table('personils')
     ->where('polres', '=', $id)
     ->get();
@@ -141,7 +159,7 @@ class Controller extends BaseController
     ->where('jenis_barang', '=', 'astinet')
     ->get();
     return view('admin/full-table', ['indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti, 'barang'=>$datas,
-     'giat'=>$giat,'site' => $site, 'alkom' => $alkom, 'personil'=>$person]);
+     'giat'=>$giat,'site' => $site, 'alkom' => $alkom, 'personil'=>$person, 'polres' => $users]);
   }
 
   public function data_polsek_id()
@@ -251,7 +269,13 @@ class Controller extends BaseController
       ->get();
     $count = 1;
     $i = 1;
-    return view('auth/cobakesimpulan', ['kesimpulan' => $kesimpulan, 'saran'=>$saran, 'count'=>$count, 'i'=>$i]);
+    return view('auth/kesimpulan-saran', ['kesimpulan' => $kesimpulan, 'saran'=>$saran, 'count'=>$count, 'i'=>$i]);
     }
+
+  public function daftar_lapbul_id()
+  {
+    $lapbul = DB::table('lapbuls')->get();
+    return view('auth/daftar-lapbul', ['lapbul'=>$lapbul]);
+  }
 
 }

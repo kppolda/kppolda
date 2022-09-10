@@ -69,7 +69,14 @@
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
-                                    {{ Form::text('pendidikan_dikum','',['class'=>'form-control','placeholder'=>'Pendidikan Dikum']) }}
+                                    <select name="pendidikan_dikum" class="form-control" id="pendidikan_dikum">
+                                        <option hidden>Pilih Dikum</option>
+                                        <option value="sd">SD</option>
+                                        <option value="smp">SMP</option>
+                                        <option value="sma">SMA</option>
+                                        <option value="s1">S1</option>
+                                        <option value="s2">S2</option>
+                                    </select>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
@@ -110,7 +117,7 @@
                                                 <th class="border-0">No</th>
                                                 <th class="border-0">Nama</th>
                                                 <th class="border-0">NRP</th>
-                                                <th class="border-0">Polres</th>
+                                                {{-- <th class="border-0">Polres</th> --}}
                                                 <th class="border-0">Pangkat</th>
                                                 <th class="border-0">Jabatan</th>
                                                 <th class="border-0">Pendidikan Dikum</th>
@@ -125,11 +132,11 @@
                                                 <td>{{ $count++ }}</td>
                                                 <td>{{$item->nama_personil}}</td>
                                                 <td>{{$item->nrp_personil}} </td>
-                                                @if (isset($item->polres))
+                                                {{-- @if (isset($item->polres))
                                                 <td>{{$item->polres}} </td>
                                                 @else
                                                 <td></td>
-                                                @endif
+                                                @endif --}}
                                                 <td>{{$item->pangkat_personil}}</td>
                                                 <td>{{$item->jabatan_personil}}</td>
                                                 <td>{{$item->pendidikan_dikum}}</td>

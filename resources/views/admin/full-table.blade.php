@@ -15,6 +15,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/home" class="breadcrumb-link">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/data-polres" class="breadcrumb-link">Data Polres</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Laporan</li>
                                 </ol>
                             </nav>
@@ -36,7 +37,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h1 class="m-0">Polres Kediri Kota</h1>
+                            <h1 class="m-0">{{$polres[0]->nama_polres}}</h1>
                             <a href="/pdf/{{Request::segment(2)}}" type="button" class="btn btn-primary" target="_blank">
                                 Export to PDF
                             </a>
@@ -1083,7 +1084,7 @@
 
 @section('script')
 
-<script>
+{{-- <script>
     $(document).ready(function() {
         $('#polres').DataTable({
             dom: 'Bfrtip',
@@ -1092,6 +1093,6 @@
             ]
         });
     });
-</script>
+</script> --}}
 
 @endsection

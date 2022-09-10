@@ -16,7 +16,7 @@ class SendMonthlyPDF extends Command
      *
      * @var string
      */
-    protected $signature = 'pdf:donlot';
+    protected $signature = 'pdf:donlot {id}';
 
     /**
      * The console command description.
@@ -32,6 +32,8 @@ class SendMonthlyPDF extends Command
      */
     public function handle()
     {
-        $this->info(Carbon::now());
+        $userId = $this->argument('id');
+        $bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+        DB::insert('insert into lapbuls (id_polres, bulan) values (?, ?)', [$userId, $bulan[Carbon::now()->month]]);
     }
 }

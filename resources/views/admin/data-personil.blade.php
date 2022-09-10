@@ -41,6 +41,15 @@
                                 {{ csrf_field() }}
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
+                                    {{ Form::label('polres','Polres') }}
+                                    <select name="polres" class="form-control" id="polres">
+                                        <option hidden>Pilih Polres</option>
+                                        @foreach ($polres as $user)
+                                        <option value="{{$user->username}}">{{$user->nama_polres}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class='form-group'>
                                     {{ Form::label('nama_personil','Nama') }}
                                     {{ Form::text('nama_personil','',['class'=>'form-control','placeholder'=>'Nama']) }}
                                 </div>
@@ -66,7 +75,14 @@
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
-                                    {{ Form::text('pendidikan_dikum','',['class'=>'form-control','placeholder'=>'Pendidikan Dikum']) }}
+                                    <select name="pendidikan_dikum" class="form-control" id="pendidikan_dikum">
+                                        <option hidden>Pilih Dikum</option>
+                                        <option value="sd">SD</option>
+                                        <option value="smp">SMP</option>
+                                        <option value="sma">SMA</option>
+                                        <option value="s1">S1</option>
+                                        <option value="s2">S2</option>
+                                    </select>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
@@ -121,11 +137,11 @@
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$item->nama_personil}}</td>
                                                 <td>{{$item->nrp_personil}} </td>
-                                                @if (isset($item->polres))
-                                                <td>{{$item->polres}} </td>
-                                                @else
-                                                <td></td>
-                                                @endif
+                                                <td>@foreach ($polres as $user)
+                                                    @if ($user->username === $item->polres)
+                                                    {{$user->nama_polres}}
+                                                    @endif
+                                                    @endforeach</td>
                                                 <td>{{$item->pangkat_personil}}</td>
                                                 <td>{{$item->jabatan_personil}}</td>
                                                 <td>{{$item->pendidikan_dikum}}</td>

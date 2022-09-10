@@ -73,7 +73,7 @@
                                 {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
                             </div>
                             {!! Form::close() !!}
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>
@@ -159,36 +159,36 @@
                                                     {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
                                                 </div>
                                                 {!! Form::close() !!}
-                                                </div>
                                             </div>
                                         </div>
+                                    </div>
                                     <form class="mb-0 ml-2" method="POST" action="{{ route('hambatan.delete', [$item->id]) }}">
                                         {{-- <button type="submit" class="btn btn-rounded btn-brand">Edit</button> --}}
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="submit" class="btn btn-secondary">Delete</button>
                                     </form>
-                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <p>
-                                        {{$item->kesimpulan}}
-                                    </p>
-                                </div {{$i--}}>
-                                @else
-                                @endif
-                                @endforeach
-                                @if ($i >= 1)
-                                <div class="d-flex">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#kesimpulan">
-                                        Tambah Kesimpulan
-                                    </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    {{$item->kesimpulan}}
+                                </p>
+                            </div {{$i--}}>
+                            @else
+                            @endif
+                            @endforeach
+                            @if ($i >= 1)
+                            <div class="d-flex">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#kesimpulan">
+                                    Tambah Kesimpulan
+                                </button>
+                            </div>
+                            </div>
+                            <div class="card-body">
+                            </div>
 
-                                @endif
+                            @endif
                             </div>
 
                         <div class="card">

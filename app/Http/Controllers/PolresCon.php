@@ -13,18 +13,45 @@ class PolresCon extends Controller
 {
     public function register(Request $request)
     {
-        Polres::create($request->all());
+        $data = $request->validate([
+            'nama_polres' => 'required',
+            'username' => 'required',
+            'pass' => [
+                'required',
+                'string',
+                'min:6',             // must be at least 10 characters in length
+                'regex:/[a-z]/',      // must contain at least one lowercase letter
+                'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                'regex:/[0-9]/',      // must contain at least one digit
+            ],
+        ]);
+
+        $data['password'] = $request->pass;
+
+        Polres::create($data);
 
         return redirect('/data-polres')->with('success', "Account successfully registered.");
     }
     public function edit(Request $request,$id)
     {
         // Polres::whereId($id)->update($request->all());
+        $data = $request->validate([
+            'nama_polres' => 'required',
+            'username' => 'required',
+            'password' => [
+                'required',
+                'string',
+                'min:6',             // must be at least 10 characters in length
+                'regex:/[a-z]/',      // must contain at least one lowercase letter
+                'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                'regex:/[0-9]/',      // must contain at least one digit
+            ],
+        ]);
         $user = Polres::findorfail($id);
-        $user->password=$request->password;
-        $user->nama_polres=$request->nama_polres;
-        $user->username=$request->username;
-        $user->pass=$request->password;
+        $user->password=$data['password'];
+        $user->nama_polres=$data['nama_polres'];
+        $user->username=$data['username'];
+        $user->pass=$data['password'];
         $user->save();
         return redirect()->back();
     }
@@ -47,7 +74,8 @@ class PolresCon extends Controller
                         ->withSuccess('Signed in');
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        toastr()->error('Username atau Password salah!');
+        return redirect("login");
     }
 
     public function logout(Request $request)

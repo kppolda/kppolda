@@ -39,36 +39,78 @@
                             </div>
                             <div class="modal-body">
                                 <!-- <form action="{{ route('polres.regis') }}" method="POST" id="basicform" data-parsley-validate=""> -->
-                                {!! Form::open(['route' => 'polres.regis', 'method' => 'POST']) !!}
-                                {{ csrf_field() }}
-                                {{ method_field('POST') }}
-                                <div class='form-group'>
-                                    {{ Form::label('nama_polres','Nama Polres') }}
-                                    {{ Form::text('nama_polres','',['class'=>'form-control','placeholder'=>'Nama Polres']) }}
-                                </div>
-                                <div class='form-group'>
-                                    {{ Form::label('username','Username') }}
-                                    {{ Form::text('username','',['class'=>'form-control','placeholder'=>'Username']) }}
-                                </div>
-                                <div class='form-group'>
-                                    {{ Form::label('password','Password') }}
-                                    {{ Form::text('password','',['class'=>'form-control qty1','placeholder'=>'Password']) }}
-                                </div>
-                                <div class="form-group ">
-                                    <input id="pass" type="text" name="pass" data-parsley-trigger="change" autocomplete="off" class="form-control total" hidden>
-                                </div>
-                            </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                    {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
-                                </div>
+                                    {!! Form::open(['route' => 'polres.regis', 'method' => 'POST', 'id' => 'newModalForm']) !!}
+                                    {{ csrf_field() }}
+                                    {{ method_field('POST') }}
+                                    {{-- <div class='form-group'>
+                                        {{ Form::text('nama_polres','',['class'=>'form-control','placeholder'=>'Nama Polres']) }}
+                                    </div> --}}
+                                    <div class="form-group">
+                                        {{ Form::label('nama_polres','Nama Polres') }}
+                                        <input id="nama_polres" value='' type="text" name="nama_polres" data-parsley-trigger="change" placeholder="Nama Polres" autocomplete="off" class="form-control">
+                                    </div>
+                                    <div class='form-group'>
+                                        {{ Form::label('username','Username') }}
+                                        {{ Form::text('username','',['class'=>'form-control','placeholder'=>'Username']) }}
+                                    </div>
+                                    <div class='form-group'>
+                                        {{ Form::label('password','Password') }}
+                                        {{ Form::text('password','',['class'=>'form-control qty1','placeholder'=>'Password']) }}
+                                        <p>Panjang password minimal 6 karakter serta mengandung bilangan, minimal 1 huruf kapital, dan 1 huruf kecil.</p>
+                                    </div>
+                                    <div class="form-group ">
+                                        <input id="pass" type="text" name="pass" data-parsley-trigger="change" autocomplete="off" class="form-control total" hidden>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                        {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                    </div>
                                 {!! Form::close() !!}
+
+                                {{-- <form role="form" id="newModalForm">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="email">A p Name:</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="pName" name="pName" placeholder="Enter a p name" require/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="email">Action:</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="action" name="action" placeholder="Enter and action" require>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success" id="btnSaveIt">Save</button>
+                                        <button type="button" class="btn btn-default" id="btnCloseIt" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
 
+
                 <div class="row">
+                    @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                        @php
+                            Session::forget('success');
+                        @endphp
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <!-- ============================================================== -->
 
                     <!-- ============================================================== -->
@@ -140,6 +182,7 @@
                                                                 <div class='form-group'>
                                                                     {{ Form::label('password','Password') }}
                                                                     {{ Form::text('password',$item->pass,['class'=>'form-control qty3']) }}
+                                                                    <p>Panjang password minimal 6 karakter serta mengandung bilangan, minimal 1 huruf kapital, dan 1 huruf kecil.</p>
                                                                 </div>
                                                                 {{-- <div class='form-group'>
                                                                     <input id="pass" type="text" name="pass" data-parsley-trigger="change" autocomplete="off" class="form-control total3" readonly>
@@ -157,6 +200,13 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    @if(count($errors) > 0)
+                                        @foreach($errors->all() as $error)
+                                            <div class="alert alert-danger">
+                                                {{$error}}
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -207,5 +257,4 @@
         $(".total3").val(inputString);
     });
 </script>
-
 @endsection
