@@ -70,7 +70,14 @@
                                                 @else
                                                 <td></td>
                                                 @endif
-                                                <td>{{$item->pangkat_personil}}</td>
+                                                @php
+                                                    $message = preg_split('/[\s,]+/', $item->pangkat_personil, 3);
+                                                @endphp
+                                                <td>@foreach ($message as $mess)
+                                                    @if ($loop->first) @continue @endif
+                                                        {{$mess}}
+                                                    @endforeach
+                                                </td>
                                                 <td>{{$item->jabatan_personil}}</td>
                                                 <td>{{$item->pendidikan_dikum}}</td>
                                                 <td>{{$item->pendidikan_dikbang}}</td>
@@ -98,30 +105,30 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_personil','Nama') }}
-                                                                    {{ Form::text('nama_personil','',['class'=>'form-control','placeholder'=>$item->nama_personil]) }}
+                                                                    {{ Form::text('nama_personil',$item->nama_personil,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input id="polres" value='{{Auth::user()->username}}' type="text" name="polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                    <input id="polres" value='{{$item->polres}}' type="text" name="polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nrp_personil','NRP') }}
-                                                                    {{ Form::text('nrp_personil','',['class'=>'form-control','placeholder'=>$item->nrp_personil]) }}
+                                                                    {{ Form::text('nrp_personil',$item->nrp_personil,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('pangkat_personil','Pangkat') }}
-                                                                    {{ Form::text('pangkat_personil','',['class'=>'form-control','placeholder'=>$item->pangkat_personil]) }}
+                                                                    {{ Form::text('pangkat_personil',$item->pangkat_personil,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jabatan_personil','Jabatan') }}
-                                                                    {{ Form::text('jabatan_personil','',['class'=>'form-control','placeholder'=>$item->jabatan_personil]) }}
+                                                                    {{ Form::text('jabatan_personil',$item->jabatan_personil,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
-                                                                    {{ Form::text('pendidikan_dikum','',['class'=>'form-control','placeholder'=>$item->pendidikan_dikum]) }}
+                                                                    {{ Form::text('pendidikan_dikum',$item->pendidikan_dikum,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}
-                                                                    {{ Form::text('pendidikan_dikbang','',['class'=>'form-control','placeholder'=>$item->pendidikan_dikbang]) }}
+                                                                    {{ Form::text('pendidikan_dikbang',$item->pendidikan_dikbang,['class'=>'form-control']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -189,56 +196,60 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                {!! Form::open(['route' => ['barang.edit',$sites->id], 'method' => 'PUT']) !!}
-                                                                {{ csrf_field() }}
-                                                                {{ method_field('PUT') }}
-                                                                <div class='form-group'>
-                                                                    {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$sites->nama_barang]) }}
-                                                                </div>
-                                                                <div class="form-group ">
-                                                                    <label for="jenis_barang">Jenis Barang</label>
-                                                                    <input id="jenis_barang" value="{{$sites->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
-                                                                </div>
-                                                                <div class='form-group'>
-                                                                    {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$sites->sumber]) }}
-                                                                </div>
-                                                                <label>Kondisi</label>
-                                                                <div class="row form-group pt-0">
-                                                                    <div class='col'>
-                                                                        <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$sites->kondisi_bb]) }}
-                                                                            <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                <div class="modal-body">
+                                                                    {!! Form::open(['route' => ['barang.edit',$sites->id], 'method' => 'PUT']) !!}
+                                                                    {{ csrf_field() }}
+                                                                    {{ method_field('PUT') }}
+                                                                    <div class='form-group'>
+                                                                        {{ Form::label('nama_barang','Nama Barang') }}
+                                                                        {{ Form::text('nama_barang',$sites->nama_barang,['class'=>'form-control']) }}
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input id="id_polres" value='{{$sites->id_polres}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                                                    </div>
+                                                                    <div class="form-group ">
+                                                                        <label for="jenis_barang">Jenis Barang</label>
+                                                                        <input id="jenis_barang" value="{{$sites->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                    </div>
+                                                                    <div class='form-group'>
+                                                                        {{ Form::label('sumber','Sumber') }}
+                                                                        {{ Form::text('sumber',$sites->sumber,['class'=>'form-control']) }}
+                                                                    </div>
+                                                                    <label>Kondisi</label>
+                                                                    <div class="row form-group pt-0">
+                                                                        <div class='col'>
+                                                                            <div class="input-group">
+                                                                                {{ Form::number('kondisi_bb',$sites->kondisi_bb,['class'=>'form-control form-control-lg qty1']) }}
+                                                                                <div class="input-group-append"><span class="input-group-text">BB</span></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class='col'>
+                                                                            <div class="input-group">
+                                                                                {{ Form::number('kondisi_rr',$sites->kondisi_rr,['class'=>'form-control form-control-lg qty1']) }}
+                                                                                <div class="input-group-append"><span class="input-group-text">RR</span></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class='col'>
+                                                                            <div class="input-group">
+                                                                                {{ Form::number('kondisi_rb',$sites->kondisi_rb,['class'=>'form-control form-control-lg qty1']) }}
+                                                                                <div class="input-group-append"><span class="input-group-text">RB</span></div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class='col'>
-                                                                        <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>$sites->kondisi_rr]) }}
-                                                                            <div class="input-group-append"><span class="input-group-text">RR</span></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class='col'>
-                                                                        <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$sites->kondisi_rb]) }}
-                                                                            <div class="input-group-append"><span class="input-group-text">RB</span></div>
-                                                                        </div>
+                                                                    {{-- <div class='form-group'>
+                                                                        {{ Form::label('jml_barang','Jumlah Barang') }}
+                                                                        {{ Form::text('jml_barang','',['class'=>'form-control total1','readonly']) }}
+                                                                    </div> --}}
+                                                                    <div class='form-group'>
+                                                                        {{ Form::label('keterangan','Keterangan') }}
+                                                                        {{ Form::text('keterangan',$sites->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
-                                                                    {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total1','placeholder'=>'Jumlah Barang','readonly']) }}
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                    {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
                                                                 </div>
-                                                                <div class='form-group'>
-                                                                    {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$sites->keterangan]) }}
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                                {{ Form::submit('Simpan',['class'=>'btn btn-primary']) }}
-                                                            </div>
-                                                            {!! Form::close() !!}
+                                                                {!! Form::close() !!}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -304,44 +315,47 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$alkoms->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$alkoms->nama_barang,['class'=>'form-control']) }}
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{$alkoms->id_polres}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
-                                                                    <input id="jenis_barang" value="{{$alkoms->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                    <input id="jenis_barang" value="{{$alkoms->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Alkom" autocomplete="off" class="form-control form-control-lg" readonly>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$alkoms->sumber]) }}
+                                                                    {{ Form::text('sumber',$alkoms->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty2','placeholder'=>$alkoms->kondisi_bb]) }}
+                                                                            {{ Form::number('kondisi_bb',$alkoms->kondisi_bb,['class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty2','placeholder'=>$alkoms->kondisi_rr]) }}
+                                                                            {{ Form::number('kondisi_rr',$alkoms->kondisi_rr,['class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty2','placeholder'=>$alkoms->kondisi_rb]) }}
+                                                                            {{ Form::number('kondisi_rb',$alkoms->kondisi_rb,['class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total2','placeholder'=>'Jumlah Barang','readonly']) }}
-                                                                </div>
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total2','readonly']) }}
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$alkoms->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$alkoms->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -414,7 +428,10 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$inhome->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$inhome->nama_barang,['class'=>'form-control']) }}
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{$inhome->id_polres}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
@@ -422,36 +439,36 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$inhome->sumber]) }}
+                                                                    {{ Form::text('sumber',$inhome->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_bb]) }}
+                                                                            {{ Form::number('kondisi_bb',$inhome->kondisi_bb,['class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_rr]) }}
+                                                                            {{ Form::number('kondisi_rr',$inhome->kondisi_rr,['class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$inhome->kondisi_rb]) }}
+                                                                            {{ Form::number('kondisi_rb',$inhome->kondisi_rb,['class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total1','placeholder'=>'Jumlah Barang', 'readonly']) }}
-                                                                </div>
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total1', 'readonly']) }}
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$inhome->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$inhome->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -524,7 +541,10 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$telpon->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$telpon->nama_barang,['class'=>'form-control']) }}
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{$telpon->id_polres}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
@@ -532,36 +552,36 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$telpon->sumber]) }}
+                                                                    {{ Form::text('sumber',$telpon->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_bb]) }}
+                                                                            {{ Form::number('kondisi_bb',$telpon->kondisi_bb,['class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_rr]) }}
+                                                                            {{ Form::number('kondisi_rr',$telpon->kondisi_rr,['class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty2','placeholder'=>$telpon->kondisi_rb]) }}
+                                                                            {{ Form::number('kondisi_rb',$telpon->kondisi_rb,['class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total2','placeholder'=>'Jumlah Barang', 'readonly']) }}
-                                                                </div>
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total2','readonly']) }}
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$telpon->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$telpon->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -634,7 +654,10 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$intran->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$intran->nama_barang,['class'=>'form-control']) }}
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{$intran->id_polres}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
@@ -642,36 +665,36 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$intran->sumber]) }}
+                                                                    {{ Form::text('sumber',$intran->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_bb]) }}
+                                                                            {{ Form::number('kondisi_bb',$intran->kondisi_bb,['class'=>'form-control form-control-lg qty3']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_rr]) }}
+                                                                            {{ Form::number('kondisi_rr',$intran->kondisi_rr,['class'=>'form-control form-control-lg qty3']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty3','placeholder'=>$intran->kondisi_rb]) }}
+                                                                            {{ Form::number('kondisi_rb',$intran->kondisi_rb,['class'=>'form-control form-control-lg qty3']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total3','placeholder'=>'Jumlah Barang', 'readonly']) }}
-                                                                </div>
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total3', 'readonly']) }}
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$intran->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$intran->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -744,7 +767,10 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$wifii->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$wifii->nama_barang,['class'=>'form-control']) }}
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{$wifii->id_polres}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
@@ -752,36 +778,36 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$wifii->sumber]) }}
+                                                                    {{ Form::text('sumber',$wifii->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_bb]) }}
+                                                                            {{ Form::number('kondisi_bb',$wifii->kondisi_bb,['class'=>'form-control form-control-lg qty4']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_rr]) }}
+                                                                            {{ Form::number('kondisi_rr',$wifii->kondisi_rr,['class'=>'form-control form-control-lg qty4']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty4','placeholder'=>$wifii->kondisi_rb]) }}
+                                                                            {{ Form::number('kondisi_rb',$wifii->kondisi_rb,['class'=>'form-control form-control-lg qty4']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total4','placeholder'=>'Jumlah Barang', 'readonly']) }}
-                                                                </div>
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total4', 'readonly']) }}
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$wifii->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$wifii->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -854,7 +880,10 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$astin->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$astin->nama_barang,['class'=>'form-control']) }}
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{$astin->id_polres}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
@@ -862,36 +891,36 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$astin->sumber]) }}
+                                                                    {{ Form::text('sumber',$astin->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_bb]) }}
+                                                                            {{ Form::number('kondisi_bb',$astin->kondisi_bb,['class'=>'form-control form-control-lg qty5']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_rr]) }}
+                                                                            {{ Form::number('kondisi_rr',$astin->kondisi_rr,['class'=>'form-control form-control-lg qty5']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty5','placeholder'=>$astin->kondisi_rb]) }}
+                                                                            {{ Form::number('kondisi_rb',$astin->kondisi_rb,['class'=>'form-control form-control-lg qty5']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total5','placeholder'=>'Jumlah Barang', 'readonly']) }}
-                                                                </div>
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total5', 'readonly']) }}
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$astin->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$astin->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -971,44 +1000,47 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>$item->nama_barang]) }}
+                                                                    {{ Form::text('nama_barang',$item->nama_barang,['class'=>'form-control']) }}
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input id="id_polres" value='{{$item->id_polres}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jenis_barang','Jenis Barang') }}
-                                                                    {{ Form::text('jenis_barang','',['class'=>'form-control','placeholder'=>$item->jenis_barang]) }}
+                                                                    {{ Form::text('jenis_barang',$item->jenis_barang,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber','',['class'=>'form-control','placeholder'=>$item->sumber]) }}
+                                                                    {{ Form::text('sumber',$item->sumber,['class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$item->kondisi_bb]) }}
+                                                                            {{ Form::text('kondisi_bb',$item->kondisi_bb,['class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>$item->kondisi_rr]) }}
+                                                                            {{ Form::text('kondisi_rr',$item->kondisi_rr,['class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::text('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>$item->kondisi_rb]) }}
+                                                                            {{ Form::text('kondisi_rb',$item->kondisi_rb,['class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class='form-group'>
+                                                                {{-- <div class='form-group'>
                                                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total','placeholder'=>'Jumlah Barang']) }}
-                                                                </div>
+                                                                    {{ Form::text('jml_barang','',['class'=>'form-control total','readonly']) }}
+                                                                </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>$item->keterangan]) }}
+                                                                    {{ Form::text('keterangan',$item->keterangan,['class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">

@@ -1,3 +1,13 @@
+@php
+use Illuminate\Support\Facades\DB;
+
+$kasi = DB::table('personils')
+    ->where('polres', '=', Auth::user()->username)
+    ->where('jabatan_personil', 'like', "kasi%")
+    ->get();
+$i=1;
+@endphp
+
 @extends('layout/sidebar-admin')
 
 @section('title', 'Data Personil')
@@ -26,6 +36,40 @@
             <!-- end pageheader  -->
             <!-- ============================================================== -->
             <div class="ecommerce-widget">
+
+                <!-- Modal -->
+                <div class="modal fade" id="struktur" tabindex="-1" role="dialog" aria-labelledby="titleStruktur" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleStruktur">Tambah Struktur Organisasi</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/api/struktur_id" method="POST" id="basicform" data-parsley-validate="" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <div class="form-group">
+                                        <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                    </div>
+                                    <div class="custom-file">
+                                        <label class="custom-file-label" for="image">Dokumentasi</label>
+                                        <input accept="image/*" type="file" class="custom-file-input" name="image" id="image" onchange="readURL(this);" >
+                                        <p>image file dengan size maksimal 2mb.</p>
+                                        <!-- <img id="blah" src="http://placehold.it/180" alt="your image" style="max-width: 180px;"/> -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                        {{ Form::submit('Submit',['class'=>'btn btn-primary']) }}
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Modal -->
                 <div class="modal fade" id="dataPersonil" tabindex="-1" role="dialog" aria-labelledby="titlePersonil" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -42,34 +86,63 @@
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
                                     {{ Form::label('nama_personil','Nama') }}
-                                    {{ Form::text('nama_personil','',['class'=>'form-control','placeholder'=>'Nama']) }}
+                                    {{ Form::text('nama_personil','',['class'=>'form-control','placeholder'=>'Nama', 'required']) }}
                                 </div>
                                 <div class="form-group">
                                     <input id="polres" value='{{Auth::user()->username}}' type="text" name="polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('nrp_personil','NRP') }}
-                                    {{ Form::text('nrp_personil','',['class'=>'form-control','placeholder'=>'NRP']) }}
+                                    {{ Form::text('nrp_personil','',['class'=>'form-control','placeholder'=>'NRP', 'required']) }}
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('pangkat_personil','Pangkat') }}
-                                    {{ Form::text('pangkat_personil','',['class'=>'form-control','placeholder'=>'Pangkat']) }}
+                                    <select name="pangkat_personil" class="form-control" id="pangkat_personil" required>
+                                        <option hidden>Pilih Pangkat</option>
+                                        <option value="01 KOMBES POL">KOMBES POL</option>
+                                        <option value="02 AKBP">AKBP</option>
+                                        <option value="03 KOMPOL">KOMPOL</option>
+                                        <option value="04 AKP">AKP</option>
+                                        <option value="05 IPTU">IPTU</option>
+                                        <option value="06 IPDA">IPDA</option>
+                                        <option value="07 AIPTU">AIPTU</option>
+                                        <option value="08 AIPDA">AIPDA</option>
+                                        <option value="09 BRIPKA">BRIPKA</option>
+                                        <option value="10 BRIGADIR">BRIGADIR</option>
+                                        <option value="11 BRIPTU">BRIPTU</option>
+                                        <option value="12 BRIPDA">BRIPDA</option>
+                                    </select>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('jabatan_personil','Jabatan') }}
-                                    <select name="jabatan_personil" class="form-control" id="jabatan_personil">
+                                    <select name="jabatan_personil" class="form-control" id="jabatan_personil" required>
                                         <option hidden>Pilih jabatan</option>
-                                        <option value="kasitik">KASI TIK</option>
+                                        <option @isset($kasi[0]->jabatan_personil)
+                                            hidden
+                                        @endisset value="kasitik">KASI TIK</option>
                                         <option value="baurmin">BAURMIN</option>
                                         <option value="baurtekinfo">BAUR TEKINFO</option>
                                         <option value="baurtekom">BAUR TEKOM</option>
                                         <option value="bamintekinfo">BAMIN TEKINFO</option>
                                         <option value="bamintekom">BAMIN TEKOM</option>
+                                        <option value="kabidteknologiinformasi">KABID TEKNOLOGI INFORMASI</option>
+                                        <option value="kasubbidtekkom">KASUBBIDTEKKOM</option>
+                                        <option value="kasubbidtekinfo">KASUBBIDTEKINFO</option>
+                                        <option value="pengembangteknologi">PENGEMBANG TEKNOLOGI</option>
+                                        <option value="informasikepolisianmuda">INFORMASI KEPOLISIAN MUDA</option>
+                                        <option value="kaurpullahtasubbidtekinfo">KAUR PULLAHTA SUBBIDTEKINFO</option>
+                                        <option value="kauryankomsubbidtekkom">KAUR YANKOM SUBBIDTEKKOM</option>
+                                        <option value="kaujarkomsubbidtekkom">KAUR JARKOM SUBBIDTEKKOM</option>
+                                        <option value="kauharkansubbid">KAUR HARKAN SUBBID</option>
+                                        <option value="kaurintisubbidtekinfo">KAUR INTI SUBBIDTEKINFO</option>
+                                        <option value="pamin">PAMIN</option>
+                                        <option value="paur">PAUR</option>
+                                        <option value="bamin">BAMIN</option>
                                     </select>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
-                                    <select name="pendidikan_dikum" class="form-control" id="pendidikan_dikum">
+                                    <select name="pendidikan_dikum" class="form-control" id="pendidikan_dikum" required>
                                         <option hidden>Pilih Dikum</option>
                                         <option value="sd">SD</option>
                                         <option value="smp">SMP</option>
@@ -101,6 +174,46 @@
                     <!-- recent orders  -->
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="m-0">Struktur Organisasi</h5>
+                                <!-- Button trigger modal -->
+                                @foreach ($struktur as $item)
+                                @if (Auth::user()->username === $item->id_polres)
+                                <div class="d-flex">
+                                    <form class="mb-0 ml-2" method="POST" action="{{ route('struktur.delete', [$item->id]) }}">
+                                        {{-- <button type="submit" class="btn btn-rounded btn-brand">Edit</button> --}}
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-secondary">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                    @foreach ($struktur as $item)
+                                    @if (isset($item->image))
+                                    <img src="{{asset('/'.$item->image)}}" style="width: 830px;" class="d-flex justify-content-center">
+                                    @else
+                                    @endif
+                                    @endforeach
+                            </div {{$i--}}>
+                            @else
+                            @endif
+                            @endforeach
+                            @if ($i >= 1)
+                            <div class="d-flex">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#struktur">
+                                    Tambah Struktur
+                                </button>
+                            </div>
+                            </div>
+                            <div class="card-body">
+                            </div>
+
+                            @endif
+                        </div>
+
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h5 class="m-0">Data Personil</h5>
@@ -137,7 +250,14 @@
                                                 @else
                                                 <td></td>
                                                 @endif --}}
-                                                <td>{{$item->pangkat_personil}}</td>
+                                                @php
+                                                    $message = preg_split('/[\s,]+/', $item->pangkat_personil, 3);
+                                                @endphp
+                                                <td>@foreach ($message as $mess)
+                                                    @if ($loop->first) @continue @endif
+                                                        {{$mess}}
+                                                    @endforeach
+                                                </td>
                                                 <td>{{$item->jabatan_personil}}</td>
                                                 <td>{{$item->pendidikan_dikum}}</td>
                                                 <td>{{$item->pendidikan_dikbang}}</td>
@@ -165,34 +285,70 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_personil','Nama') }}
-                                                                    {{ Form::text('nama_personil',$item->nama_personil,['class'=>'form-control']) }}
+                                                                    {{ Form::text('nama_personil',$item->nama_personil,['class'=>'form-control', 'required']) }}
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input id="polres" value='{{$item->polres}}' type="text" name="polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nrp_personil','NRP') }}
-                                                                    {{ Form::text('nrp_personil',$item->nrp_personil,['class'=>'form-control']) }}
+                                                                    {{ Form::text('nrp_personil',$item->nrp_personil,['class'=>'form-control', 'required']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('pangkat_personil','Pangkat') }}
-                                                                    {{ Form::text('pangkat_personil',$item->pangkat_personil,['class'=>'form-control']) }}
+                                                                    <select name="pangkat_personil" class="form-control" id="pangkat_personil" required>
+                                                                        <option hidden value="{{$item->pangkat_personil}}">{{$item->pangkat_personil}}</option>
+                                                                        <option value="01 KOMBES POL">KOMBES POL</option>
+                                                                        <option value="02 AKBP">AKBP</option>
+                                                                        <option value="03 KOMPOL">KOMPOL</option>
+                                                                        <option value="04 AKP">AKP</option>
+                                                                        <option value="05 IPTU">IPTU</option>
+                                                                        <option value="06 IPDA">IPDA</option>
+                                                                        <option value="07 AIPTU">AIPTU</option>
+                                                                        <option value="08 AIPDA">AIPDA</option>
+                                                                        <option value="09 BRIPKA">BRIPKA</option>
+                                                                        <option value="10 BRIGADIR">BRIGADIR</option>
+                                                                        <option value="11 BRIPTU">BRIPTU</option>
+                                                                        <option value="12 BRIPDA">BRIPDA</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('jabatan_personil','Jabatan') }}
-                                                                    <select name="jabatan_personil" class="form-control" id="jabatan_personil">
+                                                                    <select name="jabatan_personil" class="form-control" id="jabatan_personil" required>
                                                                         <option hidden value="{{$item->jabatan_personil}}">{{$item->jabatan_personil}}</option>
-                                                                        <option value="kasitik">KASI TIK</option>
+                                                                        <option @isset($kasi[0]->jabatan_personil)
+                                                                            hidden
+                                                                        @endisset value="kasitik">KASI TIK</option>
                                                                         <option value="baurmin">BAURMIN</option>
                                                                         <option value="baurtekinfo">BAUR TEKINFO</option>
                                                                         <option value="baurtekom">BAUR TEKOM</option>
                                                                         <option value="bamintekinfo">BAMIN TEKINFO</option>
                                                                         <option value="bamintekom">BAMIN TEKOM</option>
+                                                                        <option value="kabidteknologiinformasi">KABID TEKNOLOGI INFORMASI</option>
+                                                                        <option value="kasubbidtekkom">KASUBBIDTEKKOM</option>
+                                                                        <option value="kasubbidtekinfo">KASUBBIDTEKINFO</option>
+                                                                        <option value="pengembangteknologi">PENGEMBANG TEKNOLOGI</option>
+                                                                        <option value="informasikepolisianmuda">INFORMASI KEPOLISIAN MUDA</option>
+                                                                        <option value="kaurpullahtasubbidtekinfo">KAUR PULLAHTA SUBBIDTEKINFO</option>
+                                                                        <option value="kauryankomsubbidtekkom">KAUR YANKOM SUBBIDTEKKOM</option>
+                                                                        <option value="kaujarkomsubbidtekkom">KAUR JARKOM SUBBIDTEKKOM</option>
+                                                                        <option value="kauharkansubbid">KAUR HARKAN SUBBID</option>
+                                                                        <option value="kaurintisubbidtekinfo">KAUR INTI SUBBIDTEKINFO</option>
+                                                                        <option value="pamin">PAMIN</option>
+                                                                        <option value="paur">PAUR</option>
+                                                                        <option value="bamin">BAMIN</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('pendidikan_dikum','Pendidikan Dikum') }}
-                                                                    {{ Form::text('pendidikan_dikum',$item->pendidikan_dikum,['class'=>'form-control']) }}
+                                                                    <select name="pendidikan_dikum" class="form-control" id="pendidikan_dikum" required>
+                                                                        <option value="{{$item->pendidikan_dikum}}" hidden>{{$item->pendidikan_dikum}}</option>
+                                                                        <option value="sd">SD</option>
+                                                                        <option value="smp">SMP</option>
+                                                                        <option value="sma">SMA</option>
+                                                                        <option value="s1">S1</option>
+                                                                        <option value="s2">S2</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('pendidikan_dikbang','Pendidikan Dikbang') }}

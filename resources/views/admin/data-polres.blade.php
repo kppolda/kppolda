@@ -47,15 +47,23 @@
                                     </div> --}}
                                     <div class="form-group">
                                         {{ Form::label('nama_polres','Nama Polres') }}
-                                        <input id="nama_polres" value='' type="text" name="nama_polres" data-parsley-trigger="change" placeholder="Nama Polres" autocomplete="off" class="form-control">
+                                        <input id="nama_polres" value='' type="text" name="nama_polres" data-parsley-trigger="change" placeholder="Nama Polres" autocomplete="off" class="form-control" required>
+                                    </div>
+                                    <div class='form-group'>
+                                        {{ Form::label('anggaran','Anggaran') }}
+                                        {{ Form::text('anggaran','',['class'=>'form-control','required','placeholder'=>'Anggaran']) }}
+                                    </div>
+                                    <div class='form-group'>
+                                        {{ Form::label('dspp','DSPP') }}
+                                        {{ Form::text('dspp','',['class'=>'form-control','required','placeholder'=>'DSPP']) }}
                                     </div>
                                     <div class='form-group'>
                                         {{ Form::label('username','Username') }}
-                                        {{ Form::text('username','',['class'=>'form-control','placeholder'=>'Username']) }}
+                                        {{ Form::text('username','',['class'=>'form-control','required','placeholder'=>'Username']) }}
                                     </div>
                                     <div class='form-group'>
                                         {{ Form::label('password','Password') }}
-                                        {{ Form::text('password','',['class'=>'form-control qty1','placeholder'=>'Password']) }}
+                                        {{ Form::text('password','',['class'=>'form-control qty1','required','placeholder'=>'Password']) }}
                                         <p>Panjang password minimal 6 karakter serta mengandung bilangan, minimal 1 huruf kapital, dan 1 huruf kecil.</p>
                                     </div>
                                     <div class="form-group ">
@@ -174,6 +182,14 @@
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_polres','Nama Polres') }}
                                                                     {{ Form::text('nama_polres',$item->nama_polres,['class'=>'form-control']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('anggaran','Anggaran') }}
+                                                                    {{ Form::text('anggaran',$item->anggaran,['class'=>'form-control','placeholder'=>'Anggaran']) }}
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    {{ Form::label('dspp','DSPP') }}
+                                                                    {{ Form::text('dspp',$item->dspp,['class'=>'form-control','placeholder'=>'DSPP']) }}
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('username','Username') }}

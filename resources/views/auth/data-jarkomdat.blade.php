@@ -44,18 +44,18 @@
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                    {{ Form::text('nama_barang','',['required', 'class'=>'form-control','placeholder'=>'Nama Barang']) }}
                                 </div>
                                 <div class="form-group">
                                     <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                 </div>
                                 <div class="form-group ">
                                     <label for="jenis_barang">Jenis Barang</label>
-                                    <input id="jenis_barang" value="indihome" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Indihome" autocomplete="off" class="form-control form-control-lg" readonly>
+                                    <input id="jenis_barang" value="indihome" required type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Indihome" autocomplete="off" class="form-control form-control-lg" readonly>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('sumber','Sumber') }}
-                                    <select name="sumber" class="form-control" id="sumber">
+                                    <select name="sumber" required class="form-control" id="sumber">
                                         <option hidden>Pilih Sumber</option>
                                         <option value="pengadaan">Pengadaan</option>
                                         <option value="hibah">Hibah</option>
@@ -66,19 +66,19 @@
                                 <div class="row form-group pt-0">
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                         </div>
                                     </div>
@@ -117,18 +117,18 @@
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                    {{ Form::text('nama_barang','',['required', 'class'=>'form-control','placeholder'=>'Nama Barang']) }}
                                 </div>
                                 <div class="form-group">
                                     <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                 </div>
                                 <div class="form-group ">
                                     <label for="jenis_barang">Jenis Barang</label>
-                                    <input id="jenis_barang" value="telepon" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Telepon" autocomplete="off" class="form-control form-control-lg" readonly>
+                                    <input id="jenis_barang" value="telepon" required type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Telepon" autocomplete="off" class="form-control form-control-lg" readonly>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('sumber','Sumber') }}
-                                    <select name="sumber" class="form-control" id="sumber">
+                                    <select name="sumber" required class="form-control" id="sumber">
                                         <option hidden>Pilih Sumber</option>
                                         <option value="pengadaan">Pengadaan</option>
                                         <option value="hibah">Hibah</option>
@@ -139,19 +139,19 @@
                                 <div class="row form-group pt-0">
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty2','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_bb','',['required','class'=>'form-control form-control-lg qty2','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty2','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rr','',['required','class'=>'form-control form-control-lg qty2','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty2','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rb','',['required','class'=>'form-control form-control-lg qty2','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                         </div>
                                     </div>
@@ -190,18 +190,18 @@
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                    {{ Form::text('nama_barang','',['required', 'class'=>'form-control','placeholder'=>'Nama Barang']) }}
                                 </div>
                                 <div class="form-group">
                                     <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                 </div>
                                 <div class="form-group ">
                                     <label for="jenis_barang">Jenis Barang</label>
-                                    <input id="jenis_barang" value="intranet" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Intranet" autocomplete="off" class="form-control form-control-lg" readonly>
+                                    <input id="jenis_barang" value="intranet" required type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Intranet" autocomplete="off" class="form-control form-control-lg" readonly>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('sumber','Sumber') }}
-                                    <select name="sumber" class="form-control" id="sumber">
+                                    <select name="sumber" required class="form-control" id="sumber">
                                         <option hidden>Pilih Sumber</option>
                                         <option value="pengadaan">Pengadaan</option>
                                         <option value="hibah">Hibah</option>
@@ -212,19 +212,19 @@
                                 <div class="row form-group pt-0">
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty3','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty3','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty3','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty3','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty3','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty3','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                         </div>
                                     </div>
@@ -263,18 +263,18 @@
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                    {{ Form::text('nama_barang','',['required', 'class'=>'form-control','placeholder'=>'Nama Barang']) }}
                                 </div>
                                 <div class="form-group">
                                     <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                 </div>
                                 <div class="form-group ">
                                     <label for="jenis_barang">Jenis Barang</label>
-                                    <input id="jenis_barang" value="wifiid" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Wifi Id" autocomplete="off" class="form-control form-control-lg" readonly>
+                                    <input id="jenis_barang" value="wifiid" required type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Wifi Id" autocomplete="off" class="form-control form-control-lg" readonly>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('sumber','Sumber') }}
-                                    <select name="sumber" class="form-control" id="sumber">
+                                    <select name="sumber" required class="form-control" id="sumber">
                                         <option hidden>Pilih Sumber</option>
                                         <option value="pengadaan">Pengadaan</option>
                                         <option value="hibah">Hibah</option>
@@ -285,19 +285,19 @@
                                 <div class="row form-group pt-0">
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty4','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty4','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty4','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty4','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty4','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty4','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                         </div>
                                     </div>
@@ -336,18 +336,18 @@
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                    {{ Form::text('nama_barang','',['required', 'class'=>'form-control','placeholder'=>'Nama Barang']) }}
                                 </div>
                                 <div class="form-group">
                                     <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                 </div>
                                 <div class="form-group ">
                                     <label for="jenis_barang">Jenis Barang</label>
-                                    <input id="jenis_barang" value="astinet" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Astinet" autocomplete="off" class="form-control form-control-lg" readonly>
+                                    <input id="jenis_barang" value="astinet" required type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Astinet" autocomplete="off" class="form-control form-control-lg" readonly>
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('sumber','Sumber') }}
-                                    <select name="sumber" class="form-control" id="sumber">
+                                    <select name="sumber" required class="form-control" id="sumber">
                                         <option hidden>Pilih Sumber</option>
                                         <option value="pengadaan">Pengadaan</option>
                                         <option value="hibah">Hibah</option>
@@ -358,19 +358,19 @@
                                 <div class="row form-group pt-0">
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty5','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty5','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty5','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty5','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty5','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty5','placeholder'=>'Masukkan Jumlah','required']) }}
                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                         </div>
                                     </div>
@@ -467,36 +467,36 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang',$inhome->nama_barang,['class'=>'form-control']) }}
+                                                                    {{ Form::text('nama_barang',$inhome->nama_barang,['required','class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
-                                                                    <input id="jenis_barang" value="{{$inhome->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                    <input id="jenis_barang" value="{{$inhome->jenis_barang}}" required type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber',$inhome->sumber,['class'=>'form-control']) }}
+                                                                    {{ Form::text('sumber',$inhome->sumber,['required','class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_bb',$inhome->kondisi_bb,['class'=>'form-control form-control-lg qty1']) }}
+                                                                            {{ Form::number('kondisi_bb',$inhome->kondisi_bb,['required','class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_rr',$inhome->kondisi_rr,['class'=>'form-control form-control-lg qty1']) }}
+                                                                            {{ Form::number('kondisi_rr',$inhome->kondisi_rr,['required','class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_rb',$inhome->kondisi_rb,['class'=>'form-control form-control-lg qty1']) }}
+                                                                            {{ Form::number('kondisi_rb',$inhome->kondisi_rb,['required','class'=>'form-control form-control-lg qty1']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
@@ -592,36 +592,36 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang',$telpon->nama_barang,['class'=>'form-control']) }}
+                                                                    {{ Form::text('nama_barang',$telpon->nama_barang,['required','class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
-                                                                    <input id="jenis_barang" value="{{$telpon->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                    <input id="jenis_barang" value="{{$telpon->jenis_barang}}" required type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber',$telpon->sumber,['class'=>'form-control']) }}
+                                                                    {{ Form::text('sumber',$telpon->sumber,['required','class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_bb',$telpon->kondisi_bb,['class'=>'form-control form-control-lg qty2']) }}
+                                                                            {{ Form::number('kondisi_bb',$telpon->kondisi_bb,['required','class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_rr',$telpon->kondisi_rr,['class'=>'form-control form-control-lg qty2']) }}
+                                                                            {{ Form::number('kondisi_rr',$telpon->kondisi_rr,['required','class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_rb',$telpon->kondisi_rb,['class'=>'form-control form-control-lg qty2']) }}
+                                                                            {{ Form::number('kondisi_rb',$telpon->kondisi_rb,['required','class'=>'form-control form-control-lg qty2']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
@@ -717,36 +717,36 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang',$intran->nama_barang,['class'=>'form-control']) }}
+                                                                    {{ Form::text('nama_barang',$intran->nama_barang,['required','class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
-                                                                    <input id="jenis_barang" value="{{$intran->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                    <input id="jenis_barang" value="{{$intran->jenis_barang}}" required type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber',$intran->sumber,['class'=>'form-control']) }}
+                                                                    {{ Form::text('sumber',$intran->sumber,['required','class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_bb',$intran->kondisi_bb,['class'=>'form-control form-control-lg qty3']) }}
+                                                                            {{ Form::number('kondisi_bb',$intran->kondisi_bb,['required','class'=>'form-control form-control-lg qty3']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_rr',$intran->kondisi_rr,['class'=>'form-control form-control-lg qty3']) }}
+                                                                            {{ Form::number('kondisi_rr',$intran->kondisi_rr,['required','class'=>'form-control form-control-lg qty3']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_rb',$intran->kondisi_rb,['class'=>'form-control form-control-lg qty3']) }}
+                                                                            {{ Form::number('kondisi_rb',$intran->kondisi_rb,['required','class'=>'form-control form-control-lg qty3']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
@@ -757,7 +757,7 @@
                                                                 </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan',$intran->keterangan,['class'=>'form-control form-control-lg']) }}
+                                                                    {{ Form::text('keterangan',$intran->keterangan,['required','class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -842,36 +842,36 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang',$wifii->nama_barang,['class'=>'form-control']) }}
+                                                                    {{ Form::text('nama_barang',$wifii->nama_barang,['required','class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
-                                                                    <input id="jenis_barang" value="{{$wifii->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                    <input id="jenis_barang" value="{{$wifii->jenis_barang}}" required type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber',$wifii->sumber,['class'=>'form-control']) }}
+                                                                    {{ Form::text('sumber',$wifii->sumber,['required','class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_bb',$wifii->kondisi_bb,['class'=>'form-control form-control-lg qty4']) }}
+                                                                            {{ Form::number('kondisi_bb',$wifii->kondisi_bb,['required','class'=>'form-control form-control-lg qty4']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_rr',$wifii->kondisi_rr,['class'=>'form-control form-control-lg qty4']) }}
+                                                                            {{ Form::number('kondisi_rr',$wifii->kondisi_rr,['required','class'=>'form-control form-control-lg qty4']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_rb',$wifii->kondisi_rb,['class'=>'form-control form-control-lg qty4']) }}
+                                                                            {{ Form::number('kondisi_rb',$wifii->kondisi_rb,['required','class'=>'form-control form-control-lg qty4']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>
@@ -882,7 +882,7 @@
                                                                 </div> --}}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('keterangan','Keterangan') }}
-                                                                    {{ Form::text('keterangan',$wifii->keterangan,['class'=>'form-control form-control-lg']) }}
+                                                                    {{ Form::text('keterangan',$wifii->keterangan,['required','class'=>'form-control form-control-lg']) }}
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -967,36 +967,36 @@
                                                                 {{ method_field('PUT') }}
                                                                 <div class='form-group'>
                                                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                                                    {{ Form::text('nama_barang',$astin->nama_barang,['class'=>'form-control']) }}
+                                                                    {{ Form::text('nama_barang',$astin->nama_barang,['required','class'=>'form-control']) }}
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                                                 </div>
                                                                 <div class="form-group ">
                                                                     <label for="jenis_barang">Jenis Barang</label>
-                                                                    <input id="jenis_barang" value="{{$astin->jenis_barang}}" type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
+                                                                    <input id="jenis_barang" value="{{$astin->jenis_barang}}" required type="text" name="jenis_barang" data-parsley-trigger="change" required placeholder="Site" autocomplete="off" class="form-control form-control-lg" readonly>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     {{ Form::label('sumber','Sumber') }}
-                                                                    {{ Form::text('sumber',$astin->sumber,['class'=>'form-control']) }}
+                                                                    {{ Form::text('sumber',$astin->sumber,['required','class'=>'form-control']) }}
                                                                 </div>
                                                                 <label>Kondisi</label>
                                                                 <div class="row form-group pt-0">
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_bb',$astin->kondisi_bb,['class'=>'form-control form-control-lg qty5']) }}
+                                                                            {{ Form::number('kondisi_bb',$astin->kondisi_bb,['required','class'=>'form-control form-control-lg qty5']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_rr',$astin->kondisi_rr,['class'=>'form-control form-control-lg qty5']) }}
+                                                                            {{ Form::number('kondisi_rr',$astin->kondisi_rr,['required','class'=>'form-control form-control-lg qty5']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class='col'>
                                                                         <div class="input-group">
-                                                                            {{ Form::number('kondisi_rb',$astin->kondisi_rb,['class'=>'form-control form-control-lg qty5']) }}
+                                                                            {{ Form::number('kondisi_rb',$astin->kondisi_rb,['required','class'=>'form-control form-control-lg qty5']) }}
                                                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                                                         </div>
                                                                     </div>

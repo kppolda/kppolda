@@ -26,8 +26,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
-    Route::get('/', [Controller::class, 'home']);
 
+    Route::get('/', [Controller::class, 'homedup']);
 
     Route::group(['middleware' => ['guest']], function () {
         /**
@@ -42,20 +42,22 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/login', 'LoginController@show')->name('login.show');
         Route::post('/login', 'PolresCon@login')->name('login.perform');    });
 
-    Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+        Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
     Route::group(['middleware' => ['admin']], function () {
-        /**
-         * Logout Routes
-         */
-
+            /**
+             * Logout Routes
+             */
         Route::get('/data-polres', [Controller::class, 'indexPolres']);
         Route::get('/data-personil', [Controller::class, 'data_personil']);
         Route::get('/data-inventaris/data-jarkomrad', [Controller::class, 'data_jarkomrad']);
         Route::get('/data-inventaris/data-jarkomdat', [Controller::class, 'data_jarkomdat']);
         Route::get('/data-inventaris/data-barang', [Controller::class, 'data_barang']);
         Route::get('/data-giat', [Controller::class, 'data_giat']);
+        Route::get('/daftar-lapbul', [Controller::class, 'daftar_lapbul']);
+        Route::get('/daftar-lapbul/{id}', [Controller::class, 'daftar_lapbul_bulan']);
         Route::get('/laporan/{id}', [Controller::class, 'laporan']);
         Route::get('/pdf/{id}', [PdfCon::class, 'index']);
+        Route::get('/home', [Controller::class, 'home']);
     });
     Route::group(['middleware' => ['auth']], function () {
 
@@ -66,17 +68,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/data-giat/id', [Controller::class, 'data_giat_id']);
         Route::get('/data-hambatan/id', [Controller::class, 'data_hambatan_id']);
         Route::get('/kesimpulan-saran/id', [Controller::class, 'kesimpulan_saran_id']);
-        Route::get('/daftar-lapbul/id', [Controller::class, 'daftar_lapbul_id']);
+        Route::get('/daftar-lapbuls/id', [Controller::class, 'daftar_lapbul_id'])->name('lapbul');
+
     });
 });
 
 // Route::get('/home', [PolresCon::class, 'index']);
-Route::get('/home', [Controller::class, 'home']);
-Route::get('/homedup', [Controller::class, 'homedup']);
 
-
-Route::get('/html-pdf', [PdfCon::class, 'htmlpdf'])->name('htmlPdf');
-Route::get('/pdf2', [PdfCon::class, 'index2']);
+// Route::get('/html-pdf', [PdfCon::class, 'htmlpdf'])->name('htmlPdf');
+// Route::get('/pdf2', [PdfCon::class, 'index2']);
 // Route::get('/pdf', [PdfCon::class, 'index']);
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DataGiat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 // use App\Http\Requests\RegisterRequest;
 
 class DataGiatCon extends Controller
@@ -15,6 +16,7 @@ class DataGiatCon extends Controller
     $imageName = time() . '.' . $request->image->extension();
     $validatedData = $request->validate([
       'nama' => 'required',
+      'id_polres' => 'required',
       'tanggal' => 'required',
       'keterangan' => 'required|max:255',
       'image' => 'image|file|max:2048',
@@ -52,7 +54,9 @@ class DataGiatCon extends Controller
   public function destroy_giat($id)
   {
       DB::table('datagiats')->where('id', $id)->delete();
-      DB::table('datagiats')->get();
+      DB::table('datagiats')
+      ->where('tanggal', 'like', Carbon::now()->format('Y-m').'%')
+      ->get();
       return redirect()->back();
   }
 }

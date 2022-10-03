@@ -59,22 +59,23 @@
                                     {{ csrf_field() }}
                                     <div class="form-group ">
                                         <label for="nama">Nama Giat</label>
-                                        <input id="nama" type="text" name="nama" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
+                                        <input id="nama" type="text" required name="nama" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
                                     </div>
                                     <div class="form-group">
-                                        <input id="id_polres" value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
+                                        <input id="id_polres" required value='{{Auth::user()->username}}' type="text" name="id_polres" data-parsley-trigger="change" autocomplete="off" class="form-control form-control-lg" hidden>
                                     </div>
                                     <div class="form-group ">
                                         <label for="tanggal">Tanggal Giat</label>
-                                        <input id="tanggal" type="date" name="tanggal" data-parsley-trigger="change" required autocomplete="off" class="form-control form-control-lg">
+                                        <input id="tanggal" type="date" required name="tanggal" data-parsley-trigger="change" required autocomplete="off" class="form-control form-control-lg">
                                     </div>
                                     <div class="form-group ">
                                         <label for="keterangan">Keterangan</label>
-                                        <textarea id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg"></textarea>
+                                        <textarea id="keterangan" type="text" required name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg"></textarea>
                                     </div>
                                     <div class="custom-file">
                                         <label class="custom-file-label" for="image">Dokumentasi</label>
                                         <input accept="image/*" type="file" class="custom-file-input" name="image" id="image" onchange="readURL(this);" >
+                                        <p>image file dengan size maksimal 2mb.</p>
                                         <!-- <img id="blah" src="http://placehold.it/180" alt="your image" style="max-width: 180px;"/> -->
                                     </div>
                                 </div>

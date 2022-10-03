@@ -13,7 +13,8 @@ class Polres extends Authenticatable
     protected $fillable = [
         'nama_polres',
         'username',
-        'email',
+        'anggaran',
+        'dspp',
         'password',
         'pass',
     ];

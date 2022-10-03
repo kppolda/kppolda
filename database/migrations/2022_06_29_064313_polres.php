@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama_polres', 60);
             $table->string('username', 45);
+            $table->integer('dspp')->nullable();
+            $table->integer('anggaran')->nullable();
             $table->string('pass', 100);
             $table->string('password', 100);
             $table->string('_token', 255)->nullable();

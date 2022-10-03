@@ -72,13 +72,21 @@
                                             @endphp
                                             @foreach ($lapbul as $item)
                                             @if (Auth::user()->username === $item->id_polres)
-                                            <tr>
-                                                <td>{{$i++}}</td>
-                                                <td>{{$item->bulan}}</td>
-                                                <td>
-                                                    <a href="{{'../lapor/'. $item->id_polres . '/' . $item->bulan . '.pdf'}}" target="_blank" class="btn btn-rounded btn-info">Open</a>
-                                                </td>
-                                            </tr>
+                                                @foreach ($lapbul as $tes)
+                                                @if ($tes->id_polres === $item->id_polres and $tes->bulan === $item->bulan)
+                                                    @if ($tes->id != $item->id)
+                                                    @break
+                                                    @elseif ($tes->id === $item->id)
+                                                    <tr>
+                                                        <td>{{$i++}}</td>
+                                                        <td>{{$item->bulan}}</td>
+                                                        <td>
+                                                            <a href="{{'../lapor/'. $item->id_polres . '/' . $item->bulan . '.pdf'}}" target="_blank" class="btn btn-rounded btn-info">Open</a>
+                                                        </td>
+                                                    </tr>
+                                                    @endif
+                                                @endif
+                                                @endforeach
                                             @endif
                                             @endforeach
                                         </tbody>

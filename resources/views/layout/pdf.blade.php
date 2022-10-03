@@ -1,9 +1,23 @@
 @php
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 $message = preg_split('/[\s,]+/', $polres[0]->nama_polres, 3);
 $bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+$a=0; $kasi=0; $baminT=0; $baurT=0; $baurminT=0;
+$baur = DB::table('personils')
+        ->where('polres', '=', $polres[0]->username)
+        ->where('jabatan_personil', 'like', "baur%")
+        ->where('jabatan_personil', '!=', "baurmin")
+        ->get();
+$bamin = DB::table('personils')
+        ->where('polres', '=', $polres[0]->username)
+        ->where('jabatan_personil', 'like', "bamin%")
+        ->get();
+$accepted = str_split($polres[0]->anggaran, 1);
+$i=0;
+
 @endphp
 
 <!DOCTYPE html>
@@ -77,7 +91,7 @@ $bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli"
             <img src="{{public_path('/images/logo.png')}}" alt="tribarata" width="100px;" class="mb-2">
             <p>LAPORAN BULANAN</p>
             <p>SIE TIK POLRI {{$polres[0]->nama_polres}}</p>
-            <p>BULAN {{$bulan[Carbon::now()->month]}}</p>
+            <p>BULAN {{$bulan[Carbon::now()->month]}} {{Carbon::now()->format('Y')}}</p>
         </div>
         <div>
             <ol type="I">
@@ -87,18 +101,17 @@ $bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli"
                         <li class="sub-bab">Dasar</li>
                         <div class="konten">
                             <ol type="a">
-                                <li>Undang-undang No. 2 Th. 2002 tentang Kepolisisan Negara Republik Indonesia;</li>
-                                <li>Peraturan Kapolri Nomor : 23 tahun 2010 tanggal 30 September 2010 pasal 73 tentang tugas fungsi Sitikpol;</li>
-                                <li>Surat Telegram Kapolri nomor : ST/1410/VI/2012 tanggal 29 Juni 2012 tentang laporan bulanan pelaksanaan tugas masing-masing satfung jajaran bidang teknologi seluruh indonesia;</li>
-                                <li>Surat telegram Kapolda Jawa timur nomor : ST/2724/X/REN.4.1.3/2018, tanggal 29 Nopember 2018, tentang permintan pengiriman laporan bulanan.</li>
-                                <li>Surat Telegram Kapolda Jawa timur nomor : ST/2726/XII/REN.4.1.3/2021, tanggal 21 Desember 2021, tentang hasil rekap laporan bulanan kepada BID TIK Polda Jatim.</li>
+                                @foreach ($dasar as $item)
+                                    <li>{{$item->dasar}}</li>
+                                @endforeach
                             </ol>
                         </div>
                         <li class="sub-bab">Maksud dan Tujuan</li>
                         <div class="konten">
                             <ol type="a">
-                                <li>Memberikan gambaran secara garis besar tentang pelaksanaan tugas dan kegiatan Sitikpol {{$polres[0]->nama_polres}} pada {{$bulan[Carbon::now()->month]}} {{Carbon::now()->format('Y')}}</li>
-                                <li>Dapatnya dijadikan bahan masukan bagi pimpinan guna mengevaluasi pelaksanaan tugas Sitikpol {{$polres[0]->nama_polres}} yang telah dilaksanakan, guna untuk menentukan kebijakan pelaksanaan tugas lebih lanjut.</li>
+                                @foreach ($maksud as $item)
+                                    <li>{{$item->maksudtujuan}}</li>
+                                @endforeach
                             </ol>
                         </div>
                         <li class="sub-bab">Ruang Lingkup</li>
@@ -118,17 +131,112 @@ $bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli"
                         </div>
                     </ol>
                 </div>
+                <div class="page-break"></div>
                 <li class="bab">KONDISI PERSONIL DAN MATERIIL</li>
-                <div>
+                <div>@foreach ($personil as $person)
+                        @php
+                            $a++;
+                        @endphp
+                    @endforeach
                     <ol type="1">
                         <li class="sub-bab">Kondisi Personil</li>
                         <div class="konten">
                             <ol type="a">
-                                <li>Secara kuantitas jumlah personil Sitikpol {{$polres[0]->nama_polres}} serta pendidikan terakhir (Dikum/Dikbang) yang dimiliki dapat digambarkan sebagai berikut:</li>
-                                <li>Berdasarkan Perkap Kapolri Nomor 23 Tahun 2010 tanggal 30 September 2010 maka jumlah DSPP personil Sitikpol kekurangan 1 personil, sedangkan Riil Personil di Sitikpol saat ini Jumlah "" Personil yang terdiri dari: "" KaSitikpol dibantu "" Baur, "" Bamin, dan "" Baurmin, adapun kekurangan ""</li>
-                                <table>""</table>
+                                <li>
+                                    Struktur Organisasi
+                                    @foreach ($struktur as $item)
+                                    @if (isset($item->image))
+                                    <img src="{{public_path('/'.$item->image)}}" style="width: 500px;" class="d-flex justify-content-center">
+                                    @else
+                                    @endif
+                                    @endforeach
+                                </li>
+                                <li>Secara kuantitas jumlah personil Sitikpol {{$polres[0]->nama_polres}} serta pendidikan terakhir (Dikum/Dikbang) yang dimiliki dapat digambarkan sebagai berikut:
+                                Berdasarkan Perkap Kapolri Nomor 23 Tahun 2010 tanggal 30 September 2010 maka jumlah DSPP personil Sitikpol
+                                @if ($polres[0]->dspp < $a)
+                                @php
+                                    $b = $a-$polres[0]->dspp;
+                                @endphp
+                                kelebihan {{$b}} personil,
+                                @elseif ($polres[0]->dspp > $a)
+                                @php
+                                    $b = $polres[0]->dspp-$a;
+                                @endphp
+                                kekurangan {{$b}} personil,
+                                @else
+                                memenuhi kebutuhan personil,
+                                @endif sedangkan Riil Personil di Sitikpol saat ini Jumlah {{$a}} Personil yang terdiri dari:
+                                @foreach ($personil as $person)
+                                @if ($person->jabatan_personil === 'kasitik')
+                                    @php
+                                        $kasi++;
+                                    @endphp
+                                @endif
+                                @endforeach {{$kasi}} KaSitikpol dibantu
+                                @foreach ($baur as $person)
+                                    @php
+                                        $baurT++;
+                                    @endphp
+                                @endforeach {{$baurT}} Baur,
+                                @foreach ($bamin as $person)
+                                    @php
+                                        $baminT++;
+                                    @endphp
+                                @endforeach {{$baminT}} Bamin, dan
+                                @foreach ($personil as $person)
+                                @if ($person->jabatan_personil === 'baurmin')
+                                    @php
+                                        $baurminT++;
+                                    @endphp
+                                @endif
+                                @endforeach {{$baurminT}} Baurmin, adapun
+                                @if ($polres[0]->dspp < $a)
+                                @php
+                                    $b = $a-$polres[0]->dspp;
+                                @endphp
+                                kelebihan {{$b}} personil.
+                                @elseif ($polres[0]->dspp > $a)
+                                @php
+                                    $b = $polres[0]->dspp-$a;
+                                @endphp
+                                kekurangan {{$b}} personil.
+                                @else
+                                memenuhi kebutuhan personil.
+                                @endif</li>
+                                <div class="tabel">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>NRP</th>
+                                            <th>Pangkat</th>
+                                            <th>Jabatan</th>
+                                            <th>Pendidikan Dikum</th>
+                                            <th>Pendidikan Dikbang</th>
+                                        </tr>
+                                        @foreach ($personil as $person)
+                                        <tr>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$person->nama_personil}}</td>
+                                            <td>{{$person->nrp_personil}} </td>
+                                            @php
+                                                $pangkat = preg_split('/[\s,]+/', $person->pangkat_personil, 3);
+                                            @endphp
+                                            <td>@foreach ($pangkat as $mess)
+                                                @if ($loop->first) @continue @endif
+                                                    {{$mess}}
+                                                @endforeach
+                                            </td>
+                                            <td>{{$person->jabatan_personil}}</td>
+                                            <td>{{$person->pendidikan_dikum}}</td>
+                                            <td>{{$person->pendidikan_dikbang}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
                             </ol>
                         </div>
+                        <div class="page-break"></div>
                         <li class="sub-bab">Kondisi Materiil</li>
                         <div class="konten">
                             <ol type="a">
@@ -381,7 +489,24 @@ $bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli"
                                     </table>
                                 </div>
                                 <li>Anggaran sumber dari Pemeliharaan Komlek/Harkomlek, Pengepakan/pengiriman surat, dukungan sehari-hari Perkantoran/pengadaan ATK dan Dukungan operasional Kepolisian lainnya dalam DIPA TA 2022:
-                                    <br>Alokasi anggaran yang diterima Sitikpol {{$polres[0]->nama_polres}} dalam TA {{Carbon::now()->format('Y')}} sebesar ""
+                                    <br>Alokasi anggaran yang diterima Sitikpol {{$polres[0]->nama_polres}} dalam TA {{Carbon::now()->format('Y')}} sebesar Rp{{""}}@php
+                                        foreach ($accepted as $anggaran){
+                                            if ($i === 2 | $i === 5 | $i === 8){
+                                                echo ".";
+                                            }
+                                            echo "$anggaran";
+                                            $i++;
+                                        }
+                                    @endphp,-
+                                    {{-- @foreach ($accepted as $anggaran)
+                                    @if ($i === 2 or $i === 5 or $i === 8)
+                                        .
+                                    @endif
+                                    {{trim($anggaran)}}
+                                        @php
+                                            $i++;
+                                        @endphp
+                                    @endforeach,- --}}
                                 </li>
                             </ol>
                         </div>
@@ -407,15 +532,15 @@ $bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli"
                                 </ol>
                             </ol>
                         </div>
-                        <li class="sub-bab">Pelaksanaan tugas Sitikpol {{$polres[0]->nama_polres}} bulan {{$bulan[Carbon::now()->month]}} {{Carbon::now()->format('Y')}}</li>
+                        <li class="sub-bab">Pelaksanaan tugas Sitikpol {{$polres[0]->nama_polres}} bulan {{$bulan[Carbon::now()->month]}} {{Carbon::now()->format('Y')}} sebagaimana terlampir.</li>
                         <div class="konten">
                             <ol type="a">
                                 {{-- <li>"Nama Giat"</li>
-                                <p>"Keterangan Giat"</p> --}}
+                                <p>"Keterangan Giat"</p>
                                 @foreach ($giat as $item)
                                     <li>{{$item->nama}}</li>
                                     <p>{{$item->keterangan}}</p>
-                                @endforeach
+                                @endforeach --}}
                             </ol>
                         </div>
                     </ol>

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -20,14 +21,37 @@ class Controller extends BaseController
     $users = DB::table('polres')
     ->where('id', '!=', '1')
     ->get();
+    $dspp = DB::table('polres')
+    ->where('id', '!=', '1')
+    ->sum('dspp');
     $invent = DB::table('barangs')->get();
+    $dasar = DB::table('pendahuluans')
+    ->where('jenis', '=', 'dasar')
+    ->get();
+    $maksud = DB::table('pendahuluans')
+    ->where('jenis', '=', 'maksudtujuan')
+    ->get();
 
-    return view('admin/home', ['users' => $users, 'personil'=>$datas, 'invent'=>$invent]);
+    return view('admin/home', ['users' => $users, 'dspp' => $dspp, 'personil'=>$datas, 'invent'=>$invent, 'dasar'=>$dasar, 'maksud'=>$maksud]);
   }
 
   public function homedup()
   {
-    return view('home_dup');
+    $struktur = DB::table('strukturs')->get();
+    $datas = DB::table('personils')->get();
+    $count = 1;
+    $users = DB::table('polres')
+    ->where('id', '!=', '1')
+    ->get();
+    $invent = DB::table('barangs')->get();
+    $dasar = DB::table('pendahuluans')
+    ->where('jenis', '=', 'dasar')
+    ->get();
+    $maksud = DB::table('pendahuluans')
+    ->where('jenis', '=', 'maksudtujuan')
+    ->get();
+
+    return view('home_dup', ['datas' => $datas, 'struktur'=>$struktur, 'count'=> $count, 'users' => $users, 'personil'=>$datas, 'invent'=>$invent, 'dasar'=>$dasar, 'maksud'=>$maksud]);
   }
 
   public function data_polres()
@@ -40,7 +64,9 @@ class Controller extends BaseController
     $users = DB::table('polres')
     ->where('id', '!=', '1')
     ->get();
-    $datas = DB::table('personils')->get();
+    $datas = DB::table('personils')
+    ->orderBy('pangkat_personil', 'ASC')
+    ->get();
 
     return view('admin/data-personil', ['datas' => $datas, 'polres' => $users]);
   }
@@ -104,7 +130,10 @@ class Controller extends BaseController
     $users = DB::table('polres')
     ->where('id', '!=', '1')
     ->get();
-    $giat = DB::table('datagiats')->get();
+    $giat = DB::table('datagiats')
+    ->where('tanggal', 'like', Carbon::now()->format('Y-m').'%')
+    ->orderBy('tanggal', 'ASC')
+    ->get();
 
     return view('admin/data-giat', ['giat' => $giat, 'polres' => $users]);
   }
@@ -127,6 +156,8 @@ class Controller extends BaseController
     ->get();
     $giat = DB::table('datagiats')
     ->where('id_polres', '=', $id)
+    ->where('tanggal', 'like', Carbon::now()->format('Y-m').'%')
+    ->orderBy('tanggal', 'ASC')
     ->get();
     $datas = DB::table('barangs')
     ->where('id_polres', '=', $id)
@@ -169,10 +200,13 @@ class Controller extends BaseController
 
   public function data_personil_id()
   {
-    $datas = DB::table('personils')->get();
+    $struktur = DB::table('strukturs')->get();
+    $datas = DB::table('personils')
+    ->orderBy('pangkat_personil', 'ASC')
+    ->get();
     $count = 1;
 
-    return view('auth/data-personil', ['datas' => $datas, 'count'=> $count]);
+    return view('auth/data-personil', ['datas' => $datas, 'count'=> $count, 'struktur'=>$struktur]);
   }
 
   public function data_jarkomrad_id()
@@ -222,7 +256,10 @@ class Controller extends BaseController
 
   public function data_giat_id()
   {
-    $giat = DB::table('datagiats')->get();
+    $giat = DB::table('datagiats')
+    ->where('tanggal', 'like', Carbon::now()->format('Y-m').'%')
+    ->orderBy('tanggal', 'ASC')
+    ->get();
 
     return view('auth/data-giat', ['giat' => $giat]);
   }
@@ -272,6 +309,21 @@ class Controller extends BaseController
     return view('auth/kesimpulan-saran', ['kesimpulan' => $kesimpulan, 'saran'=>$saran, 'count'=>$count, 'i'=>$i]);
     }
 
+  public function daftar_lapbul()
+  {
+    $lapbul = DB::table('lapbuls')->get();
+    return view('admin/daftar-lapbul', ['lapbul'=>$lapbul]);
+  }
+  public function daftar_lapbul_bulan($id)
+  {
+    $lapbul = DB::table('lapbuls')
+    ->where('bulan', '=', $id)
+    ->get();
+    $users = DB::table('polres')
+    ->where('id', '!=', '1')
+    ->get();
+    return view('admin/daftar-lapbul-bulan', ['lapbul'=>$lapbul, 'polres'=>$users]);
+  }
   public function daftar_lapbul_id()
   {
     $lapbul = DB::table('lapbuls')->get();

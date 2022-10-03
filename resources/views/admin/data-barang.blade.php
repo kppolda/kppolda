@@ -43,15 +43,15 @@
                                 {{ method_field('POST') }}
                                 <div class='form-group'>
                                     {{ Form::label('nama_barang','Nama Barang') }}
-                                    {{ Form::text('nama_barang','',['class'=>'form-control','placeholder'=>'Nama Barang']) }}
+                                    {{ Form::text('nama_barang','',['class'=>'form-control', 'required','placeholder'=>'Nama Barang']) }}
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('jenis_barang','Jenis Barang') }}
-                                    {{ Form::text('jenis_barang','',['class'=>'form-control','placeholder'=>'Jenis Barang']) }}
+                                    {{ Form::text('jenis_barang','',['class'=>'form-control', 'required','placeholder'=>'Jenis Barang']) }}
                                 </div>
                                 <div class='form-group'>
-                                    {{ Form::label('polres','Polres') }}
-                                    <select name="polres" class="form-control" id="polres">
+                                    {{ Form::label('id_polres','Polres') }}
+                                    <select name="id_polres" class="form-control" id="id_polres" required>
                                         <option hidden>Pilih Polres</option>
                                         @foreach ($polres as $user)
                                         <option value="{{$user->username}}">{{$user->nama_polres}}</option>
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class='form-group'>
                                     {{ Form::label('sumber','Sumber') }}
-                                    <select name="sumber" class="form-control" id="sumber">
+                                    <select name="sumber" class="form-control" id="sumber" required>
                                         <option hidden>Pilih Sumber</option>
                                         <option value="pengadaan">Pengadaan</option>
                                         <option value="hibah">Hibah</option>
@@ -71,27 +71,27 @@
                                 <div class="row form-group pt-0">
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_bb','',['class'=>'form-control form-control-lg qty1', 'required','placeholder'=>'Masukkan Jumlah']) }}
                                             <div class="input-group-append"><span class="input-group-text">BB</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rr','',['class'=>'form-control form-control-lg qty1', 'required','placeholder'=>'Masukkan Jumlah']) }}
                                             <div class="input-group-append"><span class="input-group-text">RR</span></div>
                                         </div>
                                     </div>
                                     <div class='col'>
                                         <div class="input-group">
-                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty1','placeholder'=>'Masukkan Jumlah']) }}
+                                            {{ Form::number('kondisi_rb','',['class'=>'form-control form-control-lg qty1', 'required','placeholder'=>'Masukkan Jumlah']) }}
                                             <div class="input-group-append"><span class="input-group-text">RB</span></div>
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class='form-group'>
+                                <!-- {{-- <div class='form-group'>
                                     {{ Form::label('jml_barang','Jumlah Barang') }}
-                                    {{ Form::text('jml_barang','',['class'=>'form-control total']) }}
-                                </div> --}}
+                                    {{ Form::text('jml_barang','',['class'=>'form-control total', 'required', 'placeholder'=>'Jumlah Barang']) }}
+                                </div> --}} -->
                                 <div class='form-group'>
                                     {{ Form::label('keterangan','Keterangan') }}
                                     {{ Form::text('keterangan','',['class'=>'form-control form-control-lg','placeholder'=>'Keterangan']) }}
@@ -154,7 +154,7 @@
                                                 <td>
                                                     {{ $loop->iteration }} {{-- Starts with 1 --}}</td>
                                                 <td>{{$item->nama_barang}}</td>
-                                                <td>{{$item->jenis_barang}} </std>
+                                                <td>{{$item->jenis_barang}} </td>
                                                 <td>@foreach ($polres as $user)
                                                     @if ($user->username === $item->id_polres)
                                                     {{$user->nama_polres}}
@@ -195,6 +195,15 @@
                                                                     <div class='form-group'>
                                                                         {{ Form::label('nama_barang','Nama Barang') }}
                                                                         {{ Form::text('nama_barang',$item->nama_barang,['class'=>'form-control']) }}
+                                                                    </div>
+                                                                    <div class='form-group'>
+                                                                        {{ Form::label('id_polres','Polres') }}
+                                                                        <select name="id_polres" class="form-control" id="id_polres">
+                                                                            <option value="{{$item->id_polres}}" hidden>{{$item->id_polres}}</option>
+                                                                            @foreach ($polres as $user)
+                                                                            <option value="{{$user->username}}">{{$user->nama_polres}}</option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
                                                                     <div class='form-group'>
                                                                         {{ Form::label('jenis_barang','Jenis Barang') }}

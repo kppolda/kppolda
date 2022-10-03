@@ -16,6 +16,8 @@ class PolresCon extends Controller
         $data = $request->validate([
             'nama_polres' => 'required',
             'username' => 'required',
+            'dspp' => 'integer',
+            'anggaran' => 'integer',
             'pass' => [
                 'required',
                 'string',
@@ -38,6 +40,8 @@ class PolresCon extends Controller
         $data = $request->validate([
             'nama_polres' => 'required',
             'username' => 'required',
+            'dspp' => 'integer',
+            'anggaran' => 'integer',
             'password' => [
                 'required',
                 'string',

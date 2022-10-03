@@ -35,5 +35,6 @@ class SendMonthlyPDF extends Command
         $userId = $this->argument('id');
         $bulan = array("","Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
         DB::insert('insert into lapbuls (id_polres, bulan) values (?, ?)', [$userId, $bulan[Carbon::now()->month]]);
+        mkdir(public_path('lapor/' . $userId));
     }
 }

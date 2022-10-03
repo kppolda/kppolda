@@ -5,7 +5,9 @@ use App\Http\Controllers\PersonilCon;
 use App\Http\Controllers\PolresCon;
 use App\Http\Controllers\BarangCon;
 use App\Http\Controllers\DataGiatCon;
+use App\Http\Controllers\StrukturCon;
 use App\Http\Controllers\HambatanCon;
+use App\Http\Controllers\PendahuluanCon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +38,9 @@ Route::put('personil_id/{id}', [PersonilCon::class, 'edit_id'])->name('personil.
 Route::post('giat_id', [DataGiatCon::class, 'save_id'])->name('giat.tambahid');
 Route::delete('giat/{id}', [DataGiatCon::class, 'destroy_giat'])->name('giat.delete');
 
+Route::post('struktur_id', [StrukturCon::class, 'save_id'])->name('struktur.tambahid');
+Route::delete('struktur/{id}', [StrukturCon::class, 'destroy_struktur'])->name('struktur.delete');
+
 Route::post('login', [PolresCon::class, 'login'])->name('polres.login');
 Route::put('polres/{id}', [PolresCon::class, 'edit'])->name('polres.edit');
 Route::delete('polres/{id}', [PolresCon::class, 'destroy'])->name('polres.delete');
@@ -43,6 +48,10 @@ Route::delete('polres/{id}', [PolresCon::class, 'destroy'])->name('polres.delete
 Route::post('hambatan', [HambatanCon::class, 'tambah_hambatan'])->name('hambatan.regis');
 Route::put('hambatan/{id}', [HambatanCon::class, 'edit_hambatan'])->name('hambatan.edit');
 Route::delete('hambatan/{id}', [HambatanCon::class, 'destroy_hambatan'])->name('hambatan.delete');
+
+Route::post('pen', [PendahuluanCon::class, 'tambah_pen'])->name('pen.regis');
+Route::put('pen/{id}', [PendahuluanCon::class, 'edit_pen'])->name('pen.edit');
+Route::delete('pen/{id}', [endahuluanCon::class, 'destroy_pen'])->name('pen.delete');
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

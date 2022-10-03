@@ -45,8 +45,8 @@
                                 <form action="/api/giat" method="POST" id="basicform" data-parsley-validate="" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class='form-group'>
-                                        {{ Form::label('polres','Polres') }}
-                                        <select name="polres" class="form-control" id="polres">
+                                        {{ Form::label('id_polres','Polres') }}
+                                        <select name="id_polres" class="form-control" id="id_polres" required>
                                             <option hidden>Pilih Polres</option>
                                             @foreach ($polres as $user)
                                             <option value="{{$user->username}}">{{$user->nama_polres}}</option>
@@ -55,19 +55,20 @@
                                     </div>
                                     <div class="form-group ">
                                         <label for="nama">Nama Giat</label>
-                                        <input id="nama" type="text" name="nama" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg">
+                                        <input id="nama" type="text" name="nama" data-parsley-trigger="change" required placeholder="Nama Giat" autocomplete="off" class="form-control form-control-lg" required>
                                     </div>
                                     <div class="form-group ">
                                         <label for="tanggal">Tanggal Giat</label>
-                                        <input id="tanggal" type="date" name="tanggal" data-parsley-trigger="change" required autocomplete="off" class="form-control form-control-lg">
+                                        <input id="tanggal" type="date" name="tanggal" data-parsley-trigger="change" required autocomplete="off" class="form-control form-control-lg" required>
                                     </div>
                                     <div class="form-group ">
                                         <label for="keterangan">Keterangan</label>
-                                        <textarea id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" class="form-control form-control-lg"></textarea>
+                                        <textarea id="keterangan" type="text" name="keterangan" data-parsley-trigger="change" required placeholder="Keterangan" autocomplete="off" required class="form-control form-control-lg"></textarea>
                                     </div>
                                     <div class="custom-file">
                                         <label class="custom-file-label" for="image">Dokumentasi</label>
-                                        <input accept="image/*" type="file" class="custom-file-input" name="image" id="image" onchange="readURL(this);" >
+                                        <input accept="image/*" type="file" class="custom-file-input" name="image" id="image" onchange="readURL(this);" required>
+                                        <p>image file dengan size maksimal 2mb.</p>
                                         <!-- <img id="blah" src="http://placehold.it/180" alt="your image" style="max-width: 180px;"/> -->
                                     </div>
                                 </div>

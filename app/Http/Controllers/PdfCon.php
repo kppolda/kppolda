@@ -21,6 +21,12 @@ class PdfCon extends Controller
         $person = DB::table('personils')
         ->where('polres', '=', $id)
         ->get();
+        $dasar = DB::table('pendahuluans')
+        ->where('jenis', '=', 'dasar')
+        ->get();
+        $maksud = DB::table('pendahuluans')
+        ->where('jenis', '=', 'maksudtujuan')
+        ->get();
         $kasitik = DB::table('personils')
         ->where('polres', '=', $id)
         ->where('jabatan_personil', '=', 'Kasitik')
@@ -38,6 +44,8 @@ class PdfCon extends Controller
         ->get();
         $giat = DB::table('datagiats')
         ->where('id_polres', '=', $id)
+        ->where('tanggal', 'like', Carbon::now()->format('Y-m').'%')
+        ->orderBy('tanggal', 'ASC')
         ->get();
         $datas = DB::table('barangs')
         ->where('id_polres', '=', $id)
@@ -81,9 +89,12 @@ class PdfCon extends Controller
         ->where('id_polres', '=', $id)
         ->where('jenis', '=', 'kesimpulan')
         ->get();
+        $struktur = DB::table('strukturs')
+        ->where('id_polres', '=', $id)
+        ->get();
 
-        $pdf = PDF::setOption('enable-local-file-access', true)->loadview('/layout/pdf', ['indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti, 'barang'=>$datas,
-        'giat'=>$giat,'site' => $site, 'alkom' => $alkom, 'personil'=>$person, 'polres'=>$polres, 'kasitik'=>$kasitik, 'hambatan'=>$hambatan, 'saran'=>$saran, 'kesimpulan'=>$kesimpulan]);
+        $pdf = PDF::setOption('enable-local-file-access', true)->loadview('/layout/pdf', ['struktur' => $struktur, 'indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti, 'barang'=>$datas,
+        'giat'=>$giat,'site' => $site, 'alkom' => $alkom, 'personil'=>$person, 'polres'=>$polres, 'maksud'=>$maksud, 'dasar'=>$dasar, 'kasitik'=>$kasitik, 'hambatan'=>$hambatan, 'saran'=>$saran, 'kesimpulan'=>$kesimpulan]);
 
         // return $pdf->download($id.'.pdf');
         return $pdf->stream('tes.pdf', array("Attachment" => false));
@@ -94,6 +105,12 @@ class PdfCon extends Controller
         $person = DB::table('personils')
         ->where('polres', '=', $id)
         ->get();
+        $dasar = DB::table('pendahuluans')
+        ->where('jenis', '=', 'dasar')
+        ->get();
+        $maksud = DB::table('pendahuluans')
+        ->where('jenis', '=', 'maksudtujuan')
+        ->get();
         $kasitik = DB::table('personils')
         ->where('polres', '=', $id)
         ->where('jabatan_personil', '=', 'Kasitik')
@@ -111,6 +128,8 @@ class PdfCon extends Controller
         ->get();
         $giat = DB::table('datagiats')
         ->where('id_polres', '=', $id)
+        ->where('tanggal', 'like', Carbon::now()->format('Y-m').'%')
+        ->orderBy('tanggal', 'ASC')
         ->get();
         $datas = DB::table('barangs')
         ->where('id_polres', '=', $id)
@@ -154,9 +173,12 @@ class PdfCon extends Controller
         ->where('id_polres', '=', $id)
         ->where('jenis', '=', 'kesimpulan')
         ->get();
+        $struktur = DB::table('strukturs')
+        ->where('id_polres', '=', $id)
+        ->get();
 
-        $pdf = PDF::setOption('enable-local-file-access', true)->loadview('/layout/pdf', ['indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti, 'barang'=>$datas,
-        'giat'=>$giat,'site' => $site, 'alkom' => $alkom, 'personil'=>$person, 'polres'=>$polres, 'kasitik'=>$kasitik, 'hambatan'=>$hambatan, 'saran'=>$saran, 'kesimpulan'=>$kesimpulan]);
+        $pdf = PDF::setOption('enable-local-file-access', true)->loadview('/layout/pdf', ['struktur' => $struktur, 'indi' => $indi, 'telp' => $telp, 'intranet' => $intra, 'wifi' => $wifi, 'asti' => $asti, 'barang'=>$datas,
+        'giat'=>$giat,'site' => $site, 'alkom' => $alkom, 'personil'=>$person, 'polres'=>$polres, 'maksud'=>$maksud, 'dasar'=>$dasar, 'kasitik'=>$kasitik, 'hambatan'=>$hambatan, 'saran'=>$saran, 'kesimpulan'=>$kesimpulan]);
 
         return $pdf->save(public_path('/lapor/'.$id.'/'.$bulan[Carbon::now()->month].'.pdf'));
         // return $pdf->stream();
@@ -182,7 +204,10 @@ class PdfCon extends Controller
         // ->where('id_polres', '=', $id)
         ->where('jenis_barang', '=', 'alkom')
         ->get();
-        $giat = DB::table('datagiats')->get();
+        $giat = DB::table('datagiats')
+        ->where('tanggal', 'like', Carbon::now()->format('Y-m').'%')
+        ->orderBy('tanggal', 'ASC')
+        ->get();
         $datas = DB::table('barangs')
         // ->where('id_polres', '=', $id)
         ->where('jenis_barang', '!=', 'site')
